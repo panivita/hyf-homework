@@ -61,12 +61,13 @@ h3 {
   text-decoration: underline;
   margin-bottom: -12px;
 }
-.fa, .fas, .fab {
+.fa {
   color: #70A9A1;
+  font-size: 20px;
   padding-right: 15px;
 }
-.fab{
-  font-size: 20px;
+.fa-phone {
+  font-size: 23px;
 }
 .personal-skills ul, .skills ul {
   columns: 3;
