@@ -1,0 +1,113 @@
+body {
+  margin: 10px;
+  font-size: 100%;
+  font-family: "Calibri", sans-serif;
+  color: black;
+  background-color: black;
+}
+.main-container {
+  width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+  background: #eeeeee;
+}
+.header-container {
+  display: flex;
+  padding: 30px;
+  color: white;
+  background-image:
+    linear-gradient(45deg, #34495e 25%, transparent 25%),
+    linear-gradient(-45deg, #34495e 25%, transparent 25%),
+    linear-gradient(135deg, #34495e 25%, transparent 25%),
+    linear-gradient(-135deg, #34495e 25%, transparent 25%);
+  background-position: 10px 0, 10px 0, 0 0, 0 0;
+  background-size: 20px 20px;
+  box-shadow: 0 0 5px 0 #333333;
+  background-color: #2c3e50;
+}
+.main-info {
+ margin-left: 30px;
+ margin-bottom: -20px; 
+}
+img {
+  border-radius: 5px;
+}
+header a {
+  color: white;
+}
+.main-info ul {
+  padding: 0;
+}
+ .main-info li, .skills li {
+  list-style: none;
+}
+ section {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 30px;
+}
+h1 {
+  margin-top: -8px;
+  margin-bottom: 55px;
+}
+h2 {
+  border-bottom: solid #70A9A1 2px;
+  padding-bottom: 8px;
+  color: #34495e;
+}
+h3 {
+  color: #46596C;
+  font-weight: normal; 
+  text-decoration: underline;
+  margin-bottom: -12px;
+}
+.fa, .fas, .fab {
+  color: #70A9A1;
+  padding-right: 15px;
+}
+.fab{
+  font-size: 20px;
+}
+.personal-skills ul, .skills ul {
+  columns: 3;
+}
+.skills img {
+  width: 20px;
+  padding-right: 15px;
+}
+.logo-js {
+  line-height: 0px;
+}
+.learning {
+  display: flex;
+  margin-top: 30px;
+}
+.column {
+  padding-right: 10px;
+  flex: 33%;
+  line-height: 25px;
+}
+.column-1 {
+  margin-left: -20px;
+}
+.video {
+  position: relative;
+}
+footer {
+  margin-top: 30px;
+  color: white;
+  background-image:
+    linear-gradient(45deg, #34495e 25%, transparent 25%),
+    linear-gradient(-45deg, #34495e 25%, transparent 25%),
+    linear-gradient(135deg, #34495e 25%, transparent 25%),
+    linear-gradient(-135deg, #34495e 25%, transparent 25%);
+  background-position: 10px 0, 10px 0, 0 0, 0 0;
+  background-size: 20px 20px;
+  box-shadow: 0 0 5px 0 #333333;
+  background-color: #2c3e50;
+}
+.copyright {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px;
+}
