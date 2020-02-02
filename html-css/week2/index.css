@@ -1,0 +1,28 @@
+body {
+  height: 200vh;
+}
+.wrapper {
+  margin: 100px;
+  position: relative;
+}
+.box {
+  width: 100px;
+  height: 100px;
+}
+.box:nth-child(1) {
+  background-color: lightblue;
+  left: 100px;
+  position: relative;
+}
+.box:nth-child(2) {
+  background-color: lightcoral;
+  bottom: 30px;
+  right: 100px;
+  position: absolute;
+}
+.box:nth-child(3) {
+  background-color: lightcyan;
+  bottom:0;
+  right:0;
+  position: fixed;
+}
