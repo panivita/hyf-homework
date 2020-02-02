@@ -1,0 +1,16 @@
+.hero-image {
+  background-image: url("https://www.hackyourfuture.dk/static/hero.jpg");
+}
+.container-1, .container-2, .container-3 {
+  display: flex;
+}
+.container-1 {
+  justify-content: space-between;
+}
+.container-2 {
+  justify-content: space-around;
+}
+.container-3 {
+  justify-content: center;
+  a
+}

@@ -11,13 +11,13 @@ body {
 }
 .box:nth-child(1) {
   background-color: lightblue;
-  left: 100px;
+  right: 100px;
   position: relative;
 }
 .box:nth-child(2) {
   background-color: lightcoral;
-  bottom: 30px;
-  right: 100px;
+  top: 30px;
+  right: -100px;
   position: absolute;
 }
 .box:nth-child(3) {
