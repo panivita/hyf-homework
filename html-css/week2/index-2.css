@@ -4,11 +4,24 @@
 .container-1, .container-2, .container-3 {
   display: flex;
 }
-.container-1 {
-  justify-content: space-between;
+.container-1 img {
+  width: 50px;
 }
 .container-2 {
-  justify-content: space-around;
+justify-content: space-around;
+flex-direction: row;
+}
+.container-1 {
+  justify-content: space-between;
+ 
+}
+
+.items {
+margin: 5px;
+}
+
+ul {
+  list-style: none;
 }
 .container-3 {
   justify-content: center;
