@@ -11,7 +11,7 @@ body {
 .header-1 {
   background-color: #fafafa;
 }
-p, .nav-link-2 {
+header p, main p, .nav-link-2 {
   color: gray;
 }
 .header, .nav-bar, footer, .main-container {
@@ -45,7 +45,6 @@ li {
   width: 100%;
   height: 500px;
 }
-
 .main-container, .column-wrap, .logotypes-container {
   display: flex;
   justify-content: space-between;
@@ -72,12 +71,47 @@ li {
 footer {
   background-color: #6736cd;
   color: white;
-  margin-top: -5px;
+  margin-top: 70px;
   text-align: left;
-  padding-top: 40px;
+  padding: 40px 0px 60px 100px;
+  line-height: 200%;
+  font-weight: bold;
 }
- 
-.column, .logotypes-column {
+.map-responsive{
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+}
+.map-responsive iframe{
+  left:0;
+  top:0;
+  height:120%;
+  width:70%;
+  position:absolute;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 30px;
+}
+.footer-column ul {
+  height: 88%;
+  padding: 0;
+  list-style: none;
+}
+.footer-column li {
+  padding: 10px;
+  border-top: 1px solid #675d71;
+  width: 80%;
+}
+.footer-column li:first-child {
+  border: none;
+}
+.footer-column li:nth-child(3) {
+  padding-left: 25px;
+}
+.footer-column, .logotypes-column {
   width: 25%;
   padding: 0 0 0 10px;
 }
