@@ -52,7 +52,7 @@ li {
 }
 .main-column-1, .main-column-2 {
   padding: 0 0 0 10px;
-  margin: 30px 120px 30px 0px;
+  margin: 30px 30px 30px 0px;
 }
 .main-column-1 {
   width: 35%;
@@ -117,17 +117,17 @@ footer a {
   padding: 0 0 0 10px;
 }
 @media screen and (max-width: 960px) {
-.main-container, .column-wrap {
-  display: flex;
+.nav-list, .main-container, .column-wrap {
   flex-direction: column;
   }
+.column {
+  width: 100%;
+}
   .logotypes-container {
-    display: flex;
     flex-wrap: wrap;
     margin: 0 0 -10px 0;
   }
   .logotypes-column {
-    display: flex;
     flex-direction: column;
     padding: 0 0 10px 0;
   }
@@ -148,10 +148,10 @@ footer a {
   } 
   .footer-column {
     flex: 0 0 auto;
-    width: 50%;
+    width: 60%;
   }
   .header, .nav-bar, footer, .main-container {
     padding-left: 50px;
-    padding-right: 20px;
+    padding-right: 30px;
   }
 }
