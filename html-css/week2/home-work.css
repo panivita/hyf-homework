@@ -121,12 +121,35 @@ footer a {
   display: flex;
   flex-direction: column;
   }
-  .logotypes-column {
-    width: 75%;
+  .logotypes-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 -10px 0;
   }
-   .main-column-1, .main-column-2 {
+  .logotypes-column {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 10px 0;
+  }
+  .logotypes-container::after {
+    content: '';
+    width: 100%;
+    order: 0;
+  }
+  .logotypes-column:nth-child(n + 3) {
+    order: 1;
+  }
+  .logotypes-column img {
+    padding: 5px;
+    width: 200px;
+  }
+   .main-column-1 {
     width: 100%;
   } 
+  .footer-column {
+    flex: 0 0 auto;
+    width: 50%;
+  }
   .header, .nav-bar, footer, .main-container {
     padding-left: 50px;
     padding-right: 20px;
