@@ -74,7 +74,7 @@ footer {
   margin-top: 70px;
   text-align: left;
   padding: 40px 0px 60px 100px;
-  line-height: 200%;
+  line-height: 2;
   font-weight: bold;
 }
 .map-responsive{
@@ -108,10 +108,27 @@ footer a {
 .footer-column li:first-child {
   border: none;
 }
-.footer-column li:nth-child(3) {
-  padding-left: 25px;
+.link-3 {
+  margin-left: 0px;
+  padding-left: 10px;
 }
 .footer-column, .logotypes-column {
   width: 25%;
   padding: 0 0 0 10px;
+}
+@media screen and (max-width: 960px) {
+.main-container, .column-wrap {
+  display: flex;
+  flex-direction: column;
+  }
+  .logotypes-column {
+    width: 75%;
+  }
+   .main-column-1, .main-column-2 {
+    width: 100%;
+  } 
+  .header, .nav-bar, footer, .main-container {
+    padding-left: 50px;
+    padding-right: 20px;
+  }
 }
