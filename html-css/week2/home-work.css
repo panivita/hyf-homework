@@ -17,7 +17,8 @@ header p, main p, .nav-link-2 {
   color: gray;
 }
 .header-1, .nav-bar, footer, .main-container {
-  padding-left: 200px;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 h1, h2, h3 {
   text-transform: uppercase;
@@ -75,7 +76,8 @@ footer {
   color: white;
   margin-top: 70px;
   text-align: left;
-  padding: 40px 0px 60px 200px;
+  padding-top: 40px;
+  padding-bottom: 50px;
   line-height: 2;
   font-weight: bold;
 }
@@ -122,9 +124,6 @@ footer a {
 .nav-list, .main-container, .column-wrap {
   flex-direction: column;
   }
-.column {
-  width: 100%;
-}
   .logotypes-container {
     flex-wrap: wrap;
     margin: 0 0 -20px 0;
@@ -144,9 +143,6 @@ footer a {
   .logotypes-column img {
     padding: 5px;
   }
-   .main-column-1 {
-    width: 100%;
-  } 
   .footer-column {
     flex: 0 0 auto;
     width: 60%;
