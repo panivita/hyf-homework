@@ -16,9 +16,9 @@ body {
 header p, main p, .nav-link-2 {
   color: gray;
 }
-.header-1, .nav-bar, footer, .main-container {
+.header-1, .nav-bar, .main-container {
   padding-left: 80px;
-  padding-right: 80px;
+  padding-right: 70px;
 }
 h1, h2, h3 {
   text-transform: uppercase;
@@ -76,8 +76,7 @@ footer {
   color: white;
   margin-top: 70px;
   text-align: left;
-  padding-top: 40px;
-  padding-bottom: 50px;
+  padding: 40px 50px 50px 80px;
   line-height: 2;
   font-weight: bold;
 }
@@ -105,9 +104,10 @@ footer a {
   list-style: none;
 }
 .footer-column li {
+  margin: 0;
   padding: 10px;
   border-top: 1px solid #675d71;
-  width: 80%;
+  width: 70%;
 }
 .footer-column li:first-child {
   border: none;
