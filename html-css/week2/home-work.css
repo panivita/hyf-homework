@@ -10,12 +10,14 @@ body {
 }
 .header-1 {
   background-color: #fafafa;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 header p, main p, .nav-link-2 {
   color: gray;
 }
-.header, .nav-bar, footer, .main-container {
-  padding-left: 100px;
+.header-1, .nav-bar, footer, .main-container {
+  padding-left: 200px;
 }
 h1, h2, h3 {
   text-transform: uppercase;
@@ -73,7 +75,7 @@ footer {
   color: white;
   margin-top: 70px;
   text-align: left;
-  padding: 40px 0px 60px 100px;
+  padding: 40px 0px 60px 200px;
   line-height: 2;
   font-weight: bold;
 }
