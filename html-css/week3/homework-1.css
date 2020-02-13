@@ -215,11 +215,6 @@ h3 {
     transform: translateX(0);
 }
 
-.label .next {
-    position: absolute;
-    overflow: auto;
-}
-
 .main-container {
     display: none;
 }
