@@ -10,9 +10,7 @@ body {
     border: 1px solid black;
 }
 
-h1,
-h2,
-p {
+h1, h2, p {
     padding: 0 20px;
 }
 
@@ -27,8 +25,7 @@ p {
     background-color: lightgrey;
 }
 
-.right-menu,
-.left-menu {
+.right-menu, .left-menu {
     padding: 10px;
     margin-right: 20px;
     font-size: 18px;
@@ -37,8 +34,7 @@ p {
     margin-left: 20px;
 }
 
-.main-menu li,
-.left-menu a {
+.main-menu li, .left-menu a {
     display: inline-block;
     margin-right: 1em;
 }
@@ -115,10 +111,7 @@ progress[value]::-webkit-progress-value {
     border: 1px solid rgb(71, 82, 88);
 }
 
-.to-column,
-.three-column,
-.en-column,
-.textarea-column {
+.to-column, .three-column, .en-column, .textarea-column {
     display: flex;
     justify-content: space-between;
 }
@@ -169,8 +162,7 @@ h3 {
     display: none;
 }
 
-.column-image,
-.column-checkbox {
+.column-image, .column-checkbox {
     display: flex;
     justify-content: space-between;
     margin: 0 0 0 -10px;
@@ -183,10 +175,6 @@ h3 {
 
 .label-1 {
     margin-left: 13px;
-}
-
-[type="radio"] {
-    display: none;
 }
 
 .form-contens label {
@@ -214,6 +202,10 @@ h3 {
     transition: all 0.6s ease;
 }
 
+[type="radio"] {
+    display: none;
+}
+
 [type="radio"]:checked~.main-container {
     z-index: 1;
 }
@@ -232,12 +224,11 @@ h3 {
     display: none;
 }
 
-[type="radio"]:checked~.main-container {
-    display: unset;
+[type="radio"]:checked+.main-container {
+    display: block;
 }
 
-.label .next,
-input[type="submit"] {
+.label .next, input[type="submit"] {
     background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, #09c, #f44);
     border-radius: 10px;
     background-size: 35px 20px, 100% 100%, 100% 100%;
@@ -267,15 +258,10 @@ input[type="submit"] {
         margin: 5px;
         padding: 0;
     }
-    .en-column,
-    .to-column,
-    .three-column,
-    .textarea-column {
+    .en-column, .to-column, .three-column, .textarea-column {
         flex-direction: column;
     }
-    .to-column label,
-    .three-column label,
-    .en-column label {
+    .to-column label, .three-column label, .en-column label {
         margin: 15px 0;
     }
     progress[value] {
