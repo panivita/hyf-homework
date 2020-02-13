@@ -214,17 +214,11 @@ h3 {
     transition: all 0.6s ease;
 }
 
-[type="radio"]:checked~label {
-    background: white;
-    border-bottom: 1px solid white;
-    z-index: 2;
-}
-
-[type="radio"]:checked~label~.main-container {
+[type="radio"]:checked~.main-container {
     z-index: 1;
 }
 
-[type="radio"]:checked~label~.main-container>* {
+[type="radio"]:checked~.main-container>* {
     opacity: 1;
     transform: translateX(0);
 }
@@ -240,12 +234,6 @@ h3 {
 
 [type="radio"]:checked~.main-container {
     display: unset;
-}
-
-.label::after {
-    content: "";
-    clear: both;
-    display: table;
 }
 
 .label .next,
