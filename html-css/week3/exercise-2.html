@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+         <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="exercise-2.css" rel="stylesheet"/>
+  </head>
+
+<body>
+    <div class="order-summary">
+        <h2>Order Summary</h1> 
+        <p>Soudfa Plus: 3 month</p>
+        <p>Total</p>
+    </div>
+   <form action="">
+    <h2>Payment Method</h2> 
+    <div class="payment-method">
+        <label for="card" class="method card">
+          <div class="card-logos">
+            <i class="fa fa-cc-visa"></i>
+            <i class="fa fa-cc-amex"></i>
+            <i class="fa fa-cc-mastercard"></i>
+          </div>
+   
+          <div class="radio-input">
+            <input id="card" type="radio" name="payment">
+            Credit/Debit
+          </div>
+        </label>
+   
+        <label for="paypal" class="method paypal">
+            <i class="fa fa-cc-paypal"></i>
+          <div class="radio-input">
+            <input id="paypal" type="radio" name="payment">
+             PayPal
+          </div>
+        </label>
+    </div>
+    <h2>Card Info</h2>
+    <div class="card-info">
+        
+        <div class="column">
+            <label for="ccnum">Card number</label>
+            <input type="number" id="ccnum" name="cardnumber" minlength:="16" maxlength="16" placeholder="1234-1234-1234-1234">
+        </div>
+        <div class="column">
+            <label for="expdate">Expiry date</label>
+            <input type="month" id="expmonth" name="expdate" placeholder="MM / YY">
+        </div>
+        <div class="column">
+            <label for="verification">Security code</label>
+            <input type="password" id="verification" placeholder="CVV" minlength="3" maxlength="3">
+        </div>
+    </div>  
+    
+    <input type="submit" value="Buy Now" class="btn">
+
+
+
+   </form>
+    
+</body>
+</html>

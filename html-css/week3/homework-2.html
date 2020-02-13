@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="homework-1.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="main-container">
+        <header class="header-container">
+            <nav class="main-menu">
+                <ul class="left-menu">
+                <li><a href="#name">Logo</a></li>
+                </ul>
+                <ul class="right-menu">
+                    <li><a href="#">Navigation</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Sign up to yourcustomtailor.com</h1>
+        <h2>Step 2/4 - how can we reach you?</h2>
+        <label for="file"></label>
+        <progress id="file" value="50" max="100"></progress>
+        <p>We will probably need to stay in touch somehow. Let is know how we can reach you?</p>
+        <form>
+            <ul class="form-style-1">
+                <li class="to-column">
+                    <label for="mail">E-mail <span class="required">*</span></label>
+                    <input type="email" id="mail" name="user-mail" class="field-style field-split" placeholder=""> 
+                    <label for="phone">Phone <span class="required">*</span></label>
+                    <input type="number" id="phone" name="number-phone" class="field-style field-split" placeholder="">
+                </li>
+                <li class="to-column">
+                    <label for="psw">Password<span class="required">*</span></label>
+                    <input type="password" id="psw" name="psw" class="field-style field-split" placeholder=""> 
+                    <label for="re-psw">Re-enter Password<span class="required">*</span></label>
+                    <input type="password" id="re-psw" name="psw"  class="field-style field-split" placeholder="">
+                </li>
+                <li>I want to sign up for the newsletter</li>
+                <li class="three-column">
+                    <label for="vehicle1">Weekly news</label><br>
+                    <input type="radio" name="vehicle1" value="" checked>
+                    <label for="vehicle2">Monthly news</label>
+                    <input type="radio" name="vehicle2" value="" >
+                    <label for="vehicle3">Dont send me news</label>
+                    <input type="radio" name="vehicle3" value="">
+                </li>
+                <li>
+                    <input type="submit" value="Next step">
+                </li>
+            </ul>
+        </form>
+    </div>
+</body>
+</html>
