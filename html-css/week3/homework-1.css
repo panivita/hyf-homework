@@ -24,9 +24,16 @@ h1, h2, p, progress, .form-style-1, .main-menu {
     padding: 0;
 }
 
-.main-menu, .right-menu, .to-column, .three-column, .en-column, .textarea-column, .column-image, .column-checkbox {
+.main-menu, .right-menu, .to-column, .three-column, .en-column, .textarea-column,  .column-checkbox {
     display: flex;
     justify-content: space-between;
+}
+.column-image {
+    display: inline-block;
+    width: 24%;
+}
+.column-image label, .column-image input {
+    margin: 10px 0 10px 10px;
 }
 
 ul {
@@ -139,6 +146,10 @@ h3 {
     font-size: 16px;
 }
 
+.image-container {
+    width: 100%;
+}
+
 .tab {
     margin-top: 20px;
     width: 100%;
@@ -154,9 +165,9 @@ h3 {
 
 .column-checkbox {
     width: 70%;
-    margin: 0;
+    margin: 10px 0;
 }
-
+ 
 .label-1 {
     margin-left: 13px;
 }
@@ -234,7 +245,7 @@ h3 {
         height: 120px;
     }
     .right-menu a {
-        font-size: 14px;  
+        font-size: 14px;
     }
     .form-style-1 ul {
         margin: 5px;
@@ -243,18 +254,17 @@ h3 {
     .right-menu, .en-column, .to-column, .textarea-column {
         flex-direction: column;
     }
-    .three-column {
-        width: 80%;
+    .three-column input, .three-column label {
+        margin-right: 8px;
     }
-    .to-column label, .three-column label, .en-column label {
+    .to-column label, .en-column label {
         margin: 15px 0;
     }
-    
     .field-style {
         height: 35px;
     }
     .field-split, .field-card, .column-image {
-        width: 50%;
+        width: 49%;
     }
     .field-textarea {
         height: 70px;
@@ -263,7 +273,10 @@ h3 {
         width: 107%;
     }
     
-    .column-image img {
-        margin: 5px;
+}
+
+@media screen and (max-width: 450px) {
+    .column-image img{
+        width: 50%;
     }
 }
