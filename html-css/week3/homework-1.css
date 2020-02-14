@@ -27,7 +27,7 @@ p {
     padding: 0;
 }
 
-.main-menu, .right-menu, .to-column, .three-column, .en-column, .textarea-column, .column-checkbox {
+.main-menu, .right-menu, .to-column, .three-column, .en-column, .textarea-column, .checkbox-container {
     display: flex;
     justify-content: space-between;
 }
@@ -174,12 +174,6 @@ h3 {
     margin: 10px 0;
 }
 
-.label- {
-    margin-left: 19px;
-}
-.label-2 {
-    margin-left: ;
-}
 
 .form-contens label {
     background: black;
