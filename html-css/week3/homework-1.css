@@ -35,7 +35,11 @@ h1, h2, p, progress, .form-style-1, .main-menu {
     font-weight: bold;
     
 }
-
+.left-menu img {
+    width: 30%;
+    height: 190px;
+    margin-top: 15px;
+}
 
 .main-menu a {
     color: black;
@@ -60,7 +64,7 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
-    background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, #09c, #f44);
+    background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left,  #44494d, #a1afb4);
     border-radius: 10px;
     background-size: 35px 20px, 100% 100%, 100% 100%;
 }
@@ -209,7 +213,7 @@ h3 {
 }
 
 .label .next, input[type="submit"] {
-    background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, #09c, #f44);
+    background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, #44494d, #a1afb4);
     border-radius: 10px;
     background-size: 35px 20px, 100% 100%, 100% 100%;
     border: 1px solid black;
