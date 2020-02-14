@@ -41,14 +41,14 @@
                 <p>Nice to meet you. Lets spend a minute to get to know each other? Please enter the following:</p>
                 <ul class="form-style-1">
                     <li class="to-column">
-                        <label>First Name <span class="required">*</span></label>
-                        <input type="text" name="field1" class="field-style field-split" placeholder="" />
-                        <label>Last Name <span class="required">*</span></label>
-                        <input type="text" name="field2" class="field-style field-split" placeholder="" />
+                        <label for="field1">First Name <span class="required">*</span></label>
+                        <input type="text" id="field1" name="field1" class="field-style field-split" placeholder="" required />
+                        <label for="field2">Last id <span class="required">*</span></label>
+                        <input type="text" id="field2" name="field2"class="field-style field-split" placeholder="" required />
                     </li>
                     <li class="en-column">
                         <label for="country">Country<span class="required">*</span></label>
-                        <select id="country" name="field3" class="field-style field-country">
+                        <select id="country" name="field3" class="field-style field-country" required>
                             <option value="Afghanistan"></option>
                             <option value="Åland Islands">Åland Islands</option>
                             <option value="Albania">Albania</option>
@@ -85,13 +85,13 @@
                         </select>
                     </li>
                     <li class="to-column">
-                        <label>Your address<span class="required">*</span></label>
-                        <input type="" name="field4" class="field-style field-split" />
-                        <label>Post code<span class="required">*</span></label>
-                        <input type="" name="field5" class="field-style field-split" />
+                        <label for="field4">Your address<span class="required">*</span></label>
+                        <input type="text" id="field4" name="field4" class="field-style field-split" required />
+                        <label for="field5">Post code<span class="required">*</span></label>
+                        <input type="number" id="field5" name="field5" class="field-style field-split" required />
                     </li>
                     <li class="textarea-column">
-                        <label>Profile description<br><br><br>
+                        <label for="field6">Profile description<br><br><br>
                             <p class="description">Please provide a short description about of yourself to be
                                 displayed on our cosial community pages</p>
                         </label>
@@ -110,14 +110,16 @@
                                 <h3>Shipping address</h3>
                                 <ul class="form-style-2">
                                     <li class="to-column">
-                                        <label>First Name <span class="required">*</span></label>
-                                        <input type="text" name="field1" class="field-style field-split" placeholder="">
-                                        <label>Last Name <span class="required">*</span></label>
-                                        <input type="text" name="field2" class="field-style field-split" placeholder="">
+                                        <label for="field1">First Name <span class="required">*</span></label>
+                                        <input type="text" id="field1" name="field1"class="field-style field-split" placeholder=""
+                                            required>
+                                        <label for="field2">Last Name <span class="required">*</span></label>
+                                        <input type="text" id="field2" name="field2" class="field-style field-split" placeholder=""
+                                            required>
                                     </li>
                                     <li class="en-column">
                                         <label for="country">Country<span class="required">*</span></label>
-                                        <select id="country" name="field3" class="field-style field-country">
+                                        <select id="country" name="field3" class="field-style field-country" required>
                                             <option value="Afghanistan"></option>
                                             <option value="Åland Islands">Åland Islands</option>
                                             <option value="Albania">Albania</option>
@@ -156,13 +158,13 @@
                                         </select>
                                     </li>
                                     <li class="to-column">
-                                        <label>Street address<span class="required">*</span></label>
-                                        <input type="" name="field4" class="field-style field-split">
-                                        <label>Post code<span class="required">*</span></label>
-                                        <input type="" name="field5" class="field-style field-split">
+                                        <label for="field4">Street address<span class="required">*</span></label>
+                                        <input type="text" id="field4" name="field4" class="field-style field-split" required>
+                                        <label for="field5">Post code<span class="required">*</span></label>
+                                        <input type="number" id="field5" class="field-style field-split" required>
                                     </li>
                                     <li class="textarea-column">
-                                        <label>Profile description</label>
+                                        <label for="field6">Profile description</label>
                                         <textarea name="field6" id="field6"
                                             class="field-style field-textarea"></textarea>
                                     </li>
@@ -183,25 +185,28 @@
                 <ul class="form-style-1">
                     <li class="to-column">
                         <label for="mail">E - mail <span class="required">*</span></label>
-                        <input type="email" id="mail" name="user-mail" class="field-style field-split" placeholder="" />
+                        <input type="email" id="mail" name="user-mail" class="field-style field-split" placeholder=""
+                            required />
                         <label for="phone">Phone <span class="required">*</span></label>
                         <input type="number" id="phone" name="number-phone" class="field-style field-split"
-                            placeholder="" />
+                            placeholder="" required />
                     </li>
                     <li class="to-column">
                         <label for="psw">Password<span class="required">*</span></label>
-                        <input type="password" id="psw" name="psw" class="field-style field-split" placeholder="" />
+                        <input type="password" id="psw" name="psw" class="field-style field-split" placeholder=""
+                            minlength="8" required />
                         <label for="re-psw">Re-enter <br> Password<span class="required">*</span></label>
-                        <input type="password" id="re-psw" name="psw" class="field-style field-split" placeholder="" />
+                        <input type="password" id="re-psw" name="psw" class="field-style field-split" placeholder=""
+                            minlength="8" required />
                     </li>
                     <li>I want to sign up for the newsletter</li>
                     <li class="three-column">
                         <label for="vehicle1">Weekly news</label><br>
-                        <input type="checkbox" name="vehicle2" value="" checked />
-                        <label for="vehicle2">Monthly news</label><br>
-                        <input type="checkbox" name="vehicle3" value="" />
+                        <input type="checkbox" id="vehicle1" value="" checked />
+                        <label for="vehicle2">Monthly news</label>
+                        <input type="checkbox" id="vehicle2" value="" />
                         <label for="vehicle3">Dont send me news</label>
-                        <input type="checkbox" name="vehicle1" value="" />
+                        <input type="checkbox" id="vehicle3" value="" />
                     </li>
                     <li class="label">
                         <label for="button-3" class="next">Next step</label>
@@ -216,65 +221,63 @@
                     <li>What kind of items are you interested in offers on?</li>
                     <li>
                         <div class="column-checkbox">
-                            <label for="vehicle1">Apparal</label>
-                            <input type="checkbox" class="label-1" name="vehicle1" value="" checked />
-                            <label for="vehicle2">Accessories</label>
-                            <input type="checkbox" name="vehicle2" value="" />
+                            <input type="checkbox" class="label-1" id="vehicle4" value="" checked />
+                            <label for="vehicle4">Apparal</label>
+                            <input type="checkbox" class="label-2" id="vehicle5" value="" />
+                            <label for="vehicle5">Accessories</label>
+                            <input type="checkbox" id="vehicle6" value="" checked />
+                            <label for="vehicle6">Handbags</label>
                         </div>
                         <div class="column-checkbox">
-                            <label for="vehicle3">Jewerly</label>
-                            <input type="checkbox" name="vehicle3" value="" />
-                            <label for="vehicle4">Handbags</label>
-                            <input type="checkbox" name="vehicle4" value="" checked />
-                        </div>
-                        <div class="column-checkbox">
-                            <label for="vehicle5">Shoes</label>
-                            <input type="checkbox" name="vehicle5" value="" />
-                            <label for="vehicle6">Beauty</label>
-                            <input type="checkbox" name="vehicle6" value="" />
+                            <input type="checkbox" id="vehicle7" value="" />
+                            <label for="vehicle7">Jewerly</label>
+                            <input type="checkbox" id="vehicle8" value="" />
+                            <label for="vehicle8">Shoes</label>
+                            <input type="checkbox" id="vehicle9" value="" />
+                            <label for="vehicle9">Beauty</label>
                         </div>
                     </li>
                     <li>Choose the images that best resemble your style</li>
                     <li class="image-container">
                         <div class="column-image">
                             <img src="https://via.placeholder.com/180x180">
-                            <label for="vehicle1">Select</label>
-                            <input type="checkbox" name="vehicle1" value="" checked />
+                            <label for="vehicle10">Select</label>
+                            <input type="checkbox" id="vehicle10" value="" checked />
                         </div>
                         <div class="column-image">
                             <img src="https://via.placeholder.com/180x180">
-                            <label for="vehicle1">Select</label>
-                            <input type="checkbox" name="vehicle1" value="" />
+                            <label for="vehicle11">Select</label>
+                            <input type="checkbox" id="vehicle11" value="" />
                         </div>
                         <div class="column-image">
                             <img src="https://via.placeholder.com/180x180">
-                            <label for="vehicle1">Select</label>
-                            <input type="checkbox" name="vehicle1" value="" />
+                            <label for="vehicle12">Select</label>
+                            <input type="checkbox" id="vehicle12" value="" />
                         </div>
                         <div class="column-image">
                             <img src="https://via.placeholder.com/180x180">
-                            <label for="vehicle1">Select</label>
-                            <input type="checkbox" name="vehicle1" value="" checked />
+                            <label for="vehicle13">Select</label>
+                            <input type="checkbox" id="vehicle13" value="" checked />
                         </div>
                         <div class="column-image">
                             <img src="https://via.placeholder.com/180x180">
-                            <label for="vehicle1">Select</label>
-                            <input type="checkbox" name="vehicle1" value="" checked />
+                            <label for="vehicle14">Select</label>
+                            <input type="checkbox" id="vehicle14" value="" checked />
                         </div>
                         <div class="column-image">
                             <img src="https://via.placeholder.com/180x180">
-                            <label for="vehicle1">Select</label>
-                            <input type="checkbox" name="vehicle1" value="" />
+                            <label for="vehicle15">Select</label>
+                            <input type="checkbox" id="vehicle15" value="" />
                         </div>
                         <div class="column-image">
                             <img src="https://via.placeholder.com/180x180">
-                            <label for="vehicle1">Select</label>
-                            <input type="checkbox" name="vehicle1" value="" checked />
+                            <label for="vehicle16">Select</label>
+                            <input type="checkbox" id="vehicle16" value="" checked />
                         </div>
                         <div class="column-image">
                             <img src="https://via.placeholder.com/180x180">
-                            <label for="vehicle1">Select</label>
-                            <input type="checkbox" name="vehicle1" value="" checked />
+                            <label for="vehicle17">Select</label>
+                            <input type="checkbox" id="vehicle17" value="" checked />
                         </div>
                     </li>
                     <li class="label">
@@ -304,21 +307,21 @@
                     <li class="to-column">
                         <label for="ccnum">Credit number<span class="required">*</span></label>
                         <input type="number" id="ccnum" name="ccnum" class="field-style field-split" placeholder=""
-                            minlength="16" maxlength="16" />
+                            minlength="16" maxlength="16" required />
                         <label for="fname">First name<span class="required">*</span></label>
                         <input type="text" id="fname" name="first name" class="field-style field-split"
                             placeholder="" />
                     </li>
                     <li class="three-column">
                         <label for="expmonth">Exp Month<span class="required">*</span></label>
-                        <input type="text" id="expmonth" name="expmonth" placeholder="" minlength="2" maxlength="2"
-                            class="field-style field-card" />
+                        <input type="number" id="expmonth" name="expmonth" placeholder="" minlength="2" maxlength="2"
+                            class="field-style field-card" required />
                         <label for="expyear">Exp Year<span class="required">*</span></label>
-                        <input type="text" id="expyear" name="expyear" placeholder="" minlength="2" maxlength="2"
-                            class="field-style field-card" />
+                        <input type="number" id="expyear" name="expyear" placeholder="" minlength="2" maxlength="2"
+                            class="field-style field-card" required />
                         <label for="cvv">CVV<span class="required">*</span></label>
                         <input type="password" id="cvv" name="cvv" placeholder="" minlength="3" maxlength="3"
-                            class="field-style field-card" />
+                            class="field-style field-card" required />
                     </li>
                     <li>
                         <input type="submit" value="Next step" />
