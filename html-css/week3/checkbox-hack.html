@@ -44,7 +44,7 @@
                         <label for="field1">First Name <span class="required">*</span></label>
                         <input type="text" id="field1" name="field1" class="field-style field-split" placeholder=""
                             required />
-                        <label for="field2">Last id <span class="required">*</span></label>
+                        <label for="field2">Last Name <span class="required">*</span></label>
                         <input type="text" id="field2" name="field2" class="field-style field-split" placeholder=""
                             required />
                     </li>
@@ -90,7 +90,7 @@
                         <label for="field4">Your address<span class="required">*</span></label>
                         <input type="text" id="field4" name="field4" class="field-style field-split" required />
                         <label for="field5">Post code<span class="required">*</span></label>
-                        <input type="number" id="field5" name="field5" class="field-style field-split" required />
+                        <input type="text" id="field5" name="field5" class="field-style field-split" required />
                     </li>
                     <li class="textarea-column">
                         <label for="field6">Profile description<br><br><br>
@@ -107,7 +107,7 @@
                     <li class="to-column">
                         <div class="tab">
                             <label for="shipping">Shipping address</label>
-                            <input type="checkbox" id="shipping" class="field-style field-check" checked />
+                            <input type="checkbox" id="shipping" class="field-check" checked />
                             <div class="content">
                                 <h3>Shipping address</h3>
                                 <ul class="form-style-2">
@@ -164,7 +164,7 @@
                                         <input type="text" id="field4" name="field4" class="field-style field-split"
                                             required>
                                         <label for="field5">Post code<span class="required">*</span></label>
-                                        <input type="number" id="field5" class="field-style field-split" required>
+                                        <input type="text" id="field5" class="field-style field-split" required>
                                     </li>
                                     <li class="textarea-column">
                                         <label for="field6">Profile description</label>
@@ -191,7 +191,7 @@
                         <input type="email" id="mail" name="user-mail" class="field-style field-split" placeholder=""
                             required />
                         <label for="phone">Phone <span class="required">*</span></label>
-                        <input type="number" id="phone" name="number-phone" class="field-style field-split"
+                        <input type="text" id="phone" name="number-phone" class="field-style field-split"
                             placeholder="" required />
                     </li>
                     <li class="to-column">
@@ -223,23 +223,29 @@
                 <ul class="form-style-1">
                     <li>What kind of items are you interested in offers on?</li>
                     <li class="checkbox-container">
-                        <div class="column-checkbox">
-                            <label for="vehicle4">Apparal</label>
+                        <div class="item-checkbox">
                             <input type="checkbox" id="vehicle4" value="" checked />
-                            <label for="vehicle5">Handbags</label>
+                            <label for="vehicle4">Apparal</label>
+                        </div>
+                        <div class="item-checkbox">
                             <input type="checkbox" id="vehicle5" value="" />
+                            <label for="vehicle5">Handbags</label>
                         </div>
-                        <div class="column-checkbox">
-                            <label for="vehicle6">Beauty</label>
+                        <div class="item-checkbox">
                             <input type="checkbox" id="vehicle6" value="" checked />
-                            <label for="vehicle7">Jewerly</label>
-                            <input type="checkbox" id="vehicle7" value="" />
+                            <label for="vehicle6">Beauty</label>
                         </div>
-                        <div class="column-checkbox">
-                            <label for="vehicle8">Shoes</label>
+                        <div class="item-checkbox">
+                            <input type="checkbox" id="vehicle7" value="" />
+                            <label for="vehicle7">Jewerly</label>
+                        </div>
+                        <div class="item-checkbox">
                             <input type="checkbox" id="vehicle8" value="" />
-                            <label for="vehicle9">Accessories</label>
+                            <label for="vehicle8">Shoes</label>
+                        </div>
+                        <div class="item-checkbox">
                             <input type="checkbox" id="vehicle9" value="" />
+                            <label for="vehicle9">Accessories</label>
                         </div>
                     </li>
                     <li>Choose the images that best resemble your style</li>
@@ -311,7 +317,7 @@
                     </li>
                     <li class="to-column">
                         <label for="ccnum">Credit number<span class="required">*</span></label>
-                        <input type="number" id="ccnum" name="ccnum" class="field-style field-split" placeholder=""
+                        <input type="text" id="ccnum" name="ccnum" class="field-style field-split" placeholder=""
                             minlength="16" maxlength="16" required />
                         <label for="fname">First name<span class="required">*</span></label>
                         <input type="text" id="fname" name="first name" class="field-style field-split"
@@ -319,10 +325,10 @@
                     </li>
                     <li class="three-column">
                         <label for="expmonth">Exp Month<span class="required">*</span></label>
-                        <input type="number" id="expmonth" name="expmonth" placeholder="" minlength="2" maxlength="2"
+                        <input type="text" id="expmonth" name="expmonth" placeholder="" minlength="2" maxlength="2"
                             class="field-style field-card" required />
                         <label for="expyear">Exp Year<span class="required">*</span></label>
-                        <input type="number" id="expyear" name="expyear" placeholder="" minlength="2" maxlength="2"
+                        <input type="text" id="expyear" name="expyear" placeholder="" minlength="2" maxlength="2"
                             class="field-style field-card" required />
                         <label for="cvv">CVV<span class="required">*</span></label>
                         <input type="password" id="cvv" name="cvv" placeholder="" minlength="3" maxlength="3"
