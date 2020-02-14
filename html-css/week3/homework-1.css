@@ -1,5 +1,4 @@
 body {
-    font-size: 100%;
     font-family: "Arial", sans-serif;
     background-color: #a1afb4;
 }
@@ -16,10 +15,15 @@ h1, h2, p, progress, .form-style-1, .main-menu {
     padding: 0 5%;
 }
 
+.header-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .p-style {
     padding: 0;
 }
- 
+
 .main-menu, .right-menu, .to-column, .three-column, .en-column, .textarea-column, .column-image, .column-checkbox {
     display: flex;
     justify-content: space-between;
@@ -167,11 +171,8 @@ h3 {
 }
 
 .main-container {
-    top: -35px;
-    left: 0;
+    display: none;
     background: white;
-    right: 0;
-    bottom: 0;
     transition: opacity .6s linear;
 }
 
@@ -192,10 +193,6 @@ h3 {
 [type="radio"]:checked~.main-container>* {
     opacity: 1;
     transform: translateX(0);
-}
-
-.main-container {
-    display: none;
 }
 
 [type="radio"]:checked+.main-container {
@@ -223,14 +220,27 @@ h3 {
 
 @media screen and (max-width: 900px) {
     .container {
-        width: 100%;
+        width: 95%;
         margin: 5px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 19px;
+    }
+    .left-menu img {
+        width: 30%;
+        height: 120px;
+    }
+    .right-menu a {
+        font-size: 14px;  
     }
     .form-style-1 ul {
         margin: 5px;
         padding: 0;
     }
-    .en-column, .to-column,  .textarea-column {
+    .right-menu, .en-column, .to-column, .textarea-column {
         flex-direction: column;
     }
     .three-column {
@@ -239,10 +249,11 @@ h3 {
     .to-column label, .three-column label, .en-column label {
         margin: 15px 0;
     }
+    
     .field-style {
         height: 35px;
     }
-    .field-split, .field-card {
+    .field-split, .field-card, .column-image {
         width: 50%;
     }
     .field-textarea {
@@ -251,9 +262,7 @@ h3 {
     .field-country {
         width: 107%;
     }
-    .column-image {
-        width: 50%;
-    }
+    
     .column-image img {
         margin: 5px;
     }
