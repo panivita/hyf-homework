@@ -1,6 +1,7 @@
 body {
     font-size: 100%;
     font-family: "Arial", sans-serif;
+    background-color: #a1afb4;
 }
 
 .container {
@@ -8,45 +9,44 @@ body {
     margin-right: auto;
     margin-left: auto;
     border: 1px solid black;
+    background-color: white;
 }
 
 h1, h2, p, progress, .form-style-1, .main-menu {
-   padding: 0 5%; 
-   
+    padding: 0 5%;
 }
+
 .p-style {
     padding: 0;
 }
-.main-menu {
+ 
+.main-menu, .right-menu, .to-column, .three-column, .en-column, .textarea-column, .column-image, .column-checkbox {
     display: flex;
-    width: 90%;
     justify-content: space-between;
-    align-items: center;
 }
 
-.main-menu ul {
+ul {
+    padding: 0;
     list-style: none;
-    background-color: lightgrey;
 }
 
-.right-menu, .left-menu {
+.right-menu {
+    width: 50%;
     font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
-    
 }
+
+.right-menu a {
+    color: black;
+    text-decoration: none;
+}
+
 .left-menu img {
     width: 30%;
     height: 190px;
     margin-top: 15px;
 }
-
-.main-menu a {
-    color: black;
-    text-decoration: none;
-    padding: 5%;
-}
-
 
 progress[value] {
     width: 100%;
@@ -64,36 +64,32 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
-    background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left,  #44494d, #a1afb4);
+    background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, #44494d, #a1afb4);
     border-radius: 10px;
     background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 
-.form-style-1 {  
+.form-style-2 {
+    padding: 0;
+}
+
+.form-style-1, .form-style-2 {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
     margin-top: 30px;
 }
 
-
-.form-style-1 li {
+.form-style-1 li, .form-style-2 li {
     margin-bottom: 30px;
     min-height: 35px;
-    list-style: none;
 }
 
-.form-style-1 label {
+.form-style-1 label, .form-style-2 label {
     margin: 0 0 3px 0;
-    padding: 0px;
     font-weight: bold;
 }
 
 .field-style {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    outline: none;
     border: 1px solid rgb(71, 82, 88);
     border-radius: 10px;
 }
@@ -103,17 +99,16 @@ progress[value]::-webkit-progress-value {
     border: 1px solid rgb(71, 82, 88);
 }
 
-.to-column, .three-column, .en-column, .textarea-column {
-    display: flex;
-    justify-content: space-between;
-}
-
 .en-column {
-    width: 45%;
+    width: 47%;
 }
 
-.textarea-column, .field-check {
+.textarea-column {
     width: 100%;
+}
+
+.field-check {
+    margin: 0 30px;
 }
 
 .description {
@@ -127,6 +122,9 @@ progress[value]::-webkit-progress-value {
     width: 30%;
 }
 
+.field-country {
+    width: 245px;
+}
 
 li textarea {
     width: 100%;
@@ -135,7 +133,6 @@ li textarea {
 
 h3 {
     font-size: 16px;
-    
 }
 
 .tab {
@@ -149,12 +146,6 @@ h3 {
 
 #shipping:checked~.content {
     display: none;
-}
-
-.column-image, .column-checkbox {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 0 0 -10px;
 }
 
 .column-checkbox {
@@ -181,7 +172,6 @@ h3 {
     background: white;
     right: 0;
     bottom: 0;
-    
     transition: opacity .6s linear;
 }
 
@@ -231,35 +221,35 @@ h3 {
     background-color: lightgrey;
 }
 
-@media screen and (max-width: 930px) {
-    progress[value] {
-        width: 90%;
-    }
-}
-
 @media screen and (max-width: 900px) {
+    .container {
+        width: 100%;
+        margin: 5px;
+    }
     .form-style-1 ul {
         margin: 5px;
         padding: 0;
     }
-    .en-column, .to-column, .three-column, .textarea-column {
+    .en-column, .to-column,  .textarea-column {
         flex-direction: column;
+    }
+    .three-column {
+        width: 80%;
     }
     .to-column label, .three-column label, .en-column label {
         margin: 15px 0;
     }
-    progress[value] {
-        width: 80%;
+    .field-style {
+        height: 35px;
     }
-    li textarea {
-        width: 70%;
+    .field-split, .field-card {
+        width: 50%;
+    }
+    .field-textarea {
         height: 70px;
     }
-    .field-card {
-        width: 30%;
-    }
     .field-country {
-        width: 65%;
+        width: 107%;
     }
     .column-image {
         width: 50%;

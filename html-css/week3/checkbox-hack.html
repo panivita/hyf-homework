@@ -14,19 +14,14 @@
         <header class="header-container">
             <nav class="main-menu">
                 <div class="left-menu">
-                    <img src="https://cdn.pixabay.com/photo/2019/09/30/11/25/dress-form-4515475_960_720.png" alt="">
+                    <img src="https://cdn.pixabay.com/photo/2019/09/30/11/25/dress-form-4515475_960_720.png"
+                        alt="dress form with shoes logo">
                 </div>
                 <ul class="right-menu">
-                    <li><a href="#">Navigation</a></li>
-                    <li>
-                        <a href="#"></a>
-                    </li>
-                    <li>
-                        <a href="#"></a>
-                    </li>
-                    <li>
-                        <a href="#"></a>
-                    </li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
             <h1>Sign up to yourcustomtailor.com</h1>
@@ -96,14 +91,15 @@
                         <input type="" name="field5" class="field-style field-split" />
                     </li>
                     <li class="textarea-column">
-                        <label>Profile description. <br><br><br>
+                        <label>Profile description<br><br><br>
                             <p class="description">Please provide a short description about of yourself to be
                                 displayed on our cosial community pages</p>
                         </label>
                         <textarea name="field6" id="field6" class="field-style field-textarea"></textarea>
                     </li>
                     <li>
-                        <p class="p-style">Use the same address for billing and shipping? Uncheck below to fill out a separate shipping
+                        <p class="p-style">Use the same address for billing and shipping? Uncheck below to fill out a
+                            separate shipping
                             address</p>
                     </li>
                     <li class="to-column">
@@ -112,16 +108,16 @@
                             <input type="checkbox" id="shipping" class="field-style field-check" checked />
                             <div class="content">
                                 <h3>Shipping address</h3>
-                                <ul class="form-style-1">
-                                    <li>
+                                <ul class="form-style-2">
+                                    <li class="to-column">
                                         <label>First Name <span class="required">*</span></label>
                                         <input type="text" name="field1" class="field-style field-split" placeholder="">
                                         <label>Last Name <span class="required">*</span></label>
                                         <input type="text" name="field2" class="field-style field-split" placeholder="">
                                     </li>
-                                    <li>
+                                    <li class="en-column">
                                         <label for="country">Country<span class="required">*</span></label>
-                                        <select id="country" name="field3" class="field-style field-split">
+                                        <select id="country" name="field3" class="field-style field-country">
                                             <option value="Afghanistan"></option>
                                             <option value="Åland Islands">Åland Islands</option>
                                             <option value="Albania">Albania</option>
@@ -165,7 +161,7 @@
                                         <label>Post code<span class="required">*</span></label>
                                         <input type="" name="field5" class="field-style field-split">
                                     </li>
-                                    <li>
+                                    <li class="textarea-column">
                                         <label>Profile description</label>
                                         <textarea name="field6" id="field6"
                                             class="field-style field-textarea"></textarea>
@@ -283,7 +279,7 @@
                 <p>Please fill in your payment data</p>
                 <ul class="form-style-1">
                     <li class="to-column">
-                        <label for="cname">Name on Card</label>
+                        <label for="cname">Name on Card<span class="required">*</span></label>
                         <input type="text" id="cname" name="cardname" placeholder="" class="field-style field-split" />
                         <label for="card-type">Card type</label>
                         <select id="card-type" name="field3" class="field-style field-split">
@@ -296,7 +292,7 @@
                         </select>
                     </li>
                     <li class="to-column">
-                        <label for="ccnum">Credit card number<span class="required">*</span></label>
+                        <label for="ccnum">Credit number<span class="required">*</span></label>
                         <input type="number" id="ccnum" name="ccnum" class="field-style field-split" placeholder=""
                             minlength="16" maxlength="16" />
                         <label for="fname">First name<span class="required">*</span></label>
