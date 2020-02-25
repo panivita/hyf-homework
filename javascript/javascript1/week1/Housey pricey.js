@@ -10,35 +10,33 @@ function housePrice(house) {
 function estimate(house) {
     const personHousePrice = housePrice(house);
     if (personHousePrice < house.marketHousePrice) {
-        console.log('You paying too much, ' + house.name);
+        console.log('You are paying too much ' + house.name);
     }
     else {
-        console.log('You paying too little, ' + house.name);
+        console.log('You are paying too little ' + house.name); 
     }
 }
 
 const petersHouse = {
     name: 'Peter',
-    gardenSizeInM2: 100,
     width: 8,
     height: 10,
     depth: 10,
+    gardenSizeInM2: 100,
     marketHousePrice: 2500000,
-}
+};
 
 const juliasHouse = {
     name: 'Julia',
-    gardenSizeInM2: 70,
     width: 5,
     height: 11,
     depth: 8,
+    gardenSizeInM2: 70,
     marketHousePrice: 1000000,
-}
-
+};
 
 const houses = [petersHouse, juliasHouse];
 for (let i = 0; i < houses.length; i++) {
     const house = houses[i];
-    estimate(house);
+    estimate(house);  
 }
-
