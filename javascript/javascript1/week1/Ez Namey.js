@@ -13,4 +13,6 @@ function startupName() {
     return firstWord + ' ' + secondWord;
 }
 
-console.log(startupName());
+const name = startupName();
+const length = name.length;
+console.log('The startup: ' + name + ' contains ' + length +' characters');
