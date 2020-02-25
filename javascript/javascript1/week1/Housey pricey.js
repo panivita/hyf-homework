@@ -1,3 +1,22 @@
+function houseVolume(house) {
+    return house.width * house.height * house.depth;
+}
+
+function housePrice(house) {
+    const volumeInMeters = houseVolume(house);
+    return volumeInMeters * 2.5 * 1000 + house.gardenSizeInM2 * 300;
+}
+
+function estimate(house) {
+    const personHousePrice = housePrice(house);
+    if (personHousePrice < house.marketHousePrice) {
+        console.log('You paying too much, ' + house.name);
+    }
+    else {
+        console.log('You paying too little, ' + house.name);
+    }
+}
+
 const petersHouse = {
     name: 'Peter',
     gardenSizeInM2: 100,
@@ -16,29 +35,10 @@ const juliasHouse = {
     marketHousePrice: 1000000,
 }
 
-function houseVolume(house) {
-    return house.width * house.height * house.depth;
+
+const houses = [petersHouse, juliasHouse];
+for (let i = 0; i < houses.length; i++) {
+    const house = houses[i];
+    estimate(house);
 }
-
-function housePrice(house) {
-    const volumeInMeters = houseVolume(house);
-    return volumeInMeters * 2.5 * 1000 + house.gardenSizeInM2 * 300;
-}
-
-function estimat(house) {
-    const personHousePrice = housePrice(house);
-    if (personHousePrice < house.marketHousePrice) {
-        console.log('You paying too much, ' + house.name);
-    }
-    else {
-        console.log('You paying too little, ' + house.name);
-    }
-
-}
-
-estimat(petersHouse);
-estimat(juliasHouse);
-
-
-
 
