@@ -1,10 +1,9 @@
-const name = ['Peter', 'Julia'];
-const conclusionAboutPrice = ['You paying too much,', 'You paying too little,'];
 const petersHouse = {
     gardenSizeInM2: 100,
     width: 8,
     height: 10,
     depth: 10,
+    marketHousePrice: 2500000,
 }
 
 const juliasHouse = {
@@ -12,6 +11,7 @@ const juliasHouse = {
     width: 5,
     height: 11,
     depth: 8,
+    marketHousePrice: 1000000,
 }
 
 function houseVolume(house) {
@@ -25,17 +25,20 @@ function housePrice(house) {
 
 const peterHousePrice = housePrice(petersHouse);
 const juliaHousePrice = housePrice(juliasHouse);
+const name = ['Peter', 'Julia'];
+const conclusionAboutPrice = ['You paying too much,', 'You paying too little,'];
 
 
 
-if (peterHousePrice < 2500000) {
+
+if (peterHousePrice < petersHouse.marketHousePrice) {
     console.log(conclusionAboutPrice[0] + ' ' + name[0]);
 }
 else {
     console.log(conclusionAboutPrice[1] + ' ' + name[0]);
 }
 
-if (juliaHousePrice < 1000000) {
+if (juliaHousePrice < juliasHouse.marketHousePrice) {
     console.log(conclusionAboutPrice[0] + ' ' + name[1]);
 }
 else {
