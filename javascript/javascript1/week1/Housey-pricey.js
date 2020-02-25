@@ -10,10 +10,10 @@ function housePrice(house) {
 function estimate(house) {
     const personHousePrice = housePrice(house);
     if (personHousePrice < house.marketHousePrice) {
-        console.log('You are paying too much ' + house.name);
+        console.log('You are paying too much, ' + house.name);
     }
     else {
-        console.log('You are paying too little ' + house.name); 
+        console.log('You are paying too little, ' + house.name); 
     }
 }
 
