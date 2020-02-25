@@ -29,14 +29,17 @@ const name = ['Peter', 'Julia'];
 const conclusionAboutPrice = ['You paying too much,', 'You paying too little,'];
 
 
+function estimat() {
+    if (peterHousePrice < petersHouse.marketHousePrice) {
+        console.log(conclusionAboutPrice[0] + ' ' + name[0]);
+    }
+    else {
+        console.log(conclusionAboutPrice[1] + ' ' + name[0]);
+    }
 
+}
 
-if (peterHousePrice < petersHouse.marketHousePrice) {
-    console.log(conclusionAboutPrice[0] + ' ' + name[0]);
-}
-else {
-    console.log(conclusionAboutPrice[1] + ' ' + name[0]);
-}
+estimat();
 
 if (juliaHousePrice < juliasHouse.marketHousePrice) {
     console.log(conclusionAboutPrice[0] + ' ' + name[1]);
