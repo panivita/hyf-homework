@@ -38,7 +38,7 @@ function whatWearBasedTemperature(temperature) {
     } else if (temperature <= 5) {
         return ' padded or Puffer Coat, Overcoats';
     } else if (temperature <= 10) {
-        return' down or padded waterproof jacket';
+        return ' down or padded waterproof jacket';
     } else if (temperature <= 15) {
         return ' leather jackets, Biker jackets, Pea Coats';
     } else if (temperature <= 20) {
@@ -50,3 +50,25 @@ function whatWearBasedTemperature(temperature) {
 temperature = 21;
 const clothesToWear = whatWearBasedTemperature(temperature);
 console.log('When the temperature is ' + temperature + ' you should wear' + clothesToWear);
+
+//Student manager
+const class07Students = [];
+function addStudentToClass(studentName) {
+    const totalClass07Students = class07Students.push(studentName);
+    if (class07Sudents.length === 7) {
+        return 'Cannot add more students to class 07';
+    } else if (class07Students.indexOf(studentName) === -1) {
+        return 'Student ' + studentName + ' is already in the class';
+
+    } else if (studentName === 'Queen') {
+        return class07Students.push('Queen');
+
+    } else {
+        return totalClass07Students;
+    }
+}
+
+//console.log();
+function getNumberOfStudents() {
+
+}
