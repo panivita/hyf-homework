@@ -10,7 +10,10 @@ console.log(fullname1);
 console.log(fullname2);
 
 function getFullname(firstname, lastname, useFormalName) {
-    if (useFormalName) {
+    if (!firstname || !lastname) {
+       return 'Missing name';
+    }
+    else if (useFormalName) {
        return 'Lord ' + firstname + ' ' + lastname;
     }
     else {
@@ -21,14 +24,16 @@ const fullname = getFullname(firstname, lastname, useFormalName);
 console.log(fullname);*/
 
 //Event application
-const howManyDaysFromToday = 2;
-function getEventWeekday() {
+
+function getEventWeekday(days) {
     const dayName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const today = new Date().getDay();
-    return dayName[today + howManyDaysFromToday];
+    const fullDate = new Date();
+    const today = fullDate.getDay();
+    const dayEvent = (today + days) % 7;
+    return dayName[dayEvent];
 }
-const eventWeekday = getEventWeekday();
-console.log(eventWeekday);
+const eventWeekday = getEventWeekday(13);
+console.log('The event will be held on a ' + eventWeekday);
 
 //Weather wear
 function whatWearBasedTemperature(temperature) {
@@ -54,21 +59,22 @@ console.log('When the temperature is ' + temperature + ' you should wear' + clot
 //Student manager
 const class07Students = [];
 function addStudentToClass(studentName) {
-    const totalClass07Students = class07Students.push(studentName);
-    if (class07Sudents.length === 7) {
-        return 'Cannot add more students to class 07';
-    } else if (class07Students.indexOf(studentName) === -1) {
+    if (!studentName) {
+        return 'Please enter a name';
+    } else if (class07Students.indexOf(studentName) !== -1) {
         return 'Student ' + studentName + ' is already in the class';
-
-    } else if (studentName === 'Queen') {
-        return class07Students.push('Queen');
-
+    } else if (studentName === 'Queen' || class07Students.length <= 5) {
+        class07Students.push(studentName);
+        return 'Student ' + studentName + ' added to class 07';
     } else {
-        return totalClass07Students;
+        return 'Cannot add more students to class 07';
     }
 }
-
-//console.log();
 function getNumberOfStudents() {
+    return class07Students.length;
+}
 
+//Candy helper
+function addCandy(candyType, weight) {
+    
 }
