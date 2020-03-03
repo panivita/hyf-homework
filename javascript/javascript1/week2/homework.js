@@ -1,15 +1,19 @@
 //Send emails
 function sendEmailTo(recepient) {
+    // But really it only logs out a string
+    console.log('email sent to ' + recepient);
+}
+function sendEmails() {
     const weirdFormatRecepient = 'benjamin@gmail.com|peter@gmail.com|hans@gmail.com|ahmad@gmail.com|sana@gmail.com|virgeen@gmail.com|mohammed@gmail.com';
-    recepient = weirdFormatRecepient.split('|');
+    const recepient = weirdFormatRecepient.split('|');
     for (i = 0; i < recepient.length; i++) { 
-        console.log('email sent to ' + recepient[i]); 
+        sendEmailTo(recepient[i]); 
     } 
 }
-sendEmailTo();
+sendEmails();
 
 //Flight booking fullname function
-/*function getFullname(firstname, surname) {
+function getFullname(firstname, surname) {
     return firstname + surname;
 }
 const firstname = ['Victoria ', 'Mickel '];
@@ -18,7 +22,7 @@ const fullname1 = getFullname(firstname[0], surname[0]);
 const fullname2 = getFullname(firstname[1], surname[1]);
 console.log(fullname1);
 console.log(fullname2);
-
+/*
 function getFullname(firstname, lastname, useFormalName) {
     if (!firstname || !lastname) {
        return 'Missing name';
@@ -62,7 +66,7 @@ function whatWearBasedTemperature(temperature) {
         return ' shorts and a t-shirt';
     }
 }
-temperature = 21;
+let temperature = 21;
 const clothesToWear = whatWearBasedTemperature(temperature);
 console.log('When the temperature is ' + temperature + ' you should wear' + clothesToWear);
 
@@ -86,44 +90,33 @@ function getNumberOfStudents() {
 
 //Candy helper
 const boughtCandyPrices = [];
-function addCandy(candyType, weight) {
-    /*const candyArray = [{'candyType': ['Sweet', 'Chocolate', 'Toffee', 'Chewing-gum']},
-    {'pricePerGram': [0.5, 0.7, 1.1, 0.03]}];
-    for (let i = 0; i < candyArray.length; i++) {
-        const price = candyArray[i].candyType * weight * candyArray[i].pricePerGram;
-    }
-    candyType = ['Sweet', 'Chocolate', 'Toffee', 'Chewing-gum'];
-    const pricePerGram = [0.5, 0.7, 1.1, 0.03];
-    for (var i = 0; i < candyType.length; i++) {
-        for (var j = 0; j < pricePerGram.length; j++) {
-            const price = candyType[i] * weight * pricePerGram[j];
-        }
-    }
-    console.log(price);*/
+function pricer(candyType){
     switch (candyType) {
         case 'sweet':
-            price = weight * 0.5;
-            break;
+            return 0.5;
         case 'Chocolate':
-            price = weight * 0.7;
-            break;
+            return 0.7;
         case 'Toffee':
-            price = weight * 1.1;
-            break;
+            return 1.1;
         case 'Chewing-gum':
-            price = weight * 0.03;
-            break;
+            return 0.03;
     }
+}
+
+function addCandy(candyType, weight) {
+    const pricePerGr = pricer(candyType);
+    const price = weight * pricePerGr;
     return boughtCandyPrices.push(price);
 }
 addCandy('sweet', 2);
 addCandy('Chocolate', 30);
+// addCandy('Toffee', 3000);
 
 const amountToSpend = Math.random() * 100;
 function canBuyMoreCandy() {
-    let totalPrice;
+    let totalPrice = 0;
     for (let i = 0; i < boughtCandyPrices.length; i++) {
-        totalPrice = price += boughtCandyPrices[i];
+        totalPrice += boughtCandyPrices[i];
     }
     if (totalPrice <= amountToSpend) {
         return true;
