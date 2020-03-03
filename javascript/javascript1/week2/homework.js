@@ -1,3 +1,13 @@
+//Send emails
+function sendEmailTo(recepient) {
+    const weirdFormatRecepient = 'benjamin@gmail.com|peter@gmail.com|hans@gmail.com|ahmad@gmail.com|sana@gmail.com|virgeen@gmail.com|mohammed@gmail.com';
+    recepient = weirdFormatRecepient.split('|');
+    for (i = 0; i < recepient.length; i++) { 
+        console.log('email sent to ' + recepient[i]); 
+    } 
+}
+sendEmailTo();
+
 //Flight booking fullname function
 /*function getFullname(firstname, surname) {
     return firstname + surname;
@@ -109,15 +119,13 @@ function addCandy(candyType, weight) {
 addCandy('sweet', 2);
 addCandy('Chocolate', 30);
 
-
 const amountToSpend = Math.random() * 100;
-console.log(amountToSpend);
 function canBuyMoreCandy() {
     let totalPrice;
     for (let i = 0; i < boughtCandyPrices.length; i++) {
         totalPrice = price += boughtCandyPrices[i];
     }
-    if (totalPrice < amountToSpend) {
+    if (totalPrice <= amountToSpend) {
         return true;
     }
     else {
