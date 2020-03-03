@@ -16,13 +16,11 @@ sendEmails();
 function getFullname(firstname, surname) {
     return firstname + surname;
 }
-const firstname = ['Victoria ', 'Mickel '];
-const surname = ['Kush', 'Jensen'];
-const fullname1 = getFullname(firstname[0], surname[0]);
-const fullname2 = getFullname(firstname[1], surname[1]);
+const fullname1 = getFullname('Victoria ', 'Kush');
+const fullname2 = getFullname('Marina ', 'Kush');
 console.log(fullname1);
 console.log(fullname2);
-/*
+
 function getFullname(firstname, lastname, useFormalName) {
     if (!firstname || !lastname) {
        return 'Missing name';
@@ -34,8 +32,8 @@ function getFullname(firstname, lastname, useFormalName) {
         return firstname + ' ' + lastname;
     }
 }
-const fullname = getFullname(firstname, lastname, useFormalName);
-console.log(fullname);*/
+const fullname = getFullname();
+console.log(fullname);
 
 //Event application
 
@@ -66,7 +64,7 @@ function whatWearBasedTemperature(temperature) {
         return ' shorts and a t-shirt';
     }
 }
-let temperature = 21;
+const temperature = 21;
 const clothesToWear = whatWearBasedTemperature(temperature);
 console.log('When the temperature is ' + temperature + ' you should wear' + clothesToWear);
 
@@ -92,7 +90,7 @@ function getNumberOfStudents() {
 const boughtCandyPrices = [];
 function pricer(candyType){
     switch (candyType) {
-        case 'sweet':
+        case 'Sweet':
             return 0.5;
         case 'Chocolate':
             return 0.7;
@@ -102,14 +100,13 @@ function pricer(candyType){
             return 0.03;
     }
 }
-
 function addCandy(candyType, weight) {
     const pricePerGr = pricer(candyType);
     const price = weight * pricePerGr;
     return boughtCandyPrices.push(price);
 }
-addCandy('sweet', 2);
-addCandy('Chocolate', 30);
+addCandy('Sweet', 2);
+addCandy('Chocolate', 13);
 // addCandy('Toffee', 3000);
 
 const amountToSpend = Math.random() * 100;
@@ -125,7 +122,6 @@ function canBuyMoreCandy() {
         return false;
     }
 }
-
 if (canBuyMoreCandy()) {
     console.log('You can buy more, so please do!');
 } else {
