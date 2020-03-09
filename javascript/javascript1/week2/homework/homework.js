@@ -21,7 +21,7 @@ const fullname2 = getFullname('Marina ', 'Kush');
 console.log(fullname1);
 console.log(fullname2);
 
-function getFullname(firstname, lastname, useFormalName) {
+function getFullnameFormal(firstname, lastname, useFormalName) {
     if (!firstname || !lastname) {
        return 'Missing name';
     }
@@ -32,7 +32,7 @@ function getFullname(firstname, lastname, useFormalName) {
         return firstname + ' ' + lastname;
     }
 }
-const fullname = getFullname();
+const fullname = getFullnameFormal();
 console.log(fullname);
 
 //Event application
