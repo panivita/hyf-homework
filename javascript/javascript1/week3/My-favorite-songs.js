@@ -21,34 +21,47 @@ const songDatabase = [{
 ];
 
 const myPlaylist = [];
-/*function addSongToDatabase(song) {
-
-    song = {
-        songId: songDatabase.length + 1,
-        title: title,
-        artist: artist
-      };
-    songDatabase.push(song);
-
+function addSongToDatabase(title, artist) {
+    if (typeof (title) === 'string' && typeof (artist) === 'string' && title && artist) {
+        songDatabase.push({
+            songId: songDatabase.length + 1,
+            title: title,
+            artist: artist
+        });
+    }
 }
 addSongToDatabase('Olivia', 'Rasmus Seebach');
-console.table(songDatabase);*/
-/*const findTitle = songDatabase.findIndex(title);
-console.log(findTitle);*/
+console.log(songDatabase);
+
 function getSongByTitle(title) {
-    /*
     for (let i = 0; i < songDatabase.length; i++) {
         const titleKey = songDatabase[i].title;
         if (titleKey === title) {
             return songDatabase[i];
         }
-    }*/
-    const findTitle = songDatabase.findIndex(x => x.title ===title);
-
-console.log(findTitle);
+    }
 }
-const searchedSong = getSongByTitle('When is enough too little?');
-console.log(searchedSong);
+const searchedSong1 = getSongByTitle('When is enough too little?');
+console.log(searchedSong1);
 
 const searchedSong2 = getSongByTitle('When is enough too');
 console.log(searchedSong2);
+
+function getSongByTitleFindIndex(title) {
+    const findTitle = songDatabase.findIndex(x => x.title === title);
+    return songDatabase[findTitle];
+}
+const searchedSong3 = getSongByTitleFindIndex('When is enough too little?');
+console.log(searchedSong3);
+
+const searchedSong4 = getSongByTitleFindIndex('When is enough too');
+console.log(searchedSong4);
+
+function addSongToMyPlaylist(title) {
+    const mySong = getSongByTitleFindIndex(title);
+    if (mySong) {
+        myPlaylist.push(mySong);
+    }
+}
+addSongToMyPlaylist('3 nails in wood');
+console.log(myPlaylist);
