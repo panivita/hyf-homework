@@ -40,8 +40,8 @@ for (let i = 0; i < seriesDurations.length; i++) {
     const calculatePercentage = seriesPercentageAverageLifespan(seriesWatchInMin).toFixed(3);
     console.log(seriesDurations[i].title + ' took ' + calculatePercentage + '% of my life');
 }
-function totalSeriesDuration () {
-const total = seriesPercentageAverageLifespan(totalSum).toFixed(3);
+function totalSeriesDuration() {
+    const total = seriesPercentageAverageLifespan(totalSum).toFixed(3);
     return 'In total that is ' + total + '% of my life';
 }
 

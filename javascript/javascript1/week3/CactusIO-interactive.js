@@ -42,6 +42,7 @@ function usageLimit(limit) {
     if (summaryDirection() > limit) {
         return 'You have reached your limit, no more smartphoning for you!';
     }
+    
 }
 console.log(usageLimit(300));
 
@@ -53,16 +54,16 @@ const activitiesImprove = [];
 const today = new Date().toLocaleDateString();
 function addActivityImprove(activity, duration) {
     if (typeof (activity) === 'string' && typeof (duration) === 'number' && activity && duration) {
-        const myActivities = {
+        const myActivity = {
             date: today,
             activity: activity,
             duration: duration,
         };
-        activitiesImprove.push(myActivities);
+        activitiesImprove.push(myActivity);
     }
     return activitiesImprove;
 }
-addActivityImprove('Youtube', 100);
+addActivityImprove('Youtube', 20);
 addActivityImprove('Facebook', 300);
 
 //Improve the showStatus function by only showing the number of actitivies for that specific day.
@@ -90,11 +91,9 @@ function calculatingActivity() {
     for (let i = 0; i < activitiesImprove.length; i++) {
         const durationAle = activitiesImprove[i].duration;
         arrayDuration.push(durationAle);
-        const maxDuration = Math.max(...arrayDuration);
-
-        if (activitiesImprove[i].duration === maxDuration) {
-            ;
-        }
     }
+    const maxDuration = Math.max(...arrayDuration);
+    const maxObject = activitiesImprove.find(n => n.duration === maxDuration);
+    return maxObject.activity;
 }
 console.log(calculatingActivity());
