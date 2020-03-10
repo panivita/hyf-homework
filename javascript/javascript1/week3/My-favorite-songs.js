@@ -18,16 +18,22 @@ const songDatabase = [{
     title: 'When is enough too little?',
     artist: 'The spies girls',
 },
+{
+    songId: 5,
+    title: 'When is enough too little?',
+    artist: 'Artist',
+},
 ];
 
 const myPlaylist = [];
 function addSongToDatabase(title, artist) {
     if (typeof (title) === 'string' && typeof (artist) === 'string' && title && artist) {
-        songDatabase.push({
+        const song = {
             songId: songDatabase.length + 1,
             title: title,
             artist: artist
-        });
+        };
+        songDatabase.push(song);
     }
 }
 addSongToDatabase('Olivia', 'Rasmus Seebach');
@@ -65,3 +71,16 @@ function addSongToMyPlaylist(title) {
 }
 addSongToMyPlaylist('3 nails in wood');
 console.log(myPlaylist);
+ 
+function getSongByTitleMultiple (title) {
+    const songDatabaseMultiple = [];
+    for (let i = 0; i < songDatabase.length; i++) {
+        const titleKey = songDatabase[i].title;
+        if (titleKey === title) {
+            songDatabaseMultiple.push(songDatabase[i]);
+        }
+    }
+    return songDatabaseMultiple;
+}
+const searchedSong5 = getSongByTitleMultiple('When is enough too little?');
+console.log(searchedSong5);
