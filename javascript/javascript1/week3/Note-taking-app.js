@@ -5,6 +5,7 @@ function addNote(content, id) {
         const myNotes = { content, id };
         notes.push(myNotes);
     }
+    return notes;
 }
 console.log(addNote('victoria', 5));
 console.log(addNote('anna', 8));
@@ -21,7 +22,7 @@ function getNoteFromId(id) {
         }
     }
 }
-console.log(getNoteFromId('anna'));
+console.log(getNoteFromId(5));
 
 //Get all notes
 function getAllNotes() {
@@ -42,5 +43,16 @@ function logOutNotesFormatted() {
 }
 logOutNotesFormatted();
 
-//Unique feature
+//Unique feature. Create notes without entering an id, an id should be generated automatically.
 
+function addMyNote(content) {
+    if (typeof (content) === 'string' && content) {
+        const currentNotes = {
+            id: notes.length + 1,
+            content: content,
+        };
+        notes.push(currentNotes);
+    }
+}
+console.log(addMyNote('My first notes'));
+console.log(addMyNote('One more notes'));

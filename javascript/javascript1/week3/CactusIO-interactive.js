@@ -2,12 +2,12 @@
 const activities = [];
 function addActivity(date, activity, duration) {
     if (typeof (date) === 'string' && typeof (activity) === 'string' && typeof (duration) === 'number' && date && activity && duration) {
-        const myActivities = {
+        const myActivity = {
             date: date,
             activity: activity,
             duration: duration,
         };
-        activities.push(myActivities);
+        activities.push(myActivity);
     }
     return activities;
 }
@@ -18,35 +18,50 @@ addActivity('23/7-18', 'Google', 100);
 console.log(activities);
 
 //Show my status
-function summaryDirection() {
+function summaryDuration() {
     let sumDuration = 0;
     for (let i = 0; i < activities.length; i++) {
         sumDuration += activities[i].duration;
     }
     return sumDuration;
 }
-
+const currentSumDuration = summaryDuration();
 function showStatus() {
-    if (activities.length === 0) {
+    const numberActivities = activities.length;
+    if (numberActivities === 0) {
         return 'Add some activities before calling showStatus';
     }
     else {
-        const numberActivities = activities.length;
-        return 'You have added ' + numberActivities + ' activities. They amount to ' + summaryDirection() + ' min. of usage';
+        return 'You have added ' + numberActivities + ' activities. They amount to ' + currentSumDuration + ' min. of usage';
     }
 }
 console.log(showStatus());
 
 //Usage limit
 function usageLimit(limit) {
-    if (summaryDirection() > limit) {
+    if (currentSumDuration > limit) {
         return 'You have reached your limit, no more smartphoning for you!';
     }
-    
+    else {
+        const limitLefts = limit - currentSumDuration;
+        return 'You have ' + limitLefts + ' min. before  the limit will be reached';
+    }
 }
-console.log(usageLimit(300));
+console.log(usageLimit(500));
 
 //Extra feature
+const limitActivity = 300;
+function usageLimitActivity(activity, duration) {
+    if (duration > limitActivity) {
+        return 'You have reached your limit for usage ' + activity + ' , no more ' + activity + ' for you!';
+    }
+    else {
+        const limitLefts = limitActivity - duration;
+        return 'You have ' + limitLefts + ' min. before the limit for usage ' + activity + ' will be reached';
+    }
+}
+
+console.log(usageLimitActivity('Facebook', 200));
 
 //Optional
 // Improve the addActivity
@@ -68,6 +83,9 @@ addActivityImprove('Facebook', 300);
 
 //Improve the showStatus function by only showing the number of actitivies for that specific day.
 function showStatusImprove() {
+    if (activitiesImprove.length === 0) {
+        return 'Add some activities before calling showStatus';
+    }
     let activitiesToday = [];
     let sumDuration = 0;
     for (let i = 0; i < activitiesImprove.length; i++) {
@@ -76,12 +94,8 @@ function showStatusImprove() {
             activitiesToday.push(activitiesImprove[i]);
         }
     }
-    if (activitiesImprove.length === 0) {
-        return 'Add some activities before calling showStatus';
-    }
-    else {
-        return 'You have added ' + activitiesToday.length + ' activities today. They amount to ' + sumDuration + ' min. of usage';;
-    }
+    return 'You have added ' + activitiesToday.length + ' activities today. They amount to ' + sumDuration + ' min. of usage';;
+
 }
 console.log(showStatusImprove());
 
@@ -94,6 +108,7 @@ function calculatingActivity() {
     }
     const maxDuration = Math.max(...arrayDuration);
     const maxObject = activitiesImprove.find(n => n.duration === maxDuration);
-    return maxObject.activity;
+    return 'You have spent the most time on the ' + maxObject.activity;
 }
 console.log(calculatingActivity());
+

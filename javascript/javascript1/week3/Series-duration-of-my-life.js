@@ -24,26 +24,38 @@ const seriesDurations = [
         minutes: 30,
     }
 ]
-let totalSum = 0;
+
 
 function seriesPercentageAverageLifespan(seriesWatchInMin) {
     const averageLifespanInMin = 80 * 365 * 24 * 60;
     const result = (seriesWatchInMin * 100) / averageLifespanInMin;
     return result;
 }
-for (let i = 0; i < seriesDurations.length; i++) {
-    const daysInMin = seriesDurations[i].days * 24 * 60;
-    const hoursInMin = seriesDurations[i].hours * 60;
-    const min = seriesDurations[i].minutes
-    const seriesWatchInMin = daysInMin + hoursInMin + min;
-    totalSum += seriesWatchInMin;
-    const calculatePercentage = seriesPercentageAverageLifespan(seriesWatchInMin).toFixed(3);
-    console.log(seriesDurations[i].title + ' took ' + calculatePercentage + '% of my life');
+function calculateSeriesWatchTime(serie) {
+    const daysInMin = serie.days * 24 * 60;
+    const hoursInMin = serie.hours * 60;
+    const minutesInMin = serie.minutes
+    const seriesWatchInMin = daysInMin + hoursInMin + minutesInMin;
+    return seriesWatchInMin;
 }
-function totalSeriesDuration() {
-    const total = seriesPercentageAverageLifespan(totalSum).toFixed(3);
-    return 'In total that is ' + total + '% of my life';
+function currentSeriesDuration() {
+    const result = [];
+    for (let i = 0; i < seriesDurations.length; i++) {
+        const serie = seriesDurations[i];
+        const seriesWatchInMin = calculateSeriesWatchTime(serie);
+        const spandPercentage = seriesPercentageAverageLifespan(seriesWatchInMin)
+        result.push({ serie, spandPercentage });
+    }
+    return result;
 }
 
-console.log(totalSeriesDuration());
+const mapPercentage = currentSeriesDuration();
+let totalSum = 0;
+for (let i = 0; i < mapPercentage.length; i++) {
+    const serieWithPercentage = mapPercentage[i];
+    console.log(serieWithPercentage.serie.title + ' took ' + serieWithPercentage.spandPercentage.toFixed(3) + '% of my life');
+    totalSum += serieWithPercentage.spandPercentage;
+}
+
+console.log('In total that is ' + totalSum.toFixed(3) + '% of my life');
 
