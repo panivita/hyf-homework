@@ -32,10 +32,11 @@ function showStatus() {
         return 'Add some activities before calling showStatus';
     }
     else {
-        return 'You have added ' + numberActivities + ' activities. They amount to ' + currentSumDuration + ' min. of usage';
+        return `You have added ${numberActivities} activities. They amount to ${currentSumDuration} min. of usage`;
     }
 }
 console.log(showStatus());
+
 
 //Usage limit
 function usageLimit(limit) {
@@ -44,7 +45,7 @@ function usageLimit(limit) {
     }
     else {
         const limitLefts = limit - currentSumDuration;
-        return 'You have ' + limitLefts + ' min. before  the limit will be reached';
+        return `You have ${limitLefts} min. before  the limit will be reached`;
     }
 }
 console.log(usageLimit(500));
@@ -53,15 +54,20 @@ console.log(usageLimit(500));
 const limitActivity = 300;
 function usageLimitActivity(activity, duration) {
     if (duration > limitActivity) {
-        return 'You have reached your limit for usage ' + activity + ' , no more ' + activity + ' for you!';
+        return `You have reached your limit for usage ${activity}, no more ${activity} for you!`;
     }
     else {
         const limitLefts = limitActivity - duration;
-        return 'You have ' + limitLefts + ' min. before the limit for usage ' + activity + ' will be reached';
+        return `You have ${limitLefts} min. before the limit for usage ${activity} will be reached`;
     }
 }
-
 console.log(usageLimitActivity('Facebook', 200));
+
+function minutesLeft(activity, duration) {
+    return limitActivity - duration;
+}
+const resultMinutesLeft = minutesLeft('Facebook', 200);
+console.log(`You have ${resultMinutesLeft} min. before the limit for usage will be reached`);
 
 //Optional
 // Improve the addActivity
@@ -94,7 +100,7 @@ function showStatusImprove() {
             activitiesToday.push(activitiesImprove[i]);
         }
     }
-    return 'You have added ' + activitiesToday.length + ' activities today. They amount to ' + sumDuration + ' min. of usage';;
+    return `You have added ${activitiesToday.length} activities today. They amount to ${sumDuration} min. of usage`;
 
 }
 console.log(showStatusImprove());
@@ -108,7 +114,8 @@ function calculatingActivity() {
     }
     const maxDuration = Math.max(...arrayDuration);
     const maxObject = activitiesImprove.find(n => n.duration === maxDuration);
-    return 'You have spent the most time on the ' + maxObject.activity;
+    return maxObject.activity;
 }
-console.log(calculatingActivity());
 
+const resultCalculatingActivity = calculatingActivity();
+console.log(`You have spent the most time on the ${resultCalculatingActivity}`);

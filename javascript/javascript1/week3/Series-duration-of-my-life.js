@@ -28,34 +28,33 @@ const seriesDurations = [
 
 function seriesPercentageAverageLifespan(seriesWatchInMin) {
     const averageLifespanInMin = 80 * 365 * 24 * 60;
-    const result = (seriesWatchInMin * 100) / averageLifespanInMin;
+    const result = seriesWatchInMin * 100 / averageLifespanInMin;
     return result;
 }
-function calculateSeriesWatchTime(serie) {
-    const daysInMin = serie.days * 24 * 60;
-    const hoursInMin = serie.hours * 60;
-    const minutesInMin = serie.minutes
+function calculateSeriesWatchTimeInMin(series) {
+    const daysInMin = series.days * 24 * 60;
+    const hoursInMin = series.hours * 60;
+    const minutesInMin = series.minutes
     const seriesWatchInMin = daysInMin + hoursInMin + minutesInMin;
     return seriesWatchInMin;
 }
 function currentSeriesDuration() {
     const result = [];
     for (let i = 0; i < seriesDurations.length; i++) {
-        const serie = seriesDurations[i];
-        const seriesWatchInMin = calculateSeriesWatchTime(serie);
-        const spandPercentage = seriesPercentageAverageLifespan(seriesWatchInMin)
-        result.push({ serie, spandPercentage });
+        const series = seriesDurations[i];
+        const seriesWatchInMin = calculateSeriesWatchTimeInMin(series);
+        const percentageOfTimeSpentWatchingThisSeries = seriesPercentageAverageLifespan(seriesWatchInMin);
+        result.push({ series, percentageOfTimeSpentWatchingThisSeries });
     }
     return result;
 }
-
 const mapPercentage = currentSeriesDuration();
 let totalSum = 0;
 for (let i = 0; i < mapPercentage.length; i++) {
-    const serieWithPercentage = mapPercentage[i];
-    console.log(serieWithPercentage.serie.title + ' took ' + serieWithPercentage.spandPercentage.toFixed(3) + '% of my life');
-    totalSum += serieWithPercentage.spandPercentage;
+    const seriesWithPercentage = mapPercentage[i];
+    console.log(`${seriesWithPercentage.series.title} took ${seriesWithPercentage.percentageOfTimeSpentWatchingThisSeries.toFixed(3)}% of my life`);
+    totalSum += seriesWithPercentage.percentageOfTimeSpentWatchingThisSeries;
 }
 
-console.log('In total that is ' + totalSum.toFixed(3) + '% of my life');
+console.log(`In total that is ${totalSum.toFixed(3)}% of my life`);
 

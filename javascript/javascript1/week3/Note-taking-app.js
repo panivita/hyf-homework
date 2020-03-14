@@ -12,20 +12,19 @@ console.log(addNote('anna', 8));
 
 //Get a note
 function getNoteFromId(id) {
-    for (let i = 0; i < notes.length; i++) {
-        const myId = notes[i].id;
-        if (myId === id) {
-            return notes[i];
-        }
-        else {
-            return 'Error, notes dont found';
-        }
+    const findId = notes.findIndex(x => x.id === id);
+    if (findId === -1) {
+       return 'Error, notes dont found'
+    }
+    else {
+        return notes[findId].content;
     }
 }
+
 console.log(getNoteFromId(5));
 
 //Get all notes
-function getAllNotes() {
+function getAllNotesContent() {
     const notesContent = [];
     for (let i = 0; i < notes.length; i++) {
         const myContent = notes[i].content;
@@ -33,15 +32,17 @@ function getAllNotes() {
     }
     return notesContent;
 }
-getAllNotes();
+getAllNotesContent();
 
 //Log out notes
 function logOutNotesFormatted() {
     for (let i = 0; i < notes.length; i++) {
-        return 'The note with ' + notes[i].id + ', has the following note text: ' + notes[i].content;
+        const myId = notes[i].id;
+        const myContent = notes[i].content;
+        console.log( `The note with id: ${myId}, has the following note text: ${myContent}.`);
     }
 }
-logOutNotesFormatted();
+console.log(logOutNotesFormatted());
 
 //Unique feature. Create notes without entering an id, an id should be generated automatically.
 
