@@ -7,10 +7,11 @@ function addNote(content, id) {
     }
     return notes;
 }
-console.log(addNote('victoria', 5));
-console.log(addNote('anna', 8));
+addNote('first notes', 5);
+addNote('one more', 8);
+console.log(notes);
 
-//Get a note
+    //Get a note
 function getNoteFromId(id) {
     const findId = notes.findIndex(x => x.id === id);
     if (findId === -1) {
@@ -20,8 +21,8 @@ function getNoteFromId(id) {
         return notes[findId].content;
     }
 }
-
-console.log(getNoteFromId(5));
+const resultGetNoteFromId = getNoteFromId(5);
+console.log(resultGetNoteFromId);
 
 //Get all notes
 function getAllNotesContent() {
@@ -32,17 +33,19 @@ function getAllNotesContent() {
     }
     return notesContent;
 }
-getAllNotesContent();
+const resultGetAllNotesContent = getAllNotesContent();
+console.log(resultGetAllNotesContent);
 
 //Log out notes
 function logOutNotesFormatted() {
     for (let i = 0; i < notes.length; i++) {
         const myId = notes[i].id;
         const myContent = notes[i].content;
-        console.log( `The note with id: ${myId}, has the following note text: ${myContent}.`);
+        return `The note with id: ${myId}, has the following note text: ${myContent}.`;
     }
 }
-console.log(logOutNotesFormatted());
+const resultLogOutNotesFormatted =logOutNotesFormatted();
+console.log(resultLogOutNotesFormatted);
 
 //Unique feature. Create notes without entering an id, an id should be generated automatically.
 
@@ -55,5 +58,7 @@ function addMyNote(content) {
         notes.push(currentNotes);
     }
 }
-console.log(addMyNote('My first notes'));
-console.log(addMyNote('One more notes'));
+const addMyFirstNote = addMyNote('My first notes');
+console.log(addMyFirstNote);
+const addMySecondNote = addMyNote('One more notes');
+console.log(addMySecondNote);

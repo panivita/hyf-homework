@@ -71,8 +71,8 @@ function addSongToMyPlaylist(title) {
 }
 addSongToMyPlaylist('3 nails in wood');
 console.log(myPlaylist);
- 
-function getSongByTitleMultiple (title) {
+
+function getSongByTitleMultiple(title) {
     const songDatabaseMultiple = [];
     for (let i = 0; i < songDatabase.length; i++) {
         const titleKey = songDatabase[i].title;

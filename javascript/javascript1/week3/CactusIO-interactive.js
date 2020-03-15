@@ -29,26 +29,38 @@ const currentSumDuration = summaryDuration();
 function showStatus() {
     const numberActivities = activities.length;
     if (numberActivities === 0) {
-        return 'Add some activities before calling showStatus';
+        return -1;
     }
     else {
-        return `You have added ${numberActivities} activities. They amount to ${currentSumDuration} min. of usage`;
+        return numberActivities;
     }
 }
-console.log(showStatus());
+const resultShowStatus = showStatus();
+if (resultShowStatus < 0) {
+    console.log('Add some activities before calling showStatus');
+}
+else {
+    console.log(`You have added ${resultShowStatus} activities. They amount to ${currentSumDuration} min. of usage`);
+}
 
 
 //Usage limit
 function usageLimit(limit) {
     if (currentSumDuration > limit) {
-        return 'You have reached your limit, no more smartphoning for you!';
+        return -1;
     }
     else {
         const limitLefts = limit - currentSumDuration;
-        return `You have ${limitLefts} min. before  the limit will be reached`;
+        return limitLefts;
     }
 }
-console.log(usageLimit(500));
+const resultUsageLimit = usageLimit(100);
+if (resultUsageLimit < 0) {
+    console.log('You have reached your limit, no more smartphoning for you!');
+} else {
+    console.log(`You have ${resultUsageLimit} min. before  the limit will be reached`);
+}
+
 
 //Extra feature
 const limitActivity = 300;
@@ -61,7 +73,8 @@ function usageLimitActivity(activity, duration) {
         return `You have ${limitLefts} min. before the limit for usage ${activity} will be reached`;
     }
 }
-console.log(usageLimitActivity('Facebook', 200));
+const resultUsageLimitActivity = usageLimitActivity('Facebook', 200);
+console.log(resultUsageLimitActivity);
 
 function minutesLeft(activity, duration) {
     return limitActivity - duration;
@@ -84,26 +97,43 @@ function addActivityImprove(activity, duration) {
     }
     return activitiesImprove;
 }
+
 addActivityImprove('Youtube', 20);
 addActivityImprove('Facebook', 300);
+console.log(activitiesImprove);
 
 //Improve the showStatus function by only showing the number of actitivies for that specific day.
-function showStatusImprove() {
-    if (activitiesImprove.length === 0) {
-        return 'Add some activities before calling showStatus';
-    }
-    let activitiesToday = [];
+function summaryDurationImprove() {
     let sumDuration = 0;
     for (let i = 0; i < activitiesImprove.length; i++) {
         sumDuration += activitiesImprove[i].duration;
-        if (activitiesImprove[i].date === today) {
-            activitiesToday.push(activitiesImprove[i]);
+    }
+    return sumDuration;
+}
+const currentSumDurationImprove = summaryDuration();
+function showStatusImprove() {
+    const numberActivities = activitiesImprove.length;
+    if (numberActivities === 0) {
+        return -1;
+    }
+    else {
+        let activitiesToday = [];
+        for (let i = 0; i < activitiesImprove.length; i++) {
+            if (activitiesImprove[i].date === today) {
+                activitiesToday.push(activitiesImprove[i]);
+            }
+            return activitiesToday.length;
         }
     }
-    return `You have added ${activitiesToday.length} activities today. They amount to ${sumDuration} min. of usage`;
-
 }
-console.log(showStatusImprove());
+const resultShowStatusImprove = showStatusImprove();
+if (resultShowStatusImprove < 0) {
+    console.log('Add some activities before calling showStatus');
+}
+else {
+    console.log(`You have added ${resultShowStatusImprove} activities. They amount to ${currentSumDurationImprove} min. of usage`);
+}
+
 
 //Create a function for calculating the activity a user has spent the most time on
 function calculatingActivity() {
