@@ -18,17 +18,17 @@ function getReply(command) {
         answer9: 'This week you have',
     };
     const sentences = {
-        question1: /Hello\s+my\s+name\s+is\s+([A-Z])\w+/,
+        question1: /Hello\s+my\s+name\s+is\s+([A-Z]\w+)/,
         question2: /What\s+is\s+my\s+name/,
         question3: /Add/,
         question4: /Remove/,
-        question5: /What\s+is\s+on\s+my\s+todo?/,
-        question6: /What\s+day\s+is\s+it\s+today?/,
+        question5: /What\s+is\s+on\s+my\s+todo\?/,
+        question6: /What\s+day\s+is\s+it\s+today\?/,
         question7: /What\s+is\s+(-?\d+)\s+([\+\*\-\/])\s+(-?\d+)/,
         question8: /My\s+favorite\s+dish\s+is/,
         question9: /What\s+is\s+my\s+favorite dish/,
         question10: /Set\s+a\s+timer\s+for\s+(\d+) minut/,
-        question11: /to\s+my\s+calendar/,
+        question11: /([0-3]*\d\/[0-1]*\d\/\d{4})\s+to\s+my\s+calendar/,
         question12: /What\s+am\s+I\s+doing\s+this\s+week?/,
     };
 
