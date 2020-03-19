@@ -2,9 +2,8 @@
 let name = '';
 const myTodo = [];
 let dish = '';
-let minut = 0;
 let faction = '';
-const date = new Date();;
+const date = new Date();
 const events = [];
 function getReply(command) {
     const answers = {
@@ -28,7 +27,7 @@ function getReply(command) {
         question7: /What\s+is\s+(-?\d+)\s+([\+\*\-\/])\s+(-?\d+)/,
         question8: /My favorite dish is/,
         question9: /What is my favorite dish/,
-        question10: /Set a timer for [0-9] minut/,
+        question10: /Set a timer for (\d+) minut/,
         question11: /to my calendar/,
         question12: /What am I doing this week?/,
     };
@@ -51,6 +50,7 @@ function getReply(command) {
 
     function getToDo(command) {
         myTodo.push(savedAction);
+        return myTodo;
     }
 
     function getDish(command) {
@@ -61,6 +61,16 @@ function getReply(command) {
         return dish.toString();
     }
     const savedDish = getDish(command);
+
+    function getDish1(command) {
+        if (sentences.question8.test(command)) {
+            const n = command.split(" ");
+            dish = n.slice(4, n.lenght);
+        }
+        return dish.toString();
+    }
+    const savedDish1 = getDish1(command);
+
     function getDate(command) {
         const d = new Date();
         const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
@@ -70,8 +80,8 @@ function getReply(command) {
         return dayToday;
     }
     function calculate(command) {
-        const regex = /(-?\d+)\s+([\+\*\-\/])\s+(-?\d+)/;
-        found = command.match(regex);
+        const regex = sentences.question7;
+        const found = command.match(regex);
         const x = +found[1];
         const y = +found[3];
         const operator = found[2];
@@ -88,33 +98,25 @@ function getReply(command) {
     }
 
     function getTimer(command) {
-        if (sentences.question10.test(command)) {
-            const n = command.split(" ");
-            minut = n[n.length - 2];
-        }
-        setInterval(function () {
-            const secondlimit = minut * 60;
-            if (secondlimit <= 0) {
-                return 'Timer done';
-            }
-        }, 1000);
+        const regex = sentences.question10;
+        const found = command.match(regex);
+        const minut = +found[1];
+        setTimeout(function () {
+            console.log('Timer done');
+        }, minut * 60 * 1000);
         return `${answers.answer7} ${minut} minutes`;
     }
-    const timer = getTimer(command);
 
     function getEvent(command) {
-        if (sentences.question11.test(command)) {
-            const n = command.split(" ");
-            event = `${n[1]} ${n[2]}`;
-            //date = n[n.lenght -4];
-            events.push({
-                name: event,
-                date,
-            });
-        }
-        return event;
+        const n = command.split(" ");
+        event = `${n[1]} ${n[2]}`;
+        //date = n[n.lenght -4];
+        events.push({
+            name: event,
+            date,
+        });
+        return `${event} ${answers.answer8}`;
     }
-    const savedEvent = getEvent(command);
 
     function doingThisWeek(command) {
         const startWeek = date.getDate() - date.getDay() + 1;
@@ -142,7 +144,7 @@ function getReply(command) {
         return `${answers.answer2} ${savedName}`;
     }
     if (sentences.question11.test(command)) {
-        return `${savedEvent} ${answers.answer8}`;
+        return getEvent(command);
     }
     if (sentences.question12.test(command)) {
         return doingThisWeek(command);
@@ -166,10 +168,10 @@ function getReply(command) {
         return `${savedDish} ${answers.answer5}`;
     }
     if (sentences.question9.test(command)) {
-        return `${answers.answer6} ${savedDish}`;
+        return `${answers.answer6} ${savedDish1}`;
     }
     if (sentences.question10.test(command)) {
-        return timer;
+        return getTimer(command);
     }
 
 }
