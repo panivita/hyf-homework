@@ -19,59 +19,54 @@ function getReply(command) {
     };
     const sentences = {
         question1: /Hello\s+my\s+name\s+is\s+([A-Z])\w+/,
-        question2: /What is my name/,
+        question2: /What\s+is\s+my\s+name/,
         question3: /Add/,
         question4: /Remove/,
-        question5: /on my todo?/,
-        question6: /What day is it today?/,
+        question5: /What\s+is\s+on\s+my\s+todo?/,
+        question6: /What\s+day\s+is\s+it\s+today?/,
         question7: /What\s+is\s+(-?\d+)\s+([\+\*\-\/])\s+(-?\d+)/,
-        question8: /My favorite dish is/,
-        question9: /What is my favorite dish/,
-        question10: /Set a timer for (\d+) minut/,
-        question11: /to my calendar/,
-        question12: /What am I doing this week?/,
+        question8: /My\s+favorite\s+dish\s+is/,
+        question9: /What\s+is\s+my\s+favorite dish/,
+        question10: /Set\s+a\s+timer\s+for\s+(\d+) minut/,
+        question11: /to\s+my\s+calendar/,
+        question12: /What\s+am\s+I\s+doing\s+this\s+week?/,
     };
 
     function getName(command) {
-        if (sentences.question1.test(command)) {
-            const n = command.split(" ");
-            name = n[n.length - 1];
-        }
-        return name;
+        const n = command.split(" ");
+        name = n[n.length - 1];
+        return `${answers.answer1} ${name}`;
     }
-    const savedName = getName(command);
-
+    function repeatName(command) {
+        return `${answers.answer2} ${name}`;
+    }
     function getAction(command) {
         const n = command.split(" ");
         action = n[1];
-        return action;
+        return `${action} ${answers.answer3}`;
     }
-    const savedAction = getAction(command);
+    function removeAction(command) {
+        const n = command.split(" ");
+        removedAction = n[1];
+        return `${removedAction} ${answers.answer4}`;
+    }
 
     function getToDo(command) {
-        myTodo.push(savedAction);
-        return myTodo;
+        myTodo.push(action);
+        return `You have ${myTodo.length} todos: ${myTodo.toString()}`;
     }
 
     function getDish(command) {
-        if (sentences.question8.test(command)) {
-            const n = command.split(" ");
-            dish = n.slice(4, n.lenght);
-        }
-        return dish.toString();
+        const n = command.split(" ");
+        dish = n.slice(4, n.lenght);
+        return `${dish.toString()} ${answers.answer5}`;
     }
-    const savedDish = getDish(command);
 
     function getDish1(command) {
-        if (sentences.question8.test(command)) {
-            const n = command.split(" ");
-            dish = n.slice(4, n.lenght);
-        }
-        return dish.toString();
+        return `${answers.answer6} ${dish.toString()}`;
     }
-    const savedDish1 = getDish1(command);
 
-    function getDate(command) {
+    function addDate(command) {
         const d = new Date();
         const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
         const mo = new Intl.DateTimeFormat('en', { month: 'long' }).format(d);
@@ -127,21 +122,20 @@ function getReply(command) {
                 eventWeek.push(events[i]);
             }
         }
-        let myAnswer = `${answers.answer9} ${eventWeek.length} event/s:`;
+        let myAnswer = `${answers.answer9} ${eventWeek.length} event:`;
         if (eventWeek.length !== 0) {
             for (let i = 0; i < eventWeek.length; i++) {
                 myAnswer += `${eventWeek[i].name} on ${eventWeek[i].date.toDateString()}`;
             }
         }
         return myAnswer;
-
     }
 
     if (sentences.question1.test(command)) {
-        return `${answers.answer1} ${savedName}`;
+        return getName(command);
     }
     if (sentences.question2.test(command)) {
-        return `${answers.answer2} ${savedName}`;
+        return repeatName(command);
     }
     if (sentences.question11.test(command)) {
         return getEvent(command);
@@ -150,37 +144,35 @@ function getReply(command) {
         return doingThisWeek(command);
     }
     if (sentences.question3.test(command)) {
-        return `${savedAction} ${answers.answer3}`;
+        return getAction(command);
     }
     if (sentences.question4.test(command)) {
-        return `${savedAction} ${answers.answer4}`;
+        return removeAction(command);
     }
     if (sentences.question5.test(command)) {
         return getToDo(command);
     }
     if (sentences.question6.test(command)) {
-        return getDate(command);
+        return addDate(command);
     }
     if (sentences.question7.test(command)) {
         return calculate(command);
     }
     if (sentences.question8.test(command)) {
-        return `${savedDish} ${answers.answer5}`;
+        return getDish(command);
     }
     if (sentences.question9.test(command)) {
-        return `${answers.answer6} ${savedDish1}`;
+        return getDish1(command);
     }
     if (sentences.question10.test(command)) {
         return getTimer(command);
     }
-
 }
 
-console.log(getReply('Hello my name is Anna'));
+console.log(getReply('Hello my name is Victoria'));
 console.log(getReply('What is my name?'));
 console.log(getReply('Add fishing to my todo'));
 console.log(getReply('Remove fishing from my todo'));
-console.log(getReply('Add singing in the shower to my todo'));
 console.log(getReply('What is on my todo?'));
 console.log(getReply('What day is it today?'));
 console.log(getReply('What is 4 * 3'));
