@@ -27,7 +27,7 @@ function getReply(command) {
         question8: /My\s+favorite\s+dish\s+is\s+([a-z]\w+)/,
         question9: /What\s+is\s+my\s+favorite dish/,
         question10: /Set\s+a\s+timer\s+for\s+(\d+) minut/,
-        question11: /Add\s+(.+?)\s+the\s+([0-3]*\d\/[0-1]*\d\/\d{4})\s+to\s+my\s+calendar/,
+        question11: /Add\s+(.+?)\s+the\s+([0-1]*\d\/[0-3]*\d\/\d{4})\s+to\s+my\s+calendar/,
         question12: /What\s+am\s+I\s+doing\s+this\s+week?/,
     };
 
@@ -111,55 +111,59 @@ function getReply(command) {
     }
 
     function doingThisWeek(command) {
-        const currentDate = new Date(date);
-        const startWeek = currentDate.getDate() - currentDate.getDay() + 1;
-        const endWeek = startWeek + 6;
-        const eventCalendar = events.find(e => e.date);
-        const eventDate = eventCalendar.date;
-        const formatDate = new Date(eventDate).getDate();
-        const eventWeek = [];
-        if (formatDate >= startWeek && formatDate <= endWeek) {
-            eventWeek.push(eventDate);
+        const curr = new Date;
+        const first = curr.getDate() - curr.getDay() + 1;
+        const last = first + 6;
+        const firstday = new Date(curr.setDate(first));
+        const lastday = new Date(curr.setDate(last));
+        const startWeek = `${firstday.getMonth() + 1}/${firstday.getDate()}/${firstday.getFullYear()}`;
+        const endWeek = `${lastday.getMonth() + 1}/${lastday.getDate()}/${lastday.getFullYear()}`;
+        const eventCalendar = events.filter(e => e.date >= startWeek && e.date <= endWeek);
+        let resultAnswer = `${answers.answer9} ${eventCalendar.length} event: `;
+        for (let i = 0; i < eventCalendar.length; i++) {
+        const eventName = eventCalendar[i].name;
+        const eventDate = eventCalendar[i].date;
+            resultAnswer += `${eventName} on ${eventDate}, `;
         }
-        return `${answers.answer9} ${eventWeek.length} event: ${eventCalendar.name} on ${eventDate}`;
-    }
+        return resultAnswer;
+}
 
-    if (sentences.question1.test(command)) {
-        return getName(command);
-    }
-    if (sentences.question2.test(command)) {
-        return repeatName(command);
-    }
-    if (sentences.question11.test(command)) {
-        return getEvent(command);
-    }
-    if (sentences.question12.test(command)) {
-        return doingThisWeek(command);
-    }
-    if (sentences.question3.test(command)) {
-        return getAction(command);
-    }
-    if (sentences.question4.test(command)) {
-        return removeAction(command);
-    }
-    if (sentences.question5.test(command)) {
-        return getToDo(command);
-    }
-    if (sentences.question6.test(command)) {
-        return addDate(command);
-    }
-    if (sentences.question7.test(command)) {
-        return calculate(command);
-    }
-    if (sentences.question8.test(command)) {
-        return getDish(command);
-    }
-    if (sentences.question9.test(command)) {
-        return getSavedDish(command);
-    }
-    if (sentences.question10.test(command)) {
-        return getTimer(command);
-    }
+if (sentences.question1.test(command)) {
+    return getName(command);
+}
+if (sentences.question2.test(command)) {
+    return repeatName(command);
+}
+if (sentences.question11.test(command)) {
+    return getEvent(command);
+}
+if (sentences.question12.test(command)) {
+    return doingThisWeek(command);
+}
+if (sentences.question3.test(command)) {
+    return getAction(command);
+}
+if (sentences.question4.test(command)) {
+    return removeAction(command);
+}
+if (sentences.question5.test(command)) {
+    return getToDo(command);
+}
+if (sentences.question6.test(command)) {
+    return addDate(command);
+}
+if (sentences.question7.test(command)) {
+    return calculate(command);
+}
+if (sentences.question8.test(command)) {
+    return getDish(command);
+}
+if (sentences.question9.test(command)) {
+    return getSavedDish(command);
+}
+if (sentences.question10.test(command)) {
+    return getTimer(command);
+}
 }
 
 console.log(getReply('Hello my name is Victoria'));
@@ -173,5 +177,6 @@ console.log(getReply('What is 4 * 3'));
 console.log(getReply('My favorite dish is lasagne'));
 console.log(getReply('What is my favorite dish'));
 console.log(getReply('Set a timer for 4 minutes'));
-console.log(getReply('Add Bike ride the 3/5/2019 to my calendar'));
+console.log(getReply('Add Bike ride the 3/25/2020 to my calendar'));
+console.log(getReply('Add Fitness the 3/22/2020 to my calendar'));
 console.log(getReply('What am I doing this week?'));
