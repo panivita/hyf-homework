@@ -1,10 +1,9 @@
-//const savedNames = [];
 let name = '';
-const myTodo = [];
 let dish = '';
-let faction = '';
+let action = '';
+//let removedAction = '';
 const date = new Date();
-const events = [];
+
 function getReply(command) {
     const answers = {
         answer1: 'Nice to meet you',
@@ -20,50 +19,50 @@ function getReply(command) {
     const sentences = {
         question1: /Hello\s+my\s+name\s+is\s+([A-Z]\w+)/,
         question2: /What\s+is\s+my\s+name/,
-        question3: /Add/,
-        question4: /Remove/,
+        question3: /Add\s+(.+?)\s+to\s+my\s+todo/,
+        question4: /Remove\s+(.+?)\s+from\s+my\s+todo/,
         question5: /What\s+is\s+on\s+my\s+todo\?/,
         question6: /What\s+day\s+is\s+it\s+today\?/,
         question7: /What\s+is\s+(-?\d+)\s+([\+\*\-\/])\s+(-?\d+)/,
-        question8: /My\s+favorite\s+dish\s+is/,
+        question8: /My\s+favorite\s+dish\s+is\s+([a-z]\w+)/,
         question9: /What\s+is\s+my\s+favorite dish/,
         question10: /Set\s+a\s+timer\s+for\s+(\d+) minut/,
-        question11: /([0-3]*\d\/[0-1]*\d\/\d{4})\s+to\s+my\s+calendar/,
+        question11: /Add\s+(.+?)\s+the\s+([0-3]*\d\/[0-1]*\d\/\d{4})\s+to\s+my\s+calendar/,
         question12: /What\s+am\s+I\s+doing\s+this\s+week?/,
     };
 
     function getName(command) {
-        const n = command.split(" ");
-        name = n[n.length - 1];
+        const found = command.match(sentences.question1);
+        name = found[found.length - 1];
         return `${answers.answer1} ${name}`;
     }
     function repeatName(command) {
         return `${answers.answer2} ${name}`;
     }
     function getAction(command) {
-        const n = command.split(" ");
-        action = n[1];
+        const found = command.match(sentences.question3);
+        action = found[1];
         return `${action} ${answers.answer3}`;
     }
     function removeAction(command) {
-        const n = command.split(" ");
-        removedAction = n[1];
+        const found = command.match(sentences.question4);
+        const removedAction = found[1];
         return `${removedAction} ${answers.answer4}`;
     }
-
+    const myTodo = [];
     function getToDo(command) {
         myTodo.push(action);
         return `You have ${myTodo.length} todos: ${myTodo.toString()}`;
     }
 
     function getDish(command) {
-        const n = command.split(" ");
-        dish = n.slice(4, n.lenght);
-        return `${dish.toString()} ${answers.answer5}`;
+        const found = command.match(sentences.question8);
+        dish = found[found.length - 1];
+        return `${dish} ${answers.answer5}`;
     }
 
-    function getDish1(command) {
-        return `${answers.answer6} ${dish.toString()}`;
+    function getSavedDish(command) {
+        return `${answers.answer6} ${dish}`;
     }
 
     function addDate(command) {
@@ -75,8 +74,7 @@ function getReply(command) {
         return dayToday;
     }
     function calculate(command) {
-        const regex = sentences.question7;
-        const found = command.match(regex);
+        const found = command.match(sentences.question7);
         const x = +found[1];
         const y = +found[3];
         const operator = found[2];
@@ -93,22 +91,21 @@ function getReply(command) {
     }
 
     function getTimer(command) {
-        const regex = sentences.question10;
-        const found = command.match(regex);
+        const found = command.match(sentences.question10);
         const minut = +found[1];
         setTimeout(function () {
             console.log('Timer done');
         }, minut * 60 * 1000);
         return `${answers.answer7} ${minut} minutes`;
     }
-
+    const events = [];
     function getEvent(command) {
-        const n = command.split(" ");
-        event = `${n[1]} ${n[2]}`;
-        //date = n[n.lenght -4];
+        const found = command.match(sentences.question11);
+        const event = found[1];
+        const currentDate = found[2];
         events.push({
             name: event,
-            date,
+            date: currentDate,
         });
         return `${event} ${answers.answer8}`;
     }
@@ -162,7 +159,7 @@ function getReply(command) {
         return getDish(command);
     }
     if (sentences.question9.test(command)) {
-        return getDish1(command);
+        return getSavedDish(command);
     }
     if (sentences.question10.test(command)) {
         return getTimer(command);
@@ -172,6 +169,7 @@ function getReply(command) {
 console.log(getReply('Hello my name is Victoria'));
 console.log(getReply('What is my name?'));
 console.log(getReply('Add fishing to my todo'));
+console.log(getReply('Add singing in the shower to my todo'));
 console.log(getReply('Remove fishing from my todo'));
 console.log(getReply('What is on my todo?'));
 console.log(getReply('What day is it today?'));
