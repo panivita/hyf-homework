@@ -1,8 +1,7 @@
 let name = '';
 let dish = '';
 let action = '';
-//let removedAction = '';
-let date = new Date;
+let date = '';
 let event = '';
 const events = [];
 function getReply(command) {
@@ -66,7 +65,7 @@ function getReply(command) {
         return `${answers.answer6} ${dish}`;
     }
 
-    function addDate() {
+    function addDate(command) {
         const d = new Date();
         const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
         const mo = new Intl.DateTimeFormat('en', { month: 'long' }).format(d);
@@ -99,34 +98,30 @@ function getReply(command) {
         }, minut * 60 * 1000);
         return `${answers.answer7} ${minut} minutes`;
     }
-    
+
     function getEvent(command) {
         const found = command.match(sentences.question11);
         event = found[1];
-        //date = found[2];
+        date = found[2];
         events.push({
             name: event,
             date,
         });
-        return `${event} ${answers.answer8}`;
+        return `${event} ${date} ${answers.answer8}`;
     }
 
     function doingThisWeek(command) {
-        const startWeek = date.getDate() - date.getDay() + 1;
+        const currentDate = new Date(date);
+        const startWeek = currentDate.getDate() - currentDate.getDay() + 1;
         const endWeek = startWeek + 6;
+        const eventCalendar = events.find(e => e.date);
+        const eventDate = eventCalendar.date;
+        const formatDate = new Date(eventDate).getDate();
         const eventWeek = [];
-        for (let i = 0; i < events.length; i++) {
-            if (events[i].date.getDate() >= startWeek && events[i].date.getDate() <= endWeek) {
-                eventWeek.push(events[i]);
-            }
+        if (formatDate >= startWeek && formatDate <= endWeek) {
+            eventWeek.push(eventDate);
         }
-        let myAnswer = `${answers.answer9} ${eventWeek.length} event: `;
-        if (eventWeek.length !== 0) {
-            for (let i = 0; i < eventWeek.length; i++) {
-                myAnswer += `${eventWeek[i].name} on ${eventWeek[i].date.toDateString()}`;
-            }
-        }
-        return myAnswer;
+        return `${answers.answer9} ${eventWeek.length} event: ${eventCalendar.name} on ${eventDate}`;
     }
 
     if (sentences.question1.test(command)) {
@@ -151,7 +146,7 @@ function getReply(command) {
         return getToDo(command);
     }
     if (sentences.question6.test(command)) {
-        return addDate();
+        return addDate(command);
     }
     if (sentences.question7.test(command)) {
         return calculate(command);
