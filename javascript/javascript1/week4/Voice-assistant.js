@@ -2,8 +2,9 @@ let name = '';
 let dish = '';
 let action = '';
 //let removedAction = '';
-const date = new Date();
-
+let date = new Date;
+let event = '';
+const events = [];
 function getReply(command) {
     const answers = {
         answer1: 'Nice to meet you',
@@ -65,7 +66,7 @@ function getReply(command) {
         return `${answers.answer6} ${dish}`;
     }
 
-    function addDate(command) {
+    function addDate() {
         const d = new Date();
         const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
         const mo = new Intl.DateTimeFormat('en', { month: 'long' }).format(d);
@@ -98,14 +99,14 @@ function getReply(command) {
         }, minut * 60 * 1000);
         return `${answers.answer7} ${minut} minutes`;
     }
-    const events = [];
+    
     function getEvent(command) {
         const found = command.match(sentences.question11);
-        const event = found[1];
-        const currentDate = found[2];
+        event = found[1];
+        //date = found[2];
         events.push({
             name: event,
-            date: currentDate,
+            date,
         });
         return `${event} ${answers.answer8}`;
     }
@@ -119,7 +120,7 @@ function getReply(command) {
                 eventWeek.push(events[i]);
             }
         }
-        let myAnswer = `${answers.answer9} ${eventWeek.length} event:`;
+        let myAnswer = `${answers.answer9} ${eventWeek.length} event: `;
         if (eventWeek.length !== 0) {
             for (let i = 0; i < eventWeek.length; i++) {
                 myAnswer += `${eventWeek[i].name} on ${eventWeek[i].date.toDateString()}`;
@@ -150,7 +151,7 @@ function getReply(command) {
         return getToDo(command);
     }
     if (sentences.question6.test(command)) {
-        return addDate(command);
+        return addDate();
     }
     if (sentences.question7.test(command)) {
         return calculate(command);
