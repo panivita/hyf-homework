@@ -38,9 +38,9 @@ medianPrice.textContent = getMedian(housePrices);
 const ul = document.getElementById('avg-median');
 resultCalculation.forEach((result) => {
     const liTag = document.createElement('li');
-    liTag.innerText = result.average;
+    liTag.innerHTML = `<b>Average:</b> ${result.average}`;
     ul.appendChild(liTag);
     const li = document.createElement('li');
-    li.innerText = result.median;
+    li.innerHTML = `<b>Median:</b> ${result.median}`;
     ul.appendChild(li);
 });
