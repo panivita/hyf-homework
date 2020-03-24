@@ -1,10 +1,10 @@
 console.log('Script loaded');
 
-function makeListItem(className, key) {
-    const listItem = document.createElement('li');
-    listItem.classList.add(className);
-    listItem.innerHTML = key;
-    return listItem;
+function makerLists(className, key) {
+    const lists = document.createElement('li');
+    lists.classList.add(className);
+    lists.innerHTML = key;
+    return lists;
 }
 
 function renderProducts(products) {
@@ -14,10 +14,10 @@ function renderProducts(products) {
         ul.appendChild(li);
         const subUl = document.createElement('ul');
         li.appendChild(subUl);
-        subUl.appendChild(makeListItem('id', object.id));
-        subUl.appendChild(makeListItem('name', object.name));
-        subUl.appendChild(makeListItem('price', object.price));
-        subUl.appendChild(makeListItem('rating', object.rating));
+        subUl.appendChild(makerLists('id', object.id));
+        subUl.appendChild(makerLists('name', object.name));
+        subUl.appendChild(makerLists('price', object.price));
+        subUl.appendChild(makerLists('rating', object.rating));
 
         const subLi = document.createElement('li');
         subLi.classList.add('ships-to');
