@@ -23,17 +23,3 @@ function onClickHandler() {
 }
 btnTag.addEventListener('click', onClickHandler);
 
-const textWritten = inputTag.addEventListener('keyup', onClickHandler);
-const clickBtn = btnTag.addEventListener('click', onClickHandler);
-function getSelect() {
-    const selection = document.getElementById('select-option').value;
-    if (selection === 'text-written') {
-        return textWritten;
-    }
-    if (selection === 'hover-input') {
-        return
-    }
-    else {
-        return clickBtn;
-    }
-}
