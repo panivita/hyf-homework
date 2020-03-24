@@ -13,42 +13,32 @@ const pTag = document.getElementById('spiritual-name');
 const selectOption = document.getElementById('select-option');
 
 const spiritAnimal = ['The crying butterfly', 'The fullmoon wolf', 'The fearless tiger', 'The forest rabit', 'The yelling monkey', 'The strong deer', 'The talking snake', 'The beautiful cow', 'The dancing bear', 'The happy duck'];
+function onClick() {
+    const name = getName(inputTag);
+    const animal = getRandomName(spiritAnimal);
+    pTag.textContent = `${name} - ${animal}`;
+}
+
 function onClickHandler() {
     if (selectOption.value !== 'click-btn')
         return;
-
-    let name = getName(inputTag);
-    if (!name) {
+    if (!getName(inputTag)) {
         pTag.textContent = 'First enter your name';
-    } else {
-        let animal = getRandomName(spiritAnimal);
-        pTag.textContent = `${name} - ${animal}`;
     }
+    else onClick();
 }
 btnTag.addEventListener('click', onClickHandler);
 
 function onSelectOptionKeyUp() {
-    if (selectOption.value !== 'text-written') {
+    if (selectOption.value !== 'text-written')
         return;
-    }
-    if (event.keyCode === 13) {
-        let name = getName(inputTag);
-        if (!name) {
-            pTag.textContent = 'First enter your name';
-        } else {
-            let animal = getRandomName(spiritAnimal);
-            pTag.textContent = `${name} - ${animal}`;
-        }
-    }
+    else onClick();
 }
-
 inputTag.addEventListener('keyup', onSelectOptionKeyUp);
 
 function onMouseover() {
     if (selectOption.value !== 'hover-input')
         return;
-    let name = getName(inputTag);
-    let animal = getRandomName(spiritAnimal);
-    pTag.textContent = `${name} - ${animal}`;
+    else onClick();
 }
 inputTag.addEventListener('mouseover', onMouseover);

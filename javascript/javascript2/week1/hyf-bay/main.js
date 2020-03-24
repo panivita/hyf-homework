@@ -26,9 +26,9 @@ function renderProducts(products) {
         subUl.appendChild(subLi);
 
         object.shipsTo.forEach((country) => {
-            const subSubLi = document.createElement('li');
-            subSubLi.innerHTML = country;
-            subSubUl.appendChild(subSubLi);
+            const countryLi = document.createElement('li');
+            countryLi.innerHTML = country;
+            subSubUl.appendChild(countryLi);
         })
     });
 }

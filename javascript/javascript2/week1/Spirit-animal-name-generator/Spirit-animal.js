@@ -13,11 +13,11 @@ const pTag = document.getElementById('spiritual-name');
 const spiritAnimal = ['The crying butterfly', 'The fullmoon wolf', 'The fearless tiger', 'The forest rabit', 'The yelling monkey', 'The strong deer', 'The talking snake', 'The beautiful cow', 'The dancing bear', 'The happy duck'];
 
 function onClickHandler() {
-    let name = getName(inputTag);
+    const name = getName(inputTag);
     if (!name) {
         pTag.textContent = 'First enter your name';
     } else {
-        let animal = getRandomName(spiritAnimal);
+        const animal = getRandomName(spiritAnimal);
         pTag.textContent = `${name} - ${animal}`;
     }
 }

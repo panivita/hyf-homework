@@ -14,9 +14,7 @@ function getMedian(array) {
 function calculateMedAvg(array) {
     const median = getMedian(array);
     const average = getAverage(array);
-    const calculator = [];
-    calculator.push({ median, average });
-    return calculator;
+    return { median, average };
 }
 const housePrices = [3000000, 3500000, 1300000, 40000000, 100000000, 8000000, 2100000];
 const resultCalculation = calculateMedAvg(housePrices);
@@ -36,11 +34,9 @@ const medianPrice = document.getElementById('median-price');
 medianPrice.textContent = getMedian(housePrices);
 
 const ul = document.getElementById('avg-median');
-resultCalculation.forEach((result) => {
-    const liTag = document.createElement('li');
-    liTag.innerHTML = `<b>Average:</b> ${result.average}`;
-    ul.appendChild(liTag);
-    const li = document.createElement('li');
-    li.innerHTML = `<b>Median:</b> ${result.median}`;
-    ul.appendChild(li);
-});
+const liTag = document.createElement('li');
+liTag.innerHTML = `<b>Average:</b> ${resultCalculation.average}`;
+ul.appendChild(liTag);
+const li = document.createElement('li');
+li.innerHTML = `<b>Median:</b> ${resultCalculation.median}`;
+ul.appendChild(li);

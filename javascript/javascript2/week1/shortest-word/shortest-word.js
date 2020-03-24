@@ -1,13 +1,17 @@
 function getShortestWord(words) {
-    let shortestWord = words[0];
-    for (let word of words) {
-        if (word.length < shortestWord.length) {
-            shortestWord = word;
+    if (words.length !== 0) {
+        let shortestWord = words[0];
+        for (let i = 1; i < words.length; i++) {
+            if (words[i].length < shortestWord.length) {
+                shortestWord = words[i];
+            }
         }
+        return shortestWord;
+    } else {
+        return 'Error message'
     }
-    return shortestWord;
 }
 
-const danishWords = ['bil', 'plante', 'kaffe', 'bog', 'ø', 'planetarium'];
+const danishWords = ['ø', 'bil', 'plante', 'kaffe', 'bog', 'planetarium'];
 const shortestWord = getShortestWord(danishWords);
 console.log(shortestWord);
