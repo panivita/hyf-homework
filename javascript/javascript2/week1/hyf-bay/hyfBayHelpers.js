@@ -43,16 +43,13 @@ window.getAvailableProducts = function() {
     
     const numberOfAvailableProducts = getRandomInt(0, 30);
     const availableProducts = Array.apply(null, Array(numberOfAvailableProducts))
-        .map(() => {
-            const name = getRandomProductname();
-            return {
-                id: `${name}${getRandomInt(0, 100000)}`,
-                name,
-                price: getRandomInt(0, 10000),
-                rating: getRandomInt(1, 10),
-                shipsTo: getRandomCountries(), 
-            };
-        });
+        .map(() => ({
+            id: getRandomInt(0, 100000),
+            name: getRandomProductname(),
+            price: getRandomInt(0, 10000),
+            rating: getRandomInt(1, 10),
+            shipsTo: getRandomCountries(), 
+        }));
     
     return availableProducts;
 }
