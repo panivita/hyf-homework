@@ -21,14 +21,14 @@ function renderProducts(products) {
 
         const subLi = document.createElement('li');
         subLi.classList.add('ships-to');
-        const subSubUl = document.createElement('ul');
-        subLi.appendChild(subSubUl);
+        const shipsToUl = document.createElement('ul');
+        subLi.appendChild(shipsToUl);
         subUl.appendChild(subLi);
 
         object.shipsTo.forEach((country) => {
             const countryLi = document.createElement('li');
             countryLi.innerHTML = country;
-            subSubUl.appendChild(countryLi);
+            shipsToUl.appendChild(countryLi);
         })
     });
 }

@@ -20,25 +20,30 @@ function onClick() {
 }
 
 function onClickHandler() {
-    if (selectOption.value !== 'click-btn')
+    if (selectOption.value !== 'click-btn') {
         return;
-    if (!getName(inputTag)) {
+    } else if (!getName(inputTag)) {
         pTag.textContent = 'First enter your name';
+    } else {
+        onClick();
     }
-    else onClick();
 }
 btnTag.addEventListener('click', onClickHandler);
 
 function onSelectOptionKeyUp() {
-    if (selectOption.value !== 'text-written')
+    if (selectOption.value !== 'text-written') {
         return;
-    else onClick();
+    } else {
+        onClick();
+    }
 }
 inputTag.addEventListener('keyup', onSelectOptionKeyUp);
 
 function onMouseover() {
-    if (selectOption.value !== 'hover-input')
+    if (selectOption.value !== 'hover-input') {
         return;
-    else onClick();
+    } else {
+        onClick();
+    }
 }
 inputTag.addEventListener('mouseover', onMouseover);
