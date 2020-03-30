@@ -35,11 +35,17 @@ const moviesContainingKeywords = movies.filter(m =>
     m.title.match(/(?:Benjamin$)|(?:Benjamin\s)/));
 console.log(moviesContainingKeywords.length);
 
-const totalContainingKeywords = movies.reduce((sum, m) =>
-    m.title.match(/(?:Surfer$)|(?:Surfer\s)/) ||
-    m.title.match(/(?:Alien$)|(?:Alien\s)|(?:Alien:)|(?:Alien³)/) ||
-    m.title.match(/(?:Benjamin$)|(?:Benjamin\s)/)
-    ? (sum += 1) : sum, 0);
-
+const totalContainingKeywords = movies.reduce((a, c) => {
+    if (c.title.match(/(?:Surfer$)|(?:Surfer\s)/)) {
+        a.Surfer++;
+    }
+    if (c.title.match(/(?:Alien$)|(?:Alien\s)|(?:Alien:)|(?:Alien³)/)) {
+        a.Alien++;
+    }
+    if (c.title.match(/(?:Benjamin$)|(?:Benjamin\s)/)) {
+        a.Benjamin++;
+    }
+    return a;
+}, { Surfer: 0, Alien: 0, Benjamin: 0 });
 console.log(totalContainingKeywords);
 
