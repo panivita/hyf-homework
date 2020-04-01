@@ -1,13 +1,29 @@
 console.log('Script loaded');
 
-function makerLists(className, key) {
+const makerLists = (className, key) => {
     const lists = document.createElement('li');
     lists.classList.add(className);
     lists.innerHTML = key;
     return lists;
 }
+//Create some extra feature. Shopping cart.
+const items = [];
+const onClickBuy = (product) => {
+    const ulCart = document.querySelector('section.cart > ul');
+    const liName = document.createElement('li');
+    liName.innerHTML = product.name;
+    const liPrice = document.createElement('li');
+    liPrice.innerHTML = product.price;
+    ulCart.appendChild(liName);
+    ulCart.appendChild(liPrice);
+    items.push(product.price);
 
-function renderProducts(products) {
+    const totalPrice = items.reduce((a, c ) => (a += c));
+    const totalCartInfo = document.querySelector('div.total > p > span');
+    totalCartInfo.innerHTML = totalPrice;
+}
+
+const renderProducts = (products) => {
     const ul = document.querySelector('section.products > ul');
     ul.innerHTML = null;
     products.forEach((object) => {
@@ -31,10 +47,18 @@ function renderProducts(products) {
             countryLi.innerHTML = country;
             shipsToUl.appendChild(countryLi);
         })
+        //Create some extra feature
+        const buttonLi = document.createElement('li');
+        const btn = document.createElement('Button');
+        btn.innerHTML = 'Add to cart';
+        buttonLi.appendChild(btn);
+        subUl.appendChild(buttonLi);
+        btn.addEventListener('click', () => onClickBuy(object));
     });
 }
 const products = getAvailableProducts();
 renderProducts(products);
+
 
 //Searching for products
 const inputSearch = document.querySelector('.search > input');
