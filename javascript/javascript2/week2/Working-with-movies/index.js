@@ -73,7 +73,7 @@ console.log(duplicateTitles);
 const buildCounters = movies => movies
     .map(m => m.title)
     .map(t => t.toLowerCase())
-    .map(t => t.match(/(\w{4,})/g)) // we will dont match words 'a', 'the', 'of' and other
+    .map(t => t.match(/(\w{4,})/g)) // we will dont match words: 'a', 'the', 'of' and other
     .reduce((a, c) => a.concat(c), [])
     .reduce((a, c) => {
         if (a[c] === undefined) {
