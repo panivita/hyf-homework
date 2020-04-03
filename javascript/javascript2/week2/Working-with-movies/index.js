@@ -83,9 +83,9 @@ const buildCounters = movies => movies
         return a;
     }, {});
 
-let counters = buildCounters(movies);
-let result = [];
-for (var word in counters) {
+const counters = buildCounters(movies);
+const result = [];
+for (let word in counters) {
     result.push([word, counters[word]]);
 }
 result.sort(function (a, b) {
@@ -111,10 +111,10 @@ const totalNumberTag = newTagMovies.map(m =>m.tag).reduce((a, c) => {
     if (c.includes('Good')) {
         a.Good++;
     }
-    if (c.includes('Average')) {
+    else if (c.includes('Average')) {
         a.Average++;
     }
-    if (c.includes('Bad')) {
+    else {
         a.Bad++;
     }
     return a;
