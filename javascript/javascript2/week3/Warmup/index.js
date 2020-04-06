@@ -1,5 +1,5 @@
 //1. Log out the text Called after 2.5 seconds 2.5 seconds after the script is loaded
-const secondLog = function () {
+const secondLog = () => {
     console.log('Called after 2.5 seconds');
 }
 setTimeout(secondLog, 2500);
@@ -7,7 +7,7 @@ setTimeout(secondLog, 2500);
 //2. Create a function that takes 2 parameters: delay and stringToLog. 
 //Calling this function should log out the stringToLog after delay seconds. 
 //Call the function you have created with some different arguments.
-const stringToLogFunc = (delay, stringToLog) => setTimeout(function () {
+const stringToLogFunc = (delay, stringToLog) => setTimeout(() => {
     console.log(stringToLog);
 }, delay * 1000);
 stringToLogFunc(5, 'This string logget after 5 seconds');
@@ -51,3 +51,82 @@ const findLocation = () => {
 }
 const btnElement2 = document.getElementById('button2');
 btnElement2.addEventListener('click', findLocation);
+
+// 6. Optional Now show that location on a map using fx the Google maps api 
+const findLocationMap = () => {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 6
+    });
+    infoWindow = new google.maps.InfoWindow;
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+        });
+    } else {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+            'Error: The Geolocation service failed.' :
+            'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+    }
+}
+const btnElement3 = document.getElementById('button3');
+btnElement3.addEventListener('click', findLocationMap);
+
+//7. Create a function called runAfterDelay. It has two parameters: delay and callback. 
+//When called the function should wait delay seconds and then call the provided callback function. 
+//Try and call this function with different delays and different callback functions
+const runAfterDelay = (delay, callback) => setTimeout(() => {
+    callback();
+}, delay * 1000);
+runAfterDelay(4, () => {
+    console.log('should be logged after 4 seconds');
+});
+runAfterDelay(6, () => {
+    console.log('should be logged after 6 seconds');
+});
+
+//8. Check if we have double clicked on the page. A double click is defined by two clicks within 0.5 seconds. 
+//If a double click has been detected, log out the text: "double click!"
+window.addEventListener('dblclick', () => console.log('double click!'));
+
+//9. Create a function called jokeCreator that has three parameters: shouldTellFunnyJoke - boolean, 
+//logFunnyJoke - function and logBadJoke - function. If you set tellFunnyJoke to true it should call the 
+//logFunnyJoke function that should log out a funny joke. And vice versa.
+
+function getRandomJoke(jokes) {
+    const random = Math.floor(Math.random() * jokes.length);
+    return jokes[random];
+}
+
+const btnFunnyJoke = document.getElementById('funny-joke');
+const btnBadJoke = document.getElementById('bad-joke');
+const pTag = document.getElementById('joke');
+const funnyJokes = ['Doctor: I am sorry but you suffer from a terminal illness and have only 10 to live.Patient: What do you mean, 10? 10 what? Months? Weeks?!Doctor: Nine', 'Job interviewer: And where would you see yourself in five years time Mr. Jeffries? Mr. Jeffries: Personally I believe my biggest weakness is in listening.', 'I got another letter from this lawyer today. It said “Final Notice”. Good that he will not bother me anymore.', ' dreamed I was forced to eat a giant marshmallow. When I woke up, my pillow was gone.', 'One of the most wonderful things in life is to wake up and enjoy a cuddle with somebody; unless you are in prison.'];
+const badJokes = ['Why don’t oysters donate to charity? Because they’re shellfish', 'What does a baby computer call its father? Data', 'What did the custodian say when he jumped out of the closet? “Supplies!”', 'Why are colds bad criminals? Because they’re easy to catch', 'How does a penguin build its house? Igloos it together', 'Which knight invented King Arthur’s Round Table? Sir Cumference', 'What do sprinters eat before a race? Nothing. They fast', 'What do you call a fly without wings? A walk!', 'What happens when you witness a ship wreck? You let it sink in', 'How can you find Will Smith in the snow? Follow the fresh prints.'];
+
+const logFunnyJoke = () => pTag.textContent = getRandomJoke(funnyJokes);
+const logBadJoke = () => pTag.textContent = getRandomJoke(badJokes);
+
+const jokeCreator = (shouldTellFunnyJoke, logFunnyJoke, logBadJoke) => {
+    if (shouldTellFunnyJoke) {
+        logFunnyJoke();
+    } else {
+        logBadJoke();
+    }
+};
+
+btnFunnyJoke.addEventListener('click', () =>
+    jokeCreator(true, logFunnyJoke, logBadJoke));
+btnBadJoke.addEventListener('click', () =>
+    jokeCreator(false, logFunnyJoke, logBadJoke));

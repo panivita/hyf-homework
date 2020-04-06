@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warmup</title>
 </head>
+
 <body>
     <div>
         <button type="button" id="button1">Click</button>
     </div>
     <div id="latitude-longitude">
-        <button type="button" id="button2">Log location</button><br/>
-        <p id = "status"></p>
-        <p id = "latitude"></p>
-        <p id = "longitude"></p>
+        <button type="button" id="button2">Log location</button><br />
+        <p id="status"></p>
+        <p id="latitude"></p>
+        <p id="longitude"></p>
+    </div>
+    <div id="map">
+        <button type="button" id="button3">Log location on a map</button><br />
+    </div>
+    <div class="joke-generator">
+        <h1>Joke creator</h1>
+        <button id="funny-joke">Click to get funny joke</button>
+        <button id="bad-joke">Click to get bad joke</button>
+        <p id="joke"></p>
     </div>
     
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
     <script src="index.js"></script>
 </body>
+
 </html>
