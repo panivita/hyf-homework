@@ -47,7 +47,7 @@ const renderProducts = (products) => {
             countryLi.innerHTML = country;
             shipsToUl.appendChild(countryLi);
         })
-        //Create some extra feature
+        //Create some extra feature. Button 'Add to cart'
         const buttonLi = document.createElement('li');
         const btn = document.createElement('Button');
         btn.innerHTML = 'Add to cart';
