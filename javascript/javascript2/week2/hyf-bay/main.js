@@ -26,15 +26,15 @@ const onClickBuy = (product) => {
 const renderProducts = (products) => {
     const ul = document.querySelector('section.products > ul');
     ul.innerHTML = null;
-    products.forEach((object) => {
+    products.forEach((product) => {
         const li = document.createElement('li');
         ul.appendChild(li);
         const subUl = document.createElement('ul');
         li.appendChild(subUl);
-        subUl.appendChild(makerLists('id', object.id));
-        subUl.appendChild(makerLists('name', object.name));
-        subUl.appendChild(makerLists('price', object.price));
-        subUl.appendChild(makerLists('rating', object.rating));
+        subUl.appendChild(makerLists('id', product.id));
+        subUl.appendChild(makerLists('name', product.name));
+        subUl.appendChild(makerLists('price', product.price));
+        subUl.appendChild(makerLists('rating', product.rating));
 
         const subLi = document.createElement('li');
         subLi.classList.add('shipsTo');
@@ -42,7 +42,7 @@ const renderProducts = (products) => {
         subLi.appendChild(shipsToUl);
         subUl.appendChild(subLi);
 
-        object.shipsTo.forEach((country) => {
+        product.shipsTo.forEach((country) => {
             const countryLi = document.createElement('li');
             countryLi.innerHTML = country;
             shipsToUl.appendChild(countryLi);
@@ -53,7 +53,7 @@ const renderProducts = (products) => {
         btn.innerHTML = 'Add to cart';
         buttonLi.appendChild(btn);
         subUl.appendChild(buttonLi);
-        btn.addEventListener('click', () => onClickBuy(object));
+        btn.addEventListener('click', () => onClickBuy(product));
     });
 }
 const products = getAvailableProducts();
