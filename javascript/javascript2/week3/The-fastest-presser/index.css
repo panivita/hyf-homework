@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    font-size: 100%;
+    font-family: "Arial", sans-serif;
+    color:orange;
+}
+
+main {
+    text-align: center;
+    width: 900px;
+    background-color: gray;
+    margin: 5% auto 0 auto;
+    padding: 30px;
+}
+
+h1, h2 {
+    font-family: "Segoe Print", cursive;
+}
+
+input {
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 2%;
+    min-height: 40px;
+    border-radius: 5px;
+    background-color: orange;
+    color: rgb(39, 35, 35);
+    min-width: 100px;
+}
+
+.players {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 50vh;
+    margin: 30px auto;
+}
+
+.players>div {
+    border-top: 1px solid #ccc;
+    min-height: 50vh;
+    padding-top: 40px;
+    width: 50%;
+}
+
+.players div+div {
+    border-left: 1px solid #ccc;
+}
+
+section div p {
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
