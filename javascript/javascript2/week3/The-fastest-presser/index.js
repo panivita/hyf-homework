@@ -7,8 +7,12 @@ const pVinnerS = document.getElementById('s-vinner');
 const pVinnerL = document.getElementById('l-vinner');
 let counterS = 0;
 let counterL = 0;
+let finished = true;
 
 const keypressCounter = () => {
+    if (finished) {
+        return;
+    }
     if (inputTag.value) {
         if (event.code === 'KeyS') {
             counterS++;
@@ -23,19 +27,26 @@ const keypressCounter = () => {
 };
 window.addEventListener('keypress', keypressCounter);
 
-const onclickHandler = () => setTimeout(() => {
-    pTag.textContent = 'Time has run out';
-    if (counterS > counterL) {
-        pVinnerS.textContent = 'Vinner!';
-    } else if (counterS < counterL) {
-        pVinnerL.textContent = 'Vinner!';
-    }
-    else {
-        pVinnerS.textContent = 'Dead heat!';
-        pVinnerL.textContent = 'Dead heat!';
-    }
-}, inputTag.value * 1000);
-
+const onclickHandler = () => {
+    finished = false;
+    counterS = 0;
+    pCounterS.textContent = counterS;
+    counterL = 0;
+    pCounterL.textContent = counterL;
+    setTimeout(() => {
+        pTag.textContent = 'Time has run out';
+        if (counterS > counterL) {
+            pVinnerS.textContent = 'Vinner!';
+        } else if (counterS < counterL) {
+            pVinnerL.textContent = 'Vinner!';
+        }
+        else {
+            pVinnerS.textContent = 'Dead heat!';
+            pVinnerL.textContent = 'Dead heat!';
+        }
+        finished = true;
+    }, inputTag.value * 1000);
+}
 btnTag.addEventListener('click', onclickHandler);
 
 
