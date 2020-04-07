@@ -31,10 +31,13 @@ const onclickHandler = () => {
     finished = false;
     counterS = 0;
     pCounterS.textContent = counterS;
+    pVinnerS.textContent = '';
     counterL = 0;
     pCounterL.textContent = counterL;
+    pVinnerL.textContent = '';
     setTimeout(() => {
         pTag.textContent = 'Time has run out';
+        finished = true;
         if (counterS > counterL) {
             pVinnerS.textContent = 'Vinner!';
         } else if (counterS < counterL) {
@@ -44,7 +47,7 @@ const onclickHandler = () => {
             pVinnerS.textContent = 'Dead heat!';
             pVinnerL.textContent = 'Dead heat!';
         }
-        finished = true;
+
     }, inputTag.value * 1000);
 }
 btnTag.addEventListener('click', onclickHandler);
