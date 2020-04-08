@@ -1,8 +1,8 @@
 body {
     margin: 0;
     font-size: 100%;
-    font-family: "Arial", sans-serif;
-    color:orange;
+    font-family: "Segoe Print", cursive;
+    color: orange;
 }
 
 main {
@@ -13,12 +13,13 @@ main {
     padding: 30px;
 }
 
-h1, h2 {
-    font-family: "Segoe Print", cursive;
+h2 {
+    padding-top: 20%;
 }
 
 input {
-    min-height: 20px;
+    padding: 3px 15px;
+    min-height: 30px;
     border-radius: 5px;
 }
 
@@ -34,24 +35,17 @@ button {
 .players {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    min-height: 30vh;
-    margin: 30px auto;
-}
-
-.players>div {
-    border-top: 1px solid #ccc;
     min-height: 50vh;
-    padding-top: 40px;
-    width: 50%;
+    margin: 30px auto;
+    border-top: 1px solid #ccc;
 }
 
-.players div+div {
+.player-l {
+    width: 50%;
     border-left: 1px solid #ccc;
 }
 
-section div p {
+p {
     font-size: 1em;
     text-transform: uppercase;
 }
-
