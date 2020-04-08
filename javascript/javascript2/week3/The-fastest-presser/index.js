@@ -6,7 +6,7 @@ const pCounterS = document.getElementById('s-counter');
 const pCounterL = document.getElementById('l-counter');
 const hVinnerS = document.getElementById('s-vinner');
 const hVinnerL = document.getElementById('l-vinner');
-const pSpeedS = document.getElementById('s-speed');
+const pSpeedS = document.getElementById('s-speed'); // Custom feature. Players speed.
 const pSpeedL = document.getElementById('l-speed');
 let counterS = 0;
 let counterL = 0;
@@ -96,5 +96,3 @@ const onclickHandler = () => {
 }
 
 btnTag.addEventListener('click', onclickHandler);
-
-// Custom feature. Players speed.
