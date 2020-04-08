@@ -32,9 +32,10 @@ planetLogger(saturnLogger);
 
 //5. Create a button with the text called "Log location". When this button is clicked the location
 //(latitude, longitude) of the user should be logged out using this browser api.
-const status = document.querySelector("#status");
-const latitude = document.querySelector("#latitude");
-const longitude = document.querySelector("#longitude");
+const status = document.getElementById("status");
+const latitude = document.getElementById("latitude");
+const longitude = document.getElementById("longitude");
+const btnElement2 = document.getElementById("button2");
 const findLocation = () => {
   if (!navigator.geolocation) {
     status.textContent = "Unable to retrieve your location";
@@ -49,16 +50,16 @@ const findLocation = () => {
     });
   }
 };
-const btnElement2 = document.getElementById("button2");
+
 btnElement2.addEventListener("click", findLocation);
 
 // 6. Optional Now show that location on a map using fx the Google maps api
 const findLocationMap = () => {
-  map = new google.maps.Map(document.getElementById("map"), {
+  const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 6,
   });
-  infoWindow = new google.maps.InfoWindow();
+  const infoWindow = new google.maps.InfoWindow();
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
