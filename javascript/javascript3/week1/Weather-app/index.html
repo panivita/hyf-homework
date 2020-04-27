@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+    <link href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css" rel="stylesheet" type="text/css">
     <link href="css/owfont-regular.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="index.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+    <link href="index.css" rel="stylesheet">
     <title>Weather app</title>
 </head>
 
@@ -17,8 +18,9 @@
         <button id="get-weather">Click</button>
         <p id="error"></p>
         <ul id="weather-data"></ul>
+        <div id='map' style='width: 200px; height: 200px; padding-left: 25%;'></div>
     </div>
-
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <script src="index.js"></script>
 </body>
 
