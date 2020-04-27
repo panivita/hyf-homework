@@ -3,7 +3,6 @@ body {
     font-size: 100%;
     font-family: Arial, Helvetica, sans-serif;
     color: black;
-    
 }
 
 .main {
@@ -11,8 +10,8 @@ body {
     text-align: center;
     width: 400px;
     height: 700px;
-    background-color: rgb(98, 170, 230); 
-    backdrop-filter: blur(5px); 
+    background-color: rgb(98, 170, 230);
+    backdrop-filter: blur(5px);
 }
 
 h1 {
@@ -21,4 +20,10 @@ h1 {
 
 li {
     padding: 2% 0 2% 0;
+}
+
+.map-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
 }

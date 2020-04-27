@@ -1,5 +1,7 @@
 mapboxgl.accessToken =
   "pk.eyJ1IjoidmljdG9yaWEta3VzaCIsImEiOiJjazlpd3kwYm4wMnRvM25wOHQzYzZ0dWU2In0.vPB-ZEW7LHcbhuaEISB3Sg";
+const mapApiUrl =
+  "https://api.openweathermap.org/data/2.5/weather?appid=4555a73df1a819f049cc845a8d9338bf";
 
 const getCity = (tag) => {
   return tag.value.replace(/^\s+|\s+$/g, "");
@@ -60,8 +62,9 @@ const onClickHandler = () => {
   if (!city) {
     pTag.textContent = "First enter your city";
   } else {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4555a73df1a819f049cc845a8d9338bf`;
-    //const url = `https://api.openweathermap.org/data/2.5/weather?zip=${city},DK&appid=4555a73df1a819f049cc845a8d9338bf`;
+    const url = `${mapApiUrl}&q=${city}`;
+    // const url = `${mapApiUrl}&zip=${city},DK`;
+
     fetch(url)
       .then((res) => res.json())
       .then(renderResult)
