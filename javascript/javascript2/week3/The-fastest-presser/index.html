@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The fastest presser in this realm</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <main>
+        <section class="fastest-presser">
+            <h1>Fastest presser</h1>
+            <input type="number" id="time-game" placeholder="Set seconds"></br>
+            <button id="start-game">Start game!</button>
+            <p id="game-over"></p>
+            <p id="countdown"></p>
+        </section>
+        <section class="players">
+            <div class="player-s">
+                <h2 id="s-vinner">Press S</h2>
+                <p id="s-counter"></p>
+                <p id="s-speed"></p>
+                <canvas id="s-canvas"></canvas>
+            </div>
+            <div class="player-l">
+                <h2 id="l-vinner">Press L</h2>
+                <p id="l-counter"></p>
+                <p id="l-speed"></p>
+                <canvas id="l-canvas"></canvas>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.13/dist/index.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
