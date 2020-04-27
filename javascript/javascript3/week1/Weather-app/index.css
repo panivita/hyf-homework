@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    font-size: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.main {
+    margin: 0 auto 0 auto;
+    
+    text-align: center;
+    width: 400px;
+    height: 700px;
+    background-color: rgb(98, 170, 230);
+    
+}
+
+h1 {
+    padding: 20% 0 20% 0;
+}
