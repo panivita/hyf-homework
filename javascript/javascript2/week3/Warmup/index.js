@@ -84,7 +84,7 @@ const findLocationMap = () => {
   }
 };
 const btnElement3 = document.getElementById("button3");
-btnElement3.addEventListener("click", findLocationMap);
+btnElement3.addEventListener("click", () => findLocationMap);
 
 //7. Create a function called runAfterDelay. It has two parameters: delay and callback.
 //When called the function should wait delay seconds and then call the provided callback function.
