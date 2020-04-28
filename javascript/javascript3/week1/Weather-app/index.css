@@ -2,7 +2,8 @@ body {
     margin: 0;
     font-size: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    color: #f5ee9e;
+    font-weight: bold;
 }
 
 .main {
@@ -10,20 +11,69 @@ body {
     text-align: center;
     width: 400px;
     height: 700px;
-    background-color: rgb(98, 170, 230);
-    backdrop-filter: blur(5px);
+    background-color: #3b8ea5;
 }
 
 h1 {
-    padding: 20% 0 7% 0;
+    padding: 10% 0 10% 0;
+    font-size: 25px;
 }
 
 li {
     padding: 2% 0 2% 0;
 }
 
+p {
+    padding-top: 3%;
+}
+
+input {
+    padding: 5px 0px;
+    font-size: 18px;
+    text-align: center;
+}
+
+input, button {
+    border: none;
+    outline: none;
+}
+
+.container {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.position, .search {
+    background-color: #f49e4c;
+}
+
+.position {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.search {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.position img, .search img {
+    width: 25px;
+    vertical-align: middle;
+}
+
 .map-container {
-    width: 200px;
+    width: 311px;
     height: 200px;
     margin: 0 auto;
+}
+
+.weather-container {
+    columns: 2;
+    margin: 15px 15px 15px -7px;
+}
+
+li:first-child {
+    font-size: 30px;
 }

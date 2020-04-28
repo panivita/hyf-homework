@@ -19,7 +19,9 @@ const convertTimestamptoTime = (unixT) => {
 
 const inputTag = document.getElementById("input");
 inputTag.focus();
+const hTag = document.querySelector("h1");
 const btnTag = document.getElementById("get-weather");
+const btnPos = document.getElementById("get-position");
 const pTag = document.getElementById("error");
 const ulTag = document.getElementById("weather-data");
 
@@ -30,19 +32,18 @@ const renderResult = (result) => {
   const cloudsData = result.clouds;
   const weatherData = result.weather[0];
   const sunData = result.sys;
-
+  inputTag.value = result.name;
   const output = `
-    <li>${result.name}</li>
     <li>${temp}°C</li>
-    <li><i class="owf owf-${weatherData.id} owf-5x"></i>${
-    weatherData.description
-  }</li>
+    <li><i class="owf owf-${weatherData.id} owf-5x"></i></li>
+    <li>${weatherData.description}</li>
     <li>Wind ${windData.speed}m/s.</li>
     <li>Clouds ${cloudsData.all}%</li> 
     <li>Sunrise: ${convertTimestamptoTime(sunData.sunrise)}</li>
     <li>Sunset: ${convertTimestamptoTime(sunData.sunset)}</li>
     `;
   ulTag.innerHTML = output;
+  hTag.innerHTML = result.name;
   return result;
 };
 
@@ -51,10 +52,17 @@ const renderMap = (result) => {
   const map = new mapboxgl.Map({
     container: "map",
     center: [lon, lat],
-    zoom: 9,
+    zoom: 10,
     style: "mapbox://styles/mapbox/streets-v11",
   });
   return result;
+};
+
+const request = (url) => {
+  fetch(url)
+    .then((res) => res.json())
+    .then(renderResult)
+    .then(renderMap);
 };
 
 const onClickHandler = () => {
@@ -63,12 +71,22 @@ const onClickHandler = () => {
     pTag.textContent = "First enter your city";
   } else {
     const url = `${mapApiUrl}&q=${city}`;
-    // const url = `${mapApiUrl}&zip=${city},DK`;
-
-    fetch(url)
-      .then((res) => res.json())
-      .then(renderResult)
-      .then(renderMap);
+    request(url);
   }
 };
 btnTag.addEventListener("click", onClickHandler);
+
+const onClickWeather = () => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      const url = `${mapApiUrl}&lat=${lat}&lon=${lon}`;
+      request(url);
+    });
+  }
+};
+btnPos.addEventListener("click", onClickWeather);
+if ("localstorage" in navigator) {
+}
+// const url = `${mapApiUrl}&zip=${city},DK`;

@@ -14,10 +14,13 @@
 <body>
     <div class="main">
         <h1>Weather in your city</h1>
-        <input type="text" placeholder="Type your city" id="input">
-        <button id="get-weather">Click</button>
+        <div class="container">
+            <button id="get-position" class='position'><img src="gps.svg"></img></button>
+            <input type="text" placeholder="Type your city" id="input">
+            <button id="get-weather" class='search'><img src="search.svg"></img></button>
+        </div>
         <p id="error"></p>
-        <ul id="weather-data"></ul>
+        <ul id="weather-data" class="weather-container"></ul>
         <div id='map' class='map-container'></div>
     </div>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
