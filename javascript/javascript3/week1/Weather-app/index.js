@@ -26,24 +26,20 @@ const pTag = document.getElementById("error");
 const ulTag = document.getElementById("weather-data");
 
 const renderResult = (result) => {
-  const mainData = result.main;
-  const temp = (mainData.temp - 273.15).toFixed(1);
-  const windData = result.wind;
-  const cloudsData = result.clouds;
-  const weatherData = result.weather[0];
-  const sunData = result.sys;
-  inputTag.value = result.name;
+  const { name, main, wind, clouds, weather, sys } = result;
+  const temp = (main.temp - 273.15).toFixed(1);
+  inputTag.value = name;
   const output = `
     <li>${temp}°C</li>
-    <li><i class="owf owf-${weatherData.id} owf-5x"></i></li>
-    <li>${weatherData.description}</li>
-    <li>Wind ${windData.speed}m/s.</li>
-    <li>Clouds ${cloudsData.all}%</li> 
-    <li>Sunrise: ${convertTimestamptoTime(sunData.sunrise)}</li>
-    <li>Sunset: ${convertTimestamptoTime(sunData.sunset)}</li>
+    <li><i class="owf owf-${weather[0].id} owf-5x"></i></li>
+    <li>${weather[0].description}</li>
+    <li>Wind ${wind.speed}m/s.</li>
+    <li>Clouds ${clouds.all}%</li> 
+    <li>Sunrise: ${convertTimestamptoTime(sys.sunrise)}</li>
+    <li>Sunset: ${convertTimestamptoTime(sys.sunset)}</li>
     `;
   ulTag.innerHTML = output;
-  hTag.innerHTML = result.name;
+  hTag.innerHTML = name;
   return result;
 };
 
@@ -90,3 +86,4 @@ btnPos.addEventListener("click", onClickWeather);
 if ("localstorage" in navigator) {
 }
 // const url = `${mapApiUrl}&zip=${city},DK`;
+url = "https://api.teleport.org/api/cities/{?search}";
