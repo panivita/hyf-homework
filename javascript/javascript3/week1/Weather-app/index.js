@@ -86,4 +86,31 @@ btnPos.addEventListener("click", onClickWeather);
 if ("localstorage" in navigator) {
 }
 // const url = `${mapApiUrl}&zip=${city},DK`;
-url = "https://api.teleport.org/api/cities/{?search}";
+
+const key = "AIzaSyCbPi7qMkyWrULboFoXykhXXNVM97qiDto";
+const photoSearch = (l1, l2, l3) => {
+  const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${key}&location=${l1},${l2}&radius=${l3}`;
+  return fetch(url)
+    .then((res) => res.json())
+    .then((result) => {
+      return result.results
+        .map(({ photos }) => photos)
+        .reduce((a, c) => a.concat(c), [])
+        .map(({ photo_reference }) => photo_reference);
+    })
+    .then((photo) => {
+      const randomPhoto = Math.floor(Math.random() * photo.length);
+      return photo[randomPhoto];
+    });
+};
+
+photoSearch(49.246292, -123.116226, 500000).then((result) => {
+  const photoReference = result;
+  const url = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${key}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((result) => {
+      const body = document.querySelector("body");
+      body.innerHTML = result;
+    });
+});
