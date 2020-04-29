@@ -2,6 +2,7 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoidmljdG9yaWEta3VzaCIsImEiOiJjazlpd3kwYm4wMnRvM25wOHQzYzZ0dWU2In0.vPB-ZEW7LHcbhuaEISB3Sg";
 const mapApiUrl =
   "https://api.openweathermap.org/data/2.5/weather?appid=4555a73df1a819f049cc845a8d9338bf";
+const googleKey = "AIzaSyCbPi7qMkyWrULboFoXykhXXNVM97qiDto";
 
 const getCity = (tag) => {
   return tag.value.replace(/^\s+|\s+$/g, "");
@@ -45,9 +46,8 @@ const renderResult = (result) => {
   return result;
 };
 
-const key = "AIzaSyCbPi7qMkyWrULboFoXykhXXNVM97qiDto";
-const photoSearch = (l1, l2, l3) => {
-  const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${key}&location=${l1},${l2}&radius=${l3}`;
+const photoSearch = (lat, lon, radius) => {
+  const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${googleKey}&location=${lat},${lon}&radius=${radius}`;
   return fetch(url)
     .then((res) => res.json())
     .then((result) => {
@@ -76,9 +76,9 @@ const renderMap = (result) => {
 const renderImage = (result) => {
   const { lon, lat } = result.coord;
   photoSearch(lat, lon, 1).then((photoReference) => {
-    const url = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${key}`;
+    const url = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${googleKey}`;
     main.style.cssText = `
-    background: url(${url}) fixed;
+    background: url(${url});
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -95,12 +95,18 @@ const clearError = () => {
   pTag.textContent = "";
 };
 
+const saveCityName = (result) => {
+  localStorage.setItem("city", inputTag.value);
+  return result;
+};
+
 const request = (url) => {
   fetch(url)
     .then((res) => res.json())
     .then(renderResult)
     .then(renderMap)
     .then(renderImage)
+    .then(saveCityName)
     .then(clearError)
     .catch(renderError);
 };
@@ -135,5 +141,7 @@ const onClickWeather = () => {
 };
 btnPos.addEventListener("click", onClickWeather);
 
-if ("localstorage" in navigator) {
+if (localStorage.getItem("city")) {
+  inputTag.value = localStorage.getItem("city");
+  onClickHandler();
 }
