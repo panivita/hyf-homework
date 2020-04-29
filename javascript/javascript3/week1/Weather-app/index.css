@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-size: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    color: #f5ee9e;
+    color: #f49e4c;
     font-weight: bold;
 }
 
@@ -12,15 +12,22 @@ body {
     width: 400px;
     height: 700px;
     background-color: #3b8ea5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 h1 {
-    padding: 10% 0 10% 0;
-    font-size: 25px;
+    font-size: 40px;
 }
 
 li {
     padding: 2% 0 2% 0;
+    font-size: 20px;
+}
+
+li:first-child {
+    font-size: 40px;
 }
 
 p {
@@ -69,11 +76,21 @@ input, button {
     margin: 0 auto;
 }
 
-.weather-container {
-    columns: 2;
-    margin: 15px 15px 15px -7px;
+.weather-container, .map-container {
+    opacity: 0.7;
+    border-radius: 5px;
 }
 
-li:first-child {
-    font-size: 30px;
+.weather-container {
+    background-color: #3b8ea5;
+    columns: 2;
+    margin: 5px 44px 15px 44px;
+}
+
+a.mapboxgl-ctrl-logo {
+    display: none;
+}
+
+.bg-photo {
+    width: 100%;
 }

@@ -24,6 +24,8 @@ const btnTag = document.getElementById("get-weather");
 const btnPos = document.getElementById("get-position");
 const pTag = document.getElementById("error");
 const ulTag = document.getElementById("weather-data");
+const photoPlaceTag = document.getElementById("place-photo");
+const mainTag = document.getElementById("main");
 
 const renderResult = (result) => {
   const { name, main, wind, clouds, weather, sys } = result;
@@ -43,50 +45,6 @@ const renderResult = (result) => {
   return result;
 };
 
-const renderMap = (result) => {
-  const { lon, lat } = result.coord;
-  const map = new mapboxgl.Map({
-    container: "map",
-    center: [lon, lat],
-    zoom: 10,
-    style: "mapbox://styles/mapbox/streets-v11",
-  });
-  return result;
-};
-
-const request = (url) => {
-  fetch(url)
-    .then((res) => res.json())
-    .then(renderResult)
-    .then(renderMap);
-};
-
-const onClickHandler = () => {
-  const city = getCity(inputTag);
-  if (!city) {
-    pTag.textContent = "First enter your city";
-  } else {
-    const url = `${mapApiUrl}&q=${city}`;
-    request(url);
-  }
-};
-btnTag.addEventListener("click", onClickHandler);
-
-const onClickWeather = () => {
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-      const url = `${mapApiUrl}&lat=${lat}&lon=${lon}`;
-      request(url);
-    });
-  }
-};
-btnPos.addEventListener("click", onClickWeather);
-if ("localstorage" in navigator) {
-}
-// const url = `${mapApiUrl}&zip=${city},DK`;
-
 const key = "AIzaSyCbPi7qMkyWrULboFoXykhXXNVM97qiDto";
 const photoSearch = (l1, l2, l3) => {
   const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${key}&location=${l1},${l2}&radius=${l3}`;
@@ -104,13 +62,78 @@ const photoSearch = (l1, l2, l3) => {
     });
 };
 
-photoSearch(49.246292, -123.116226, 500000).then((result) => {
-  const photoReference = result;
-  const url = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${key}`;
+const renderMap = (result) => {
+  const { lon, lat } = result.coord;
+  const map = new mapboxgl.Map({
+    container: "map",
+    center: [lon, lat],
+    zoom: 10,
+    style: "mapbox://styles/mapbox/streets-v11",
+  });
+  return result;
+};
+
+const renderImage = (result) => {
+  const { lon, lat } = result.coord;
+  photoSearch(lat, lon, 1).then((photoReference) => {
+    const url = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${key}`;
+    main.style.cssText = `
+    background: url(${url}) fixed;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    `;
+  });
+  return result;
+};
+
+const renderError = () => {
+  pTag.textContent = "City not found";
+};
+
+const clearError = () => {
+  pTag.textContent = "";
+};
+
+const request = (url) => {
   fetch(url)
     .then((res) => res.json())
-    .then((result) => {
-      const body = document.querySelector("body");
-      body.innerHTML = result;
+    .then(renderResult)
+    .then(renderMap)
+    .then(renderImage)
+    .then(clearError)
+    .catch(renderError);
+};
+
+const onClickHandler = () => {
+  const city = getCity(inputTag);
+  if (!city) {
+    renderError();
+  } else {
+    const url = `${mapApiUrl}&q=${city}`;
+    request(url);
+  }
+};
+btnTag.addEventListener("click", onClickHandler);
+
+function onKeyUpEnter() {
+  if (event.keyCode === 13) {
+    onClickHandler();
+  }
+}
+inputTag.addEventListener("keyup", onKeyUpEnter);
+
+const onClickWeather = () => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      const url = `${mapApiUrl}&lat=${lat}&lon=${lon}`;
+      request(url);
     });
-});
+  }
+};
+btnPos.addEventListener("click", onClickWeather);
+
+if ("localstorage" in navigator) {
+}
