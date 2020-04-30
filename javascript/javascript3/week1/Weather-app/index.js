@@ -122,7 +122,7 @@ const onClickHandler = () => {
 };
 btnTag.addEventListener("click", onClickHandler);
 
-function onKeyUpEnter() {
+const onKeyUpEnter = () => {
   if (event.keyCode === 13) {
     onClickHandler();
   }

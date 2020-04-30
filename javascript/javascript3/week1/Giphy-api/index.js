@@ -11,34 +11,37 @@ const getWord = (tag) => {
   return tag.value.replace(/^\s+|\s+$/g, "");
 };
 
-const resetData = () => {
+const resetData = (result) => {
   ulTag.innerHTML = "";
+  return result;
 };
 const renderData = (result) => {
-  resetData();
+  
   for (gif of result.data) {
     const liImg = document.createElement("li");
     ulTag.appendChild(liImg);
 
-    Object.keys(gif.images).forEach((item) => {
-      if (item === "original_mp4") {
-        liImg.innerHTML = `<video autoplay loop>
-        <source src="${gif.images[item].mp4}" type="video/mp4">
-        </video>`;
-      }
-      return result;
-    });
+    liImg.innerHTML = `<video autoplay loop>
+    <source src="${gif.images["original_mp4"].mp4}" type="video/mp4">
+    </video>`;
   }
+  return result;
 };
 
 const renderError = () => {
   pTag.textContent = "Error, gif not found";
 };
 
+const clearError = () => {
+  pTag.textContent = "";
+};
+
 const request = (url) => {
   fetch(url)
     .then((res) => res.json())
+    .then(resetData)
     .then(renderData)
+    .then(clearError)
     .catch(renderError);
 };
 
@@ -46,21 +49,21 @@ const onClickHandler = () => {
   const word = getWord(wordInput);
   if (!word) {
     renderError();
+    return;
   }
+
+  let count = 25;
   if (numberInput.value) {
-    const urlLimit = `${gifApiKey}&q=&limit=${numberInput.value}&q=${word}`;
-    request(urlLimit);
-  } else {
-    const url = `${gifApiKey}&q=&limit=25&q=${word}`;
-    request(url);
+    count = numberInput.value;
   }
+  request(`${gifApiKey}&limit=${count}&q=${word}`);
 };
 btnTag.addEventListener("click", onClickHandler);
 
-function onKeyUpEnter() {
+const onKeyUpEnter = () => {
   if (event.keyCode === 13) {
     onClickHandler();
   }
-}
+};
 numberInput.addEventListener("keyup", onKeyUpEnter);
 wordInput.addEventListener("keyup", onKeyUpEnter);
