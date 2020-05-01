@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css" rel="stylesheet" type="text/css">
+    <link href="css/owfont-regular.css" rel="stylesheet" type="text/css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+    <link href="index.css" rel="stylesheet">
+    <title>Weather app</title>
+</head>
+
+<body>
+    <div id="main" class="main">
+        <img id="place-photo" class="bg-photo"></img>
+        <h1>Weather in your city</h1>
+        <div class="container">
+            <button id="get-position" class='position'><img src="gps.svg"></img></button>
+            <input type="text" placeholder="Type your city" id="input">
+            <button id="get-weather" class='search'><img src="search.svg"></img></button>
+        </div>
+        <p id="error"></p>
+        <ul id="weather-data" class="weather-container"></ul>
+        <div id='map' class='map-container'></div>
+        
+    </div>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    
+    <script src="index.js"></script>
+</body>
+
+</html>
