@@ -25,22 +25,19 @@
     <script type="text/javascript">
 
         function logPlaceDetails() {
-            var service = new google.maps.places.PlacesService(document.getElementById('map'));
-
+            let service = new google.maps.places.PlacesService(document.getElementById('map'));
             service.findPlaceFromQuery(
                 { query: 'London', fields: ['place_id'] },
                 (results) => {
-                   console.log(results[0].place_id);
+                    const findPlaceId = results[0].place_id;
+                    service.getDetails({
+                        placeId: findPlaceId
+                    }, (place) => {
+                        const photo = place.photos
+                        const randomPhoto = Math.floor(Math.random() * photo.length);
+                        console.log('Place foto:', photo[randomPhoto].getUrl());
+                    });
                 });
-
-
-            service.getDetails({
-                placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
-            }, (place) => {
-                const photo = place.photos
-                const randomPhoto = Math.floor(Math.random() * photo.length);
-                console.log('Place foto:', photo[randomPhoto].getUrl());
-            });
         }
 
     </script>
