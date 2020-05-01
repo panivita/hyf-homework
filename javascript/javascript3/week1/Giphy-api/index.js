@@ -8,7 +8,8 @@ const btnTag = document.getElementById("get-gif");
 const pTag = document.getElementById("error");
 
 const getWord = (tag) => {
-  return tag.value.replace(/^\s+|\s+$/g, "");
+  return tag.value.replace(/^\s+|\s+$/g, "");//Find as many whitespace characters (spaces, tabs and line breaks)from the beginning of the string as possible or as many whitespace characters from the end as possible.
+  //global searching, which allows multiple replacements in the beginning and the end of the string.
 };
 
 const resetData = (result) => {

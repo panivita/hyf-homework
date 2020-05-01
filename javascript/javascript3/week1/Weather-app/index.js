@@ -2,10 +2,11 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoidmljdG9yaWEta3VzaCIsImEiOiJjazlpd3kwYm4wMnRvM25wOHQzYzZ0dWU2In0.vPB-ZEW7LHcbhuaEISB3Sg";
 const mapApiUrl =
   "https://api.openweathermap.org/data/2.5/weather?appid=4555a73df1a819f049cc845a8d9338bf";
-const googleKey = "AIzaSyCbPi7qMkyWrULboFoXykhXXNVM97qiDto";
+const googleKey = "AIzaSyDp2HzVGHCdy7g_hErhpPWxIo2hyA9nS4U";
 
 const getCity = (tag) => {
-  return tag.value.replace(/^\s+|\s+$/g, "");
+  return tag.value.replace(/^\s+|\s+$/g, ""); //Find as many whitespace characters (spaces, tabs and line breaks)from the beginning of the string as possible or as many whitespace characters from the end as possible.
+  //global searching, which allows multiple replacements in the beginning and the end of the string.
 };
 
 const convertTimestamptoTime = (unixT) => {
@@ -62,17 +63,6 @@ const photoSearch = (lat, lon, radius) => {
     });
 };
 
-const renderMap = (result) => {
-  const { lon, lat } = result.coord;
-  const map = new mapboxgl.Map({
-    container: "map",
-    center: [lon, lat],
-    zoom: 10,
-    style: "mapbox://styles/mapbox/streets-v11",
-  });
-  return result;
-};
-
 const renderImage = (result) => {
   const { lon, lat } = result.coord;
   photoSearch(lat, lon, 1).then((photoReference) => {
@@ -83,6 +73,17 @@ const renderImage = (result) => {
     background-repeat: no-repeat;
     background-size: cover;
     `;
+  });
+  return result;
+};
+
+const renderMap = (result) => {
+  const { lon, lat } = result.coord;
+  const map = new mapboxgl.Map({
+    container: "map",
+    center: [lon, lat],
+    zoom: 10,
+    style: "mapbox://styles/mapbox/streets-v11",
   });
   return result;
 };
@@ -126,7 +127,7 @@ const onKeyUpEnter = () => {
   if (event.keyCode === 13) {
     onClickHandler();
   }
-}
+};
 inputTag.addEventListener("keyup", onKeyUpEnter);
 
 const onClickWeather = () => {
