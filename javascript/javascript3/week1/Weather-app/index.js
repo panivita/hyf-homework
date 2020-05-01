@@ -47,35 +47,34 @@ const renderResult = (result) => {
   return result;
 };
 
-const photoSearch = (lat, lon, radius) => {
-  const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${googleKey}&location=${lat},${lon}&radius=${radius}`;
-  return fetch(url)
-    .then((res) => res.json())
-    .then((result) => {
-      return result.results
-        .map(({ photos }) => photos)
-        .reduce((a, c) => a.concat(c), [])
-        .map(({ photo_reference }) => photo_reference);
-    })
-    .then((photo) => {
-      const randomPhoto = Math.floor(Math.random() * photo.length);
-      return photo[randomPhoto];
-    });
-};
-
-const renderImage = (result) => {
-  const { lon, lat } = result.coord;
-  photoSearch(lat, lon, 1).then((photoReference) => {
-    const url = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${googleKey}`;
-    main.style.cssText = `
-    background: url(${url});
+function logPlaceDetails() {
+  let service = new google.maps.places.PlacesService(
+    document.getElementById("map")
+  );
+  service.findPlaceFromQuery(
+    { query: getCity(inputTag), fields: ["place_id"] },
+    (results) => {
+      const findPlaceId = results[0].place_id;
+      service.getDetails(
+        {
+          placeId: findPlaceId,
+        },
+        (place) => {
+          const photo = place.photos;
+          const randomPhoto = Math.floor(Math.random() * photo.length);
+          const urlPhotoPlace = photo[randomPhoto].getUrl();
+          main.style.cssText = `
+    background: url(${urlPhotoPlace});
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
     `;
-  });
-  return result;
-};
+        }
+      );
+    }
+  );
+}
+
 
 const renderMap = (result) => {
   const { lon, lat } = result.coord;
@@ -106,7 +105,6 @@ const request = (url) => {
     .then((res) => res.json())
     .then(renderResult)
     .then(renderMap)
-    .then(renderImage)
     .then(saveCityName)
     .then(clearError)
     .catch(renderError);
@@ -119,6 +117,7 @@ const onClickHandler = () => {
   } else {
     const url = `${mapApiUrl}&q=${city}`;
     request(url);
+    logPlaceDetails();
   }
 };
 btnTag.addEventListener("click", onClickHandler);
@@ -137,6 +136,7 @@ const onClickWeather = () => {
       const lon = position.coords.longitude;
       const url = `${mapApiUrl}&lat=${lat}&lon=${lon}`;
       request(url);
+      logPlaceDetails();
     });
   }
 };
