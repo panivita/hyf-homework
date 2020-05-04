@@ -47,7 +47,9 @@ const getCurrentPosition = () => {
     navigator.geolocation.getCurrentPosition(
       // On Success
       function (position) {
-        resolve(`Latitude: ${position.coords.latitude}; Longitude: ${position.coords.longitude}`);
+        resolve(
+          `Latitude: ${position.coords.latitude}; Longitude: ${position.coords.longitude}`
+        );
       },
       // On Error
       function (error) {
@@ -65,3 +67,20 @@ getCurrentPosition()
     // called if there was an error with getting the users location
     console.log(error);
   });
+
+//Fetch some data from an api.
+//After that data has been fetched, wait 3 seconds
+//Log out the data from the api
+
+const url = "https://binaryjazz.us/wp-json/genrenator/v1/story/25/";
+fetch(url)
+  .then((result) => result.json())
+  .then((music) => setTimeout(() => console.log(music), 3 * 1000))
+  .catch((error) => console.log("Fetchin the music went wrong", error));
+
+const getMusic = async () => {
+  const result = await fetch(url);
+  const music = await result.json();
+  setTimeout(() => console.log(music), 5 * 1000);
+};
+getMusic();
