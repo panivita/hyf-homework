@@ -47,34 +47,31 @@ const renderResult = (result) => {
   return result;
 };
 
-function logPlaceDetails() {
+const setBackgroundImage = () => {
   let service = new google.maps.places.PlacesService(
     document.getElementById("map")
   );
+
+  const getPhoto = (place) => {
+    const photo = place.photos;
+    const randomPhoto = Math.floor(Math.random() * photo.length);
+    const urlPhotoPlace = photo[randomPhoto].getUrl();
+    main.style.cssText = `background: url(${urlPhotoPlace});
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;`;
+  };
+
+  const getPlaceId = (results) => {
+    const findPlaceId = results[0].place_id;
+    service.getDetails({ placeId: findPlaceId }, getPhoto);
+  };
+
   service.findPlaceFromQuery(
     { query: getCity(inputTag), fields: ["place_id"] },
-    (results) => {
-      const findPlaceId = results[0].place_id;
-      service.getDetails(
-        {
-          placeId: findPlaceId,
-        },
-        (place) => {
-          const photo = place.photos;
-          const randomPhoto = Math.floor(Math.random() * photo.length);
-          const urlPhotoPlace = photo[randomPhoto].getUrl();
-          main.style.cssText = `
-    background: url(${urlPhotoPlace});
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    `;
-        }
-      );
-    }
+    getPlaceId
   );
-}
-
+};
 
 const renderMap = (result) => {
   const { lon, lat } = result.coord;
@@ -105,6 +102,7 @@ const request = (url) => {
     .then((res) => res.json())
     .then(renderResult)
     .then(renderMap)
+    .then(setBackgroundImage)
     .then(saveCityName)
     .then(clearError)
     .catch(renderError);
@@ -117,7 +115,6 @@ const onClickHandler = () => {
   } else {
     const url = `${mapApiUrl}&q=${city}`;
     request(url);
-    logPlaceDetails();
   }
 };
 btnTag.addEventListener("click", onClickHandler);
@@ -136,7 +133,6 @@ const onClickWeather = () => {
       const lon = position.coords.longitude;
       const url = `${mapApiUrl}&lat=${lat}&lon=${lon}`;
       request(url);
-      logPlaceDetails();
     });
   }
 };
