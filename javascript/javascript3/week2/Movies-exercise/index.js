@@ -8,15 +8,15 @@ const url =
 const movies = fetch(url)
   .then((res) => res.json())
   .then((movies) => {
-    const badMovies = movies
+    const badMoviesTitle = movies
       .filter((m) => m.rating < 4)
       .map((m) => `<li>${m.title}</li>`);
-    badMoviesList.innerHTML = `List of bad movies: ${badMovies.join("")}`;
-    const badMoviesSince = movies
+    badMoviesList.innerHTML = `List of bad movies: ${badMoviesTitle.join("")}`;
+    const badMoviesSinceTitle = movies
       .filter((m) => m.rating < 4 && m.year >= 2000)
       .map((m) => `<li>${m.title}</li>`);
     badMoviesSinceList.innerHTML = `List of bad movies since 2000 year: 
-    ${badMoviesSince.join("")}`;
+    ${badMoviesSinceTitle.join("")}`;
   })
   .catch((err) => console.log(err));
 
@@ -24,10 +24,8 @@ const movies = fetch(url)
 const getBadMovies = async () => {
   const response = await fetch(url);
   const movies = await response.json();
-  const badMovies = movies.filter((m) => m.rating < 4).map((m) => m.title);
-  const badMoviesSince = movies
-    .filter((m) => m.rating < 4 && m.year >= 2000)
-    .map((m) => m.title);
+  const badMovies = movies.filter((m) => m.rating < 4);
+  const badMoviesSince = badMovies.filter((m) => m.year >= 2000);
   return { badMovies, badMoviesSince };
 };
 
