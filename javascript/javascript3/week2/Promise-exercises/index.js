@@ -1,7 +1,7 @@
 //Create a function that has one parameter: resolveAfter.
 //Calling this function will return a promise that resolves after the resolveAfter seconds has passed.
 
-const resolveAfterSetTime = (resolveAfter) => {
+const resolveAfterTime = (resolveAfter) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve("I am called asynchronously");
@@ -9,7 +9,7 @@ const resolveAfterSetTime = (resolveAfter) => {
   });
 };
 
-resolveAfterSetTime(6)
+resolveAfterTime(6)
   .then((timeoutData) => {
     console.log(timeoutData); // logged out after 6 seconds
   })
@@ -19,7 +19,7 @@ resolveAfterSetTime(6)
 
 //Use the promise with async/await
 const getResolveAfter = async () => {
-  const timeoutData = await resolveAfterSetTime(5); // logged out after 5 seconds
+  const timeoutData = await resolveAfterTime(5); // logged out after 5 seconds
   console.log(timeoutData);
 };
 getResolveAfter();
@@ -43,25 +43,16 @@ setTimeoutPromise(9)
   });
 
 const getCurrentPosition = () => {
-  return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(
-      // On Success
-      function (position) {
-        resolve(
-          `Latitude: ${position.coords.latitude}; Longitude: ${position.coords.longitude}`
-        );
-      },
-      // On Error
-      function (error) {
-        reject(error);
-      }
-    );
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
 getCurrentPosition()
   .then((position) => {
     // called when the users position is found
-    console.log(position);
+    console.log(
+      `Latitude: ${position.coords.latitude}; Longitude: ${position.coords.longitude}`
+    );
   })
   .catch((error) => {
     // called if there was an error with getting the users location
@@ -72,6 +63,11 @@ getCurrentPosition()
 //After that data has been fetched, wait 3 seconds
 //Log out the data from the api
 
+const delay = (time) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, time * 1000);
+  });
+
 const url = "https://binaryjazz.us/wp-json/genrenator/v1/story/25/";
 fetch(url)
   .then((result) => result.json())
@@ -81,6 +77,7 @@ fetch(url)
 const getMusic = async () => {
   const result = await fetch(url);
   const music = await result.json();
-  setTimeout(() => console.log(music), 5 * 1000);
+  await delay(5);
+  console.log(music);
 };
 getMusic();

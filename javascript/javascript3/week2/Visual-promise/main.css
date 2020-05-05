@@ -18,7 +18,7 @@ ul {
     padding: 0;
 }
 
-ul.marks li {
+.marks li {
     width: 100px;
     height: 100px;
     position: absolute;
@@ -26,19 +26,19 @@ ul.marks li {
     border-radius: 100%;
 }
 
-ul.marks li:nth-child(1) {
+.marks li:nth-child(1) {
     background-color: red;
 }
 
-ul.marks li:nth-child(2) {
+.marks li:nth-child(2) {
     background-color: blue;
 }
 
-ul.marks li:nth-child(3) {
+.marks li:nth-child(3) {
     background-color: green;
 }
 
-ul.targets li {
+.targets li {
     border-radius: 100%;
     width: 100px;
     height: 100px;
@@ -49,21 +49,21 @@ ul.targets li {
     line-height: 100px;
 }
 
-ul.targets li.fulfilled {
+.targets li.fulfilled {
     box-shadow: green 0px 0px 25px;
 }
 
-ul.targets li:nth-child(1) {
+.targets li:nth-child(1) {
     top: 300px;
     left: 20px;
 }
 
-ul.targets li:nth-child(2) {
+.targets li:nth-child(2) {
     top: 300px;
     left: 400px;
 }
 
-ul.targets li:nth-child(3) {
+.targets li:nth-child(3) {
     top: 20px;
     left: 400px;
 }
