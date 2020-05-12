@@ -3,6 +3,7 @@ class Product {
     this.name = name;
     this.price = price;
   }
+  convertToCurrency(currency) {}
 }
 
 //Create the functionality for the ShoppingCart class.
@@ -30,7 +31,18 @@ class ShoppingCart {
     return this.products.map((p) => p.price).reduce((acc, cur) => (acc += cur));
   }
   //renderProducts should render the products to html.
-  renderProducts() {}
+  // Also render the username and the total price of the products in the shoppingcart
+  renderProducts() {
+    const shoppingCart = document.getElementById("shopping-cart");
+    const ulProducts = document.createElement("ul");
+    shoppingCart.appendChild(ulProducts);
+    this.products.forEach((product) => {
+      ulProducts.innerHTML += `<li><span>${product.name}</span>: <span>${product.price} kr</span></li>`;
+    });
+    const total = document.createElement("p");
+    shoppingCart.appendChild(total);
+    total.innerHTML = `Total price: ${this.getTotal()} kr`;
+  }
   //getUser should return a promise with the data from this api:
   getUser() {
     fetch("https://jsonplaceholder.typicode.com/users/1")
@@ -51,4 +63,21 @@ shoppingCart.addProduct(computer);
 shoppingCart.removeProduct(flatscreen);
 console.log(shoppingCart.getTotal());
 shoppingCart.getUser();
+shoppingCart.renderProducts();
 console.log(shoppingCart);
+
+//Searching for products
+const inputSearch = document.querySelector(".search > input");
+
+inputSearch.addEventListener("keyup", () => {
+  const productName = inputSearch.value;
+  const divSearch = document.getElementById("search-results");
+  divSearch.innerHTML = "";
+  if (productName) {
+    const ulSearch = document.createElement("ul");
+    divSearch.appendChild(ulSearch);
+    shoppingCart.searchProduct(productName).forEach((product) => {
+      ulSearch.innerHTML = `<li><span>${product.name}</span>: <span>${product.price} kr</span></li>`;
+    });
+  }
+});
