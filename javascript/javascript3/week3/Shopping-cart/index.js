@@ -1,5 +1,5 @@
 class Product {
-    constructor(imgUrl, name, price) {
+  constructor(imgUrl, name, price) {
     this.imgUrl = imgUrl;
     this.name = name;
     this.price = price;
@@ -66,42 +66,52 @@ class ShoppingCart {
 }
 
 class ProductList {
-  constructor(imgUrl, name, price) {
-    this.imgUrl = imgUrl;
-    this.name = name;
-    this.price = price;
+  constructor(container) {
+    this.container = container;
+    this.products = [
+      new Product("images/dress-3.png", "Dress polka dots", 50),
+      new Product("images/dress-4.png", "Little black dress", 80),
+      new Product("images/dress-9.jpg", "Little red dress", 80),
+      new Product("images/dress.png", "Pink dress", 30),
+      new Product("images/gown.png", "Long red dress", 90),
+      new Product("images/long-dress.png", "Green dress", 30),
+      new Product("images/pants.png", "Pants", 50),
+      new Product("images/skirt.jpg", "Skirt", 20),
+      new Product("images/wedding-dress.png", "Wedding dress", 100),
+      new Product("images/wedding-dress-2.png", "Pink wedding dress", 100),
+    ];
+    this.renderProductList();
   }
   renderProductList() {
-    const productsUl = document.querySelector("section.products ul");
-    this.imgUrl.forEach((product) => {
-      productsUl.innerHTML = `<li><img src="${product.imgUrl}"></img></li>`;
-    });
-    this.name.forEach((product) => {
-      productsUl.innerHTML = `<li>${product.name}</li>`;
-    });
-    this.price.forEach((product) => {
-      productsUl.innerHTML = `<li>${product.price}</li>`;
+    const productsSection = this.container;
+    this.products.forEach((product) => {
+      const liProduct = document.createElement("li");
+      liProduct.innerHTML = `
+        <ul>
+            <li><img src="${product.imgUrl}"></img></li>
+            <li>${product.name}</li>
+            <li>${product.price}EUR</li>
+        </ul>`;
+      productsSection.appendChild(liProduct);
+      const buttonLi = document.createElement("li");
+      const btn = document.createElement("Button");
+      btn.innerHTML = "Add to cart";
+      buttonLi.appendChild(btn);
+      liProduct.appendChild(buttonLi);
+      //btn.addEventListener("click", () => shoppingCart.addProduct(product));
     });
   }
 }
-const 
-
-
-
-
 
 const shoppingCart = new ShoppingCart();
-const flatscreen = new Product("Flat-screen", 500);
-const giftcard = new Product("Giftcard", 100);
-const computer = new Product("Computer", 700);
-shoppingCart.addProduct(flatscreen);
-shoppingCart.addProduct(giftcard);
-shoppingCart.addProduct(computer);
-shoppingCart.removeProduct(flatscreen);
-console.log(shoppingCart.getTotal());
-shoppingCart.getUser();
-shoppingCart.renderProducts();
-console.log(shoppingCart);
+// shoppingCart.addProduct(dress1);
+// shoppingCart.addProduct(dress7);
+// shoppingCart.addProduct(dress8);
+// shoppingCart.removeProduct(dress9);
+// console.log(shoppingCart.getTotal());
+// shoppingCart.getUser();
+// shoppingCart.renderProducts();
+// console.log(shoppingCart);
 
 //Searching for products
 const inputSearch = document.querySelector(".search > input");
@@ -118,6 +128,8 @@ inputSearch.addEventListener("keyup", () => {
     });
   }
 });
+
+new ProductList(document.querySelector("section.products ul"));
 
 // Assuming dkr as default currency
 const plant = new Product("plant", 50);
