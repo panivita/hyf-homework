@@ -8,8 +8,8 @@ const body = document.querySelector("body");
 //Lets use the github api to see what repositories different users have.
 const fetchUserRepos = (user) =>
   fetch(`${url}q=user:${user}`)
-    .then((res) => res.json())
-    .then((r) => r.items);
+    .then((result) => result.json())
+    .then((res) => res.items);
 
 const getGithubUser1 = () => fetchUserRepos(user1);
 const getGithubUser2 = () => fetchUserRepos(user2);

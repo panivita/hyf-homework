@@ -33,14 +33,9 @@ class ShoppingCart {
   }
   //removeProduct should remove a product from the products array.
   removeProduct(product) {
-    this.products = this.products.filter(
-      (existing) => existing.name.toLowerCase() !== product.name.toLowerCase()
-    );
-    console.log(this.products);
-  }
-  //searchProduct should return an array of product that match the productName parameter
-  searchProduct(productName) {
-    return this.products.filter((p) => RegExp(productName, "i").test(p.name));
+    this.products = this.products.filter((existing) => {
+      return existing.name !== product.name;
+    });
   }
   //getTotal should get the total price of the products in the shoppingcart.
   getTotal() {
@@ -56,28 +51,33 @@ class ShoppingCart {
         return result.username;
       });
   }
-  //renderProducts should render the products to html.
+  //renderProducts should render the products in the shopping cart to html.
   // Also render the username and the total price of the products in the shoppingcart
   async renderProducts() {
     const shopCart = document.getElementById("shopping-cart");
     shopCart.innerHTML = null;
-    const ulProducts = document.createElement("ul");
-    shopCart.appendChild(ulProducts);
     this.products.forEach((product) => {
-      ulProducts.innerHTML += `<li><img src="${product.imgUrl}"></img>
-      <span>${product.name}</span> <span>${product.price} EUR</span>
-      <button>Remove</button></li>`;
-      const removeBtn = document.querySelector(
-        "#shopping-cart > ul > li > button"
-      );
+      const productCont = document.createElement("div");
+      shopCart.appendChild(productCont);
+      productCont.innerHTML = `
+            <div><img src="${product.imgUrl}"></img></div>
+            <div>${product.name}</div>
+            <div>${product.price} EUR</div>`;
+      const buttonDiv = document.createElement("div");
+      const removeBtn = document.createElement("Button");
+      removeBtn.innerHTML = "Remove";
+      buttonDiv.appendChild(removeBtn);
+      productCont.appendChild(buttonDiv);
+
       removeBtn.addEventListener("click", () => {
         this.removeProduct(product);
         this.renderProducts();
       });
     });
+
     const usernameTag = document.querySelector(".cart > h1");
     const username = await this.getUser();
-    usernameTag.innerHTML = `${username} Shopping cart`;
+    usernameTag.innerHTML = `<i>${username}</i> Shopping cart`;
     const total = document.createElement("p");
     shopCart.appendChild(total);
     total.innerHTML = `Total price: ${this.getTotal()} EUR`;
@@ -89,31 +89,33 @@ class ProductList {
     this.container = container;
     this.products = [
       new Product("images/dress-3.png", "Dress polka dots", 50),
+      new Product("images/wedding-dress.png", "Wedding dress", 100),
       new Product("images/dress-4.png", "Little black dress", 80),
       new Product("images/dress-9.jpg", "Little red dress", 80),
       new Product("images/dress.png", "Pink dress", 30),
-      new Product("images/gown.png", "Long red dress", 90),
       new Product("images/long-dress.png", "Green dress", 30),
+      new Product("images/gown.png", "Long red dress", 90),
+      new Product("images/wedding-dress-2.png", "Pink wedding dress", 100),
       new Product("images/pants.png", "Pants", 50),
       new Product("images/skirt.jpg", "Skirt", 20),
-      new Product("images/wedding-dress.png", "Wedding dress", 100),
-      new Product("images/wedding-dress-2.png", "Pink wedding dress", 100),
     ];
+    this.filteredProducts = this.products; 
     this.renderProductList();
   }
+  //searchProduct should return an array of product that match the productName parameter
   searchProduct(productName) {
-    return this.products.filter((p) => RegExp(productName, "i").test(p.name));
+    this.filteredProducts = this.products.filter((p) => RegExp(productName, "i").test(p.name));
   }
   renderProductList() {
     const productsSection = this.container;
     productsSection.innerHTML = null;
-    this.products.forEach((product) => {
+    this.filteredProducts.forEach((product) => {
       const productCont = document.createElement("div");
       productsSection.appendChild(productCont);
       productCont.innerHTML = `
             <div><img src="${product.imgUrl}"></img></div>
             <div>${product.name}</div>
-            <div>${product.price}EUR</div>`;
+            <div>${product.price} EUR</div>`;
       const buttonDiv = document.createElement("div");
       const btn = document.createElement("Button");
       btn.innerHTML = "Add to cart";
@@ -128,20 +130,18 @@ class ProductList {
 }
 
 const shoppingCart = new ShoppingCart();
-const shoppingList = new ProductList(document.querySelector("section.products"));
+const shoppingList = new ProductList(
+  document.querySelector("section.products")
+);
+
 //Searching for products
 const inputSearch = document.querySelector(".search > input");
 inputSearch.addEventListener("keyup", () => {
   const productName = inputSearch.value;
-  const divSearch = document.querySelector(".search-results");
-  divSearch.innerHTML = "";
   if (productName) {
-    const ulSearch = document.createElement("ul");
-    divSearch.appendChild(ulSearch);
-    shoppingList.searchProduct(productName).forEach((product) => {
-      ulSearch.innerHTML = `<li><img src="${product.imgUrl}"></img><span>${product.name}</span> <span>${product.price} EUR</span></li>`;
-    });
+    const filteredProducts = shoppingList.searchProduct(productName);
+    shoppingList.renderProductList(filteredProducts); 
+  } else {
+    shoppingList.renderProductList();
   }
 });
-
-
