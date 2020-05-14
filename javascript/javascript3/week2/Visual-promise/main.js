@@ -5,6 +5,7 @@ const redBox = document.querySelector(".marks li:nth-child(1)");
 const blueBox = document.querySelector(".marks li:nth-child(2)");
 const greenBox = document.querySelector(".marks li:nth-child(3)");
 
+
 const translateOneByOne = () => {
   moveElement(redBox, { x: 20, y: 300 })
     .then(() => {
@@ -21,7 +22,7 @@ const translateOneByOne = () => {
       });
     });
 };
-//translateOneByOne();
+translateOneByOne();
 //translateAllAtOnce - Should translate all the circles at the same time from their random start position
 //to their target. Log out something after all elements have been moved
 
