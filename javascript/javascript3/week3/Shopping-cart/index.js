@@ -16,6 +16,9 @@ class Product {
       });
   }
 }
+// Assuming dkr as default currency
+const plant = new Product("images/dress-3.png", "Dress polka dots", 50);
+console.log(plant.convertToCurrency("USD"));
 
 //Create the functionality for the ShoppingCart class.
 class ShoppingCart {
@@ -24,13 +27,16 @@ class ShoppingCart {
   }
   //addProduct should add a product to the products array.
   addProduct(product) {
+    this.removeProduct(product);
     this.products.push(product);
+    this.renderProducts();
   }
   //removeProduct should remove a product from the products array.
   removeProduct(product) {
-    this.products = this.products.filter((existing) => {
-      return existing.name !== product.name;
-    });
+    this.products = this.products.filter(
+      (existing) => existing.name.toLowerCase() !== product.name.toLowerCase()
+    );
+    console.log(this.products);
   }
   //searchProduct should return an array of product that match the productName parameter
   searchProduct(productName) {
@@ -38,31 +44,43 @@ class ShoppingCart {
   }
   //getTotal should get the total price of the products in the shoppingcart.
   getTotal() {
-    return this.products.map((p) => p.price).reduce((acc, cur) => (acc += cur));
-  }
-  //renderProducts should render the products to html.
-  // Also render the username and the total price of the products in the shoppingcart
-  renderProducts() {
-    const shoppingCart = document.getElementById("shopping-cart");
-    shoppingCart.innerHTML = null;
-    const ulProducts = document.createElement("ul");
-    shoppingCart.appendChild(ulProducts);
-    this.products.forEach((product) => {
-      ulProducts.innerHTML += `<li><img src="${product.imgUrl}"></img>
-      <span>${product.name}</span> <span>${product.price} EUR</span>
-      <button>Remove</button></li>`;
-    });
-    const total = document.createElement("p");
-    shoppingCart.appendChild(total);
-    total.innerHTML = `Total price: ${this.getTotal()} EUR`;
+    return this.products
+      .map((p) => p.price)
+      .reduce((acc, cur) => (acc += cur), 0);
   }
   //getUser should return a promise with the data from this api:
   getUser() {
     return fetch("https://jsonplaceholder.typicode.com/users/1")
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        return result.username;
       });
+  }
+  //renderProducts should render the products to html.
+  // Also render the username and the total price of the products in the shoppingcart
+  async renderProducts() {
+    const shopCart = document.getElementById("shopping-cart");
+    shopCart.innerHTML = null;
+    const ulProducts = document.createElement("ul");
+    shopCart.appendChild(ulProducts);
+    this.products.forEach((product) => {
+      ulProducts.innerHTML += `<li><img src="${product.imgUrl}"></img>
+      <span>${product.name}</span> <span>${product.price} EUR</span>
+      <button>Remove</button></li>`;
+      const removeBtn = document.querySelector(
+        "#shopping-cart > ul > li > button"
+      );
+      removeBtn.addEventListener("click", () => {
+        this.removeProduct(product);
+        this.renderProducts();
+      });
+    });
+    const usernameTag = document.querySelector(".cart > h1");
+    const username = await this.getUser();
+    usernameTag.innerHTML = `${username} Shopping cart`;
+    const total = document.createElement("p");
+    shopCart.appendChild(total);
+    total.innerHTML = `Total price: ${this.getTotal()} EUR`;
   }
 }
 
@@ -83,6 +101,9 @@ class ProductList {
     ];
     this.renderProductList();
   }
+  searchProduct(productName) {
+    return this.products.filter((p) => RegExp(productName, "i").test(p.name));
+  }
   renderProductList() {
     const productsSection = this.container;
     productsSection.innerHTML = null;
@@ -100,17 +121,14 @@ class ProductList {
       productCont.appendChild(buttonDiv);
 
       btn.addEventListener("click", () => {
-        shoppingCart.removeProduct(product);
         shoppingCart.addProduct(product);
-        shoppingCart.renderProducts();
       });
     });
   }
-  
 }
 
 const shoppingCart = new ShoppingCart();
-
+const shoppingList = new ProductList(document.querySelector("section.products"));
 //Searching for products
 const inputSearch = document.querySelector(".search > input");
 inputSearch.addEventListener("keyup", () => {
@@ -120,14 +138,10 @@ inputSearch.addEventListener("keyup", () => {
   if (productName) {
     const ulSearch = document.createElement("ul");
     divSearch.appendChild(ulSearch);
-    shoppingCart.searchProduct(productName).forEach((product) => {
+    shoppingList.searchProduct(productName).forEach((product) => {
       ulSearch.innerHTML = `<li><img src="${product.imgUrl}"></img><span>${product.name}</span> <span>${product.price} EUR</span></li>`;
     });
   }
 });
 
-new ProductList(document.querySelector("section.products"));
 
-// Assuming dkr as default currency
-const plant = new Product("plant", 50);
-console.log(plant.convertToCurrency("USD"));
