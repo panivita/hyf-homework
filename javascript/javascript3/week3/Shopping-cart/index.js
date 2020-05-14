@@ -5,7 +5,7 @@ class Product {
     this.price = price;
   }
   //Depending on the provided currency return the correct price for the product
-  convertToCurrency(currency) {
+  /*convertToCurrency(currency) {
     return fetch(
       "http://data.fixer.io/api/latest?access_key=c7a543598b656e4e1890f15c03a6e1ec"
     )
@@ -14,11 +14,8 @@ class Product {
         const rate = result.rates[currency];
         return rate * this.price;
       });
-  }
+  }*/
 }
-// Assuming dkr as default currency
-const plant = new Product("images/dress-3.png", "Dress polka dots", 50);
-console.log(plant.convertToCurrency("USD"));
 
 //Create the functionality for the ShoppingCart class.
 class ShoppingCart {
@@ -44,13 +41,13 @@ class ShoppingCart {
       .reduce((acc, cur) => (acc += cur), 0);
   }
   //getUser should return a promise with the data from this api:
-  getUser() {
+  /*getUser() {
     return fetch("https://jsonplaceholder.typicode.com/users/1")
       .then((res) => res.json())
       .then((result) => {
         return result.username;
       });
-  }
+  }*/
   //renderProducts should render the products in the shopping cart to html.
   // Also render the username and the total price of the products in the shoppingcart
   async renderProducts() {
@@ -76,8 +73,8 @@ class ShoppingCart {
     });
 
     const usernameTag = document.querySelector(".cart > h1");
-    const username = await this.getUser();
-    usernameTag.innerHTML = `<i>${username}</i> Shopping cart`;
+    //const username = await this.getUser();
+    //usernameTag.innerHTML = `<i>${username}</i> Shopping cart`;
     const total = document.createElement("p");
     shopCart.appendChild(total);
     total.innerHTML = `Total price: ${this.getTotal()} EUR`;
@@ -99,12 +96,18 @@ class ProductList {
       new Product("images/pants.png", "Pants", 50),
       new Product("images/skirt.jpg", "Skirt", 20),
     ];
-    this.filteredProducts = this.products; 
+    this.filteredProducts = this.products;
     this.renderProductList();
   }
   //searchProduct should return an array of product that match the productName parameter
   searchProduct(productName) {
-    this.filteredProducts = this.products.filter((p) => RegExp(productName, "i").test(p.name));
+    if (productName) {
+      this.filteredProducts = this.products.filter((p) =>
+        RegExp(productName, "i").test(p.name)
+      );
+    } else {
+      this.filteredProducts= this.products;
+    }
   }
   renderProductList() {
     const productsSection = this.container;
@@ -138,10 +141,6 @@ const shoppingList = new ProductList(
 const inputSearch = document.querySelector(".search > input");
 inputSearch.addEventListener("keyup", () => {
   const productName = inputSearch.value;
-  if (productName) {
-    const filteredProducts = shoppingList.searchProduct(productName);
-    shoppingList.renderProductList(filteredProducts); 
-  } else {
-    shoppingList.renderProductList();
-  }
+  const filteredProducts = shoppingList.searchProduct(productName);
+  shoppingList.renderProductList(filteredProducts);
 });
