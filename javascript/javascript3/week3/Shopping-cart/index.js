@@ -5,7 +5,7 @@ class Product {
     this.price = price;
   }
   //Depending on the provided currency return the correct price for the product
-  /*convertToCurrency(currency) {
+  convertToCurrency(currency) {
     return fetch(
       "http://data.fixer.io/api/latest?access_key=c7a543598b656e4e1890f15c03a6e1ec"
     )
@@ -14,7 +14,7 @@ class Product {
         const rate = result.rates[currency];
         return rate * this.price;
       });
-  }*/
+  }
 }
 
 //Create the functionality for the ShoppingCart class.
@@ -41,13 +41,13 @@ class ShoppingCart {
       .reduce((acc, cur) => (acc += cur), 0);
   }
   //getUser should return a promise with the data from this api:
-  /*getUser() {
+  getUser() {
     return fetch("https://jsonplaceholder.typicode.com/users/1")
       .then((res) => res.json())
       .then((result) => {
         return result.username;
       });
-  }*/
+  }
   //renderProducts should render the products in the shopping cart to html.
   // Also render the username and the total price of the products in the shoppingcart
   async renderProducts() {
@@ -73,8 +73,8 @@ class ShoppingCart {
     });
 
     const usernameTag = document.querySelector(".cart > h1");
-    //const username = await this.getUser();
-    //usernameTag.innerHTML = `<i>${username}</i> Shopping cart`;
+    const username = await this.getUser();
+    usernameTag.innerHTML = `<i>${username}</i> Shopping cart`;
     const total = document.createElement("p");
     shopCart.appendChild(total);
     total.innerHTML = `Total price: ${this.getTotal()} EUR`;
