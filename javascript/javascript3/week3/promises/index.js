@@ -11,9 +11,9 @@ const fetchUserRepos = (user) =>
     .then((result) => result.json())
     .then((res) => res.items);
 
-const getGithubUser1 = () => fetchUserRepos(user1);
-const getGithubUser2 = () => fetchUserRepos(user2);
-const getGithubUser3 = () => fetchUserRepos(user3);
+const getGithubUser1 = fetchUserRepos(user1);
+const getGithubUser2 = fetchUserRepos(user2);
+const getGithubUser3 = fetchUserRepos(user3);
 
 //Render the fullname of the repo, url of the repo, and the owner of the repo.
 const render = (repos) => {
@@ -29,12 +29,11 @@ const render = (repos) => {
     <li><b>Fullname of the repositories:</b> ${result.full_name}</li>
     <li><b>Url of the repositories:</b> ${result.url}</li>
     <li><b>${result.name}:</b> ${result.url}</li>`;
-
   });
 };
 
 //Fetch all the 3 classmates repositories at the same time using Promise.all
-Promise.all([getGithubUser1(), getGithubUser2(), getGithubUser3()]).then(
+Promise.all([getGithubUser1, getGithubUser2, getGithubUser3]).then(
   (values) => {
     values.forEach((data) => render(data));
   }

@@ -59,19 +59,22 @@ circle2.draw();
 
 //Every 100ms create a new circle class and draw that to the canvas.
 //The circle should have random x, y, radius and color.
+const getRandom = (rand) => {
+  return Math.floor(Math.random() * rand);
+};
 
 const getRandomColor = () => {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
+  const r = getRandom(256);
+  const g = getRandom(256);
+  const b = getRandom(256);
   return `rgb( ${r}, ${g}, ${b})`;
 };
 
 const drawNewCircle = () => {
   const { width, height } = canvas.getBoundingClientRect();
-  const x = Math.floor(Math.random() * width);
-  const y = Math.floor(Math.random() * height);
-  const radius = Math.floor(Math.random() * 50);
+  const x = getRandom(width);
+  const y = getRandom(height);
+  const radius = getRandom(50);
   const circle = new Circle(
     canvas,
     x,
