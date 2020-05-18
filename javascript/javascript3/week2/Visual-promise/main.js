@@ -8,19 +8,11 @@ const greenBox = document.querySelector(".marks li:nth-child(3)");
 
 const translateOneByOne = () => {
   moveElement(redBox, { x: 20, y: 300 })
-    .then(() => {
-      console.log("Red element has been moved");
-    })
-    .then(() => {
-      return moveElement(blueBox, { x: 400, y: 300 }).then(() => {
-        console.log("Blue element has been moved");
-      });
-    })
-    .then(() => {
-      return moveElement(greenBox, { x: 400, y: 20 }).then(() => {
-        console.log("Green element has been moved");
-      });
-    });
+    .then(() => console.log("Red element has been moved"))
+    .then(() => moveElement(blueBox, { x: 400, y: 300 }))
+    .then(() => console.log("Blue element has been moved"))
+    .then(() => moveElement(greenBox, { x: 400, y: 20 }))
+    .then(() => console.log("Green element has been moved"));
 };
 translateOneByOne();
 //translateAllAtOnce - Should translate all the circles at the same time from their random start position
@@ -30,8 +22,8 @@ const translateAllAtOnce = () => {
   const getRedElement = moveElement(redBox, { x: 20, y: 300 });
   const getBlueElement = moveElement(blueBox, { x: 400, y: 300 });
   const getGreenElement = moveElement(greenBox, { x: 400, y: 20 });
-  Promise.all([getRedElement, getBlueElement, getGreenElement]).then(() => {
-    console.log("Red, blue and green elements has been moved");
-  });
+  return Promise.all([getRedElement, getBlueElement, getGreenElement]);
 };
-translateAllAtOnce();
+translateAllAtOnce().then(() => {
+  console.log("Red, blue and green elements has been moved");
+});
