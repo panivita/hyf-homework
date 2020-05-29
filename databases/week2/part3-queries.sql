@@ -4,8 +4,8 @@ USE hyf_lesson2;
 -- 3.1 Get all the tasks assigned to users whose email ends in @spotify.com
 
 SELECT  t.id, t.title, t.description, t.created, t.updated, t.due_date, t.status_id from user u 
-LEFT JOIN user_task u_t ON u.id  = u_t.user_id   
-LEFT JOIN task t ON u_t.task_id = t.id  
+INNER JOIN user_task u_t ON u.id  = u_t.user_id   
+INNER JOIN task t ON u_t.task_id = t.id  
 WHERE u.email LIKE '%@spotify.com'
 GROUP BY t.id;
 
@@ -35,3 +35,8 @@ GROUP BY t.id;
 SELECT  month(t.created) AS month_created, COUNT(*) AS task_count from task t 
 GROUP BY month(t.created)
 ORDER BY month(t.created) ASC;
+
+-- OR
+SELECT  MONTHNAME(created) AS month_created, COUNT(*) AS task_count from task  
+GROUP BY MONTHNAME(created)
+ORDER BY MONTHNAME(created) DESC;

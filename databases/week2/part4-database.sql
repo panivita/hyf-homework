@@ -3,27 +3,31 @@ USE `Library`;
 
 SET NAMES utf8mb4;
 
+-- the list of different genres of books
 CREATE TABLE `category` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `category` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE  `racks` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `branch_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
+-- Information about the library staff
 CREATE TABLE `staff` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `staff_position` varchar(255) NOT NULL,
   `staff_name` varchar(255) NOT NULL,
   `staff_email` varchar(255) NOT NULL,
   `staff_address` varchar(255) NOT NULL,
-  `staff_phone` varchar(255) NULL,
-  `working_place_id` int(10) unsigned NOT NULL,
-  CONSTRAINT `fk_rack_staff` FOREIGN KEY (`working_place_id`) REFERENCES `racks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  `staff_phone` varchar(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- Information about book racks and id staff who working with this rack
+CREATE TABLE  `racks` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `branch_name` varchar(255) NOT NULL,
+`staff_id` int(10) unsigned NOT NULL,
+  CONSTRAINT `fk_rack_staffs` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- All information about the book
 CREATE TABLE `book` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
    `title` varchar(1000) NOT NULL,
@@ -38,6 +42,7 @@ CREATE TABLE `book` (
   CONSTRAINT `fk_rack` FOREIGN KEY (`rack_id`) REFERENCES `racks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- All information about the student who uses the library
 CREATE TABLE `student` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `student_name` varchar(255) NOT NULL,
@@ -46,24 +51,18 @@ CREATE TABLE `student` (
   `student_phone` varchar(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE  `issue` (
+-- Information about books that were issued to students and were returned by students
+CREATE TABLE  `book_issue_log` (
   `issue_id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `book_id` int(10) unsigned NOT NULL,
+  `student_id` int(10) unsigned NOT NULL, 
+  `issue_date` DATETIME NOT NULL,
+`expected_return_date` DATETIME NOT NULL,
+`date_returned` DATETIME NULL,
+`issued_by_staff` int(10) unsigned NOT NULL,
   CONSTRAINT `fk_issue_book` FOREIGN KEY (`book_id`) REFERENCES `book` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
- `available_status` tinyint(1) NOT NULL DEFAULT '1',
-  `added_by` int(10) unsigned NOT NULL,
-   CONSTRAINT `fk_issue_staff` FOREIGN KEY (`added_by`) REFERENCES `staff` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  `added_at_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE  `book_return` (
-  `return_id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `book_id` int(10) unsigned NOT NULL,
-  `student_id` int(10) unsigned NOT NULL,
-  CONSTRAINT `fk_return_book` FOREIGN KEY (`book_id`) REFERENCES `book` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_return_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
- `issue_date` DATETIME NOT NULL,
- `expiry_date` DATETIME NOT NULL
+  CONSTRAINT `fk_issue_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+   CONSTRAINT `fk_issue_staff` FOREIGN KEY (`issued_by_staff`) REFERENCES `staff` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Categories
@@ -78,22 +77,22 @@ insert into category (category) values ('Romance');
 insert into category (category) values ('Biography/Autobiography');
 insert into category (category) values ('Periodicals');
 
--- Racks 
-insert into racks (branch_name) values ('SAGO256');
-insert into racks (branch_name) values ('BEEF005');
-insert into racks (branch_name) values ('BARF875');
-insert into racks (branch_name) values ('DRBN001');
-insert into racks (branch_name) values ('FSTY890');
-insert into racks (branch_name) values ('HFON123');
-insert into racks (branch_name) values ('MBNY567');
-insert into racks (branch_name) values ('RUYT897');
-insert into racks (branch_name) values ('BAHY345');
-insert into racks (branch_name) values ('PFTR456');
-
 -- Staff
-insert into staff (staff_position, staff_name, staff_email, staff_address, staff_phone, working_place_id) values ('librarian', 'Hedy Gerault', 'hgerault7@nymag.com', 'Ulriksholmvej 68', '176-177-5579', 5);
-insert into staff (staff_position, staff_name, staff_email, staff_address, staff_phone, working_place_id) values ('librarian', 'Maryrose Meadows', 'mmeadows5@comcast.net', ' Klintevej 62', '251-524-6594', 2);
-insert into staff (staff_position, staff_name, staff_email, staff_address, staff_phone, working_place_id) values ('librarian', 'Aarika Ellingworth', 'aellingworth0@harvard.edu', 'Mikkelenborgvej 64', '483-396-8795', 7);
+insert into staff (staff_position, staff_name, staff_email, staff_address, staff_phone) values ('librarian', 'Hedy Gerault', 'hgerault7@nymag.com', 'Ulriksholmvej 68', '176-177-5579');
+insert into staff (staff_position, staff_name, staff_email, staff_address, staff_phone) values ('librarian', 'Maryrose Meadows', 'mmeadows5@comcast.net', ' Klintevej 62', '251-524-6594');
+insert into staff (staff_position, staff_name, staff_email, staff_address, staff_phone) values ('librarian', 'Aarika Ellingworth', 'aellingworth0@harvard.edu', 'Mikkelenborgvej 64', '483-396-8795');
+
+-- Racks 
+insert into racks (branch_name, staff_id) values ('SAGO256', 1);
+insert into racks (branch_name, staff_id) values ('BEEF005', 2);
+insert into racks (branch_name, staff_id) values ('BARF875', 3);
+insert into racks (branch_name, staff_id) values ('DRBN001', 1);
+insert into racks (branch_name, staff_id) values ('FSTY890', 2);
+insert into racks (branch_name, staff_id) values ('HFON123', 3);
+insert into racks (branch_name, staff_id) values ('MBNY567', 1);
+insert into racks (branch_name, staff_id) values ('RUYT897', 2);
+insert into racks (branch_name, staff_id) values ('BAHY345', 1);
+insert into racks (branch_name, staff_id) values ('PFTR456', 3);
 
 -- Books
 insert into book (title, author, book_edition, description, added_by, category_id, rack_id) values ('The Hobbit', 'J.R.R. Tolkien', 'HOUGHTON MIFFLIN', 'Childrens fantasy novel by English author', 1, 1, 5);
@@ -111,6 +110,6 @@ insert into student (student_name, student_email, student_address, student_phone
 insert into student (student_name, student_email, student_address, student_phone) values ('Afrouz Hakimzadeh ', 'afrouz.hakimzadeh @weebly.com', 'Hersnapvej 83', '891-952-6749');
 insert into student (student_name, student_email, student_address, student_phone) values ('Gebremedhin', 'gebremedhin @github.com', 'Eskelundsvej 97', '202-517-6983');
 
--- Return
-insert into book_return (book_id, student_id, issue_date, expiry_date) values (2, 1, '2020-05-03 09:27:20', '2020-06-03');
-insert into book_return (book_id, student_id, issue_date, expiry_date) values (1, 1, '2020-05-03 09:29:40', '2020-06-03');
+-- Issue log
+insert into book_issue_log (book_id, student_id, issue_date, expected_return_date, date_returned, issued_by_staff) values (2, 1, '2020-05-03 09:27:20', '2020-06-03', '2020-05-30', 2);
+insert into book_issue_log (book_id, student_id, issue_date, expected_return_date, date_returned, issued_by_staff) values (1, 1, '2020-05-03 09:29:40', '2020-06-03', NULL, 5);

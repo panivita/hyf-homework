@@ -49,11 +49,7 @@ ON student (name);
 
 -- 2.3 Add a new column to the class table named status which can only have the following values: not-started, ongoing, finished (hint: enumerations).
 ALTER TABLE class
-ADD Column status ENUM ('not-started', 'ongoing', 'finished');
-
-UPDATE class
-SET status = 'ongoing'
-WHERE id = 12 OR id = 13 OR id = 14;
+ADD Column status ENUM ('not-started', 'ongoing', 'finished') NOT NULL DEFAULT 'ongoing';
 
 UPDATE class
 SET status = 'finished'
