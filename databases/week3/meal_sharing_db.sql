@@ -11,14 +11,14 @@ CREATE TABLE  `meal` (
  `meal_time` DATETIME NOT NULL,
  `max_reservations` int(10) unsigned NOT NULL,
  `price` DECIMAL(6, 2) NOT NULL,
- `created_date` DATE NOT NULL DEFAULT NOW()
+ `created_date` DATE NOT NULL DEFAULT (NOW())
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `reservation`(
  `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
  `number_of_guests` int(10) unsigned NOT NULL,
  `meal_id` int(10) unsigned NOT NULL,
- `created_date` DATE NOT NULL DEFAULT NOW(),
+ `created_date` DATE NOT NULL DEFAULT (NOW()),
  CONSTRAINT `fk_reservation_meal` FOREIGN KEY (`meal_id`) REFERENCES `meal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -28,36 +28,36 @@ CREATE TABLE `review`(
  `description` TEXT NOT NULL,
  `meal_id` int(10) unsigned NOT NULL,
  `stars` int(10) unsigned NOT NULL,
- `created_date` DATE NOT NULL DEFAULT NOW(),
+ `created_date` DATE NOT NULL DEFAULT (NOW()),
  CONSTRAINT `fk_review_meal` FOREIGN KEY (`meal_id`) REFERENCES `meal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
  
  -- Meal
 insert into meal (title, description, location, meal_time, max_reservations, price, created_date) values 
-('Wine - Magnotta', 'Belpaese,sapien cum sociis natoque penatibus et magnis', '457 Cody Point', '2020/07/14 18:30:00', 10, 45.99, '2020/07/14');
+('Wine - Magnotta', 'Belpaese,sapien cum sociis natoque penatibus et magnis', '457 Cody Point', '2020-07-14 18:30:00', 10, 45.99, '2020-07-14');
 insert into meal (title, description, location, meal_time, max_reservations, price, created_date) values 
-('Pastry', 'Mini French Pastries,erat nulla tempus vivamus in felis eu sapien cursus vestibulum', '32755 Clyde Gallagher Plaza', '2020/06/12 18:45:00', 2, 95.99, '2020/06/12');
+('Pastry', 'Mini French Pastries,erat nulla tempus vivamus in felis eu sapien cursus vestibulum', '32755 Clyde Gallagher Plaza', '2020-06-12 18:45:00', 2, 95.99, '2020-06-12');
 insert into meal (title, description, location, meal_time, max_reservations, price, created_date) values 
-('Onions Granulated', 'hac habitasse platea dictumst aliquam augue quam sollicitudin vitae', '5605 Upham Hill', '2020/10/03 19:30:00', 8, 70.99,'2020/10/03');
+('Onions Granulated', 'hac habitasse platea dictumst aliquam augue quam sollicitudin vitae', '5605 Upham Hill', '2020-10-03 19:30:00', 8, 70.99,'2020-10-03');
 insert into meal (title, description, location, meal_time, max_reservations, price, created_date) values 
-('Huck White Towels','turpis adipiscing lorem vitae mattis nibh ligula nec','7 High Crossing Road', '2020/02/22 19:00:00' , 10, 100.99, '2020/02/21');
+('Huck White Towels','turpis adipiscing lorem vitae mattis nibh ligula nec','7 High Crossing Road', '2020-02-22 19:00:00' , 10, 100.99, '2020-02-21');
 insert into meal (title, description, location, meal_time, max_reservations, price, created_date) values 
-('Veal', 'Brisket, Provimi, Bone','52 Barnett Center','2020/04/13 20:00:00', 3, 83.95, '2020/04/11');
+('Veal', 'Brisket, Provimi, Bone','52 Barnett Center','2020-04-13 20:00:00', 3, 83.95, '2020-04-11');
 insert into meal (title, description, location, meal_time, max_reservations, price, created_date) values 
-('Ginsing', 'Fresh, consequat morbi a ipsum','2 Lindbergh Pass','2020/01/02 19:30:00', 5, 130.50, '2020/01/01');
+('Ginsing', 'Fresh, consequat morbi a ipsum','2 Lindbergh Pass','2020-01-02 19:30:00', 5, 130.50, '2020-01-01');
 insert into meal (title, description, location, meal_time, max_reservations, price, created_date) values 
-('Beef', 'Ox Tongue,fermentum justo', '53 Dottie Circle', '2020/11/10 18:00:00', 2, 94.99, '2020/11/10');
+('Beef', 'Ox Tongue,fermentum justo', '53 Dottie Circle', '2020-11-10 18:00:00', 2, 94.99, '2020-11-10');
 insert into meal (title, description, location, meal_time, max_reservations, price, created_date) values 
-('Mustard', 'Dijon,suspendisse accumsan', '909 Longview Pass', '2020/07/04 20:30:00', 5, 19.50, '2020/07/03');
+('Mustard', 'Dijon,suspendisse accumsan', '909 Longview Pass', '2020-07-04 20:30:00', 5, 19.50, '2020-07-03');
 insert into meal (title, description, location, meal_time, max_reservations, price, created_date) values 
-('Red Snapper', 'Fillet, Skin On', '05656 Sunbrook Way','2020/12/01 19:00:00', 6, 29.99, '2020/12/01');
+('Red Snapper', 'Fillet, Skin On', '05656 Sunbrook Way','2020-12-01 19:00:00', 6, 29.99, '2020-12-01');
 
 -- 1.1 Get all meals
 SELECT * FROM meal;
 
 -- 1.2 Add a new meal
 insert into meal (title, description, location, meal_time, max_reservations, price) values 
-('Lamb Rack','Ontario,fusce lacus purus', '69507 Duke Lane', '2019/12/04 18:00:00', 2, 56.99);
+('Lamb Rack','Ontario,fusce lacus purus', '69507 Duke Lane', '2019-12-04 18:00:00', 2, 56.99);
 
 -- 1.3 Get a meal with any id, fx 1
 SELECT * FROM meal
@@ -73,11 +73,11 @@ DELETE FROM meal
 WHERE id = 10;
 
 -- Reservation
-insert into reservation (number_of_guests, meal_id, created_date) values ('3', 2, '2020/05/02 17:10:20'); 
-insert into reservation (number_of_guests, meal_id, created_date) values ('2', 8, '2020/05/12 18:40:40'); 
-insert into reservation (number_of_guests, meal_id, created_date) values ('2', 3, '2020/05/22 18:30:30'); 
-insert into reservation (number_of_guests, meal_id, created_date) values ('3', 5, '2020/05/23 17:50:40'); 
-insert into reservation (number_of_guests, meal_id, created_date) values ('4', 1, '2020/05/23 19:33:05'); 
+insert into reservation (number_of_guests, meal_id, created_date) values ('3', 2, '2020-05-02 17:10:20'); 
+insert into reservation (number_of_guests, meal_id, created_date) values ('2', 8, '2020-05-12 18:40:40'); 
+insert into reservation (number_of_guests, meal_id, created_date) values ('2', 3, '2020-05-22 18:30:30'); 
+insert into reservation (number_of_guests, meal_id, created_date) values ('3', 5, '2020-05-23 17:50:40'); 
+insert into reservation (number_of_guests, meal_id, created_date) values ('4', 1, '2020-05-23 19:33:05'); 
 -- 2.1 Get all reservations
 SELECT * FROM reservation;
 
@@ -133,7 +133,7 @@ WHERE price < 90;
 SELECT m.id, m.title, m.description, m.location, m.price
 FROM meal m
 JOIN reservation r ON m.id = r.meal_id
-WHERE m.meal_time >= CURRENT_TIMESTAMP AND m.max_reservations >= r.number_of_guests 
+WHERE m.meal_time >= CURRENT_TIMESTAMP OR m.max_reservations >= r.number_of_guests 
 GROUP BY m.id;
 
 -- Get meals that partially match a title. Rød grød med will match the meal with the title Rød grød med fløde
@@ -151,9 +151,7 @@ LIMIT 5;
 -- Get the meals that have good reviews
 SELECT m.id, m.title, m.description, m.price, r.stars, r.description FROM meal m
 INNER JOIN review r ON m.id = r.meal_id
-WHERE r.stars >= 4
-GROUP BY m.id
-ORDER BY r.stars DESC;
+WHERE r.stars >= 4;
 
 -- Get reservations for a specific meal sorted by created_date
 SELECT * FROM reservation
@@ -163,5 +161,5 @@ ORDER BY created_date DESC;
 -- Sort all meals by average number of stars in the reviews
 SELECT m.id, m.title, m.description, m.price, r.stars FROM meal m
 INNER JOIN review r ON m.id = r.meal_id
-GROUP BY m.id
+GROUP BY m.title
 ORDER BY AVG(r.stars);
