@@ -150,9 +150,11 @@ SELECT * FROM meal
 LIMIT 5;
 
 -- Get the meals that have good reviews
-SELECT m.id, m.title, m.description, m.price, r.stars, r.description FROM meal m
+SELECT m.id, m.title, m.description, m.price, r.meal_id, r.description, AVG(r.stars) AS average_rating 
+FROM meal m
 INNER JOIN review r ON m.id = r.meal_id
-WHERE r.stars >= 4;
+GROUP  BY r.meal_id
+HAVING  average_rating >=4;
 
 -- Get reservations for a specific meal sorted by created_date
 SELECT * FROM reservation
