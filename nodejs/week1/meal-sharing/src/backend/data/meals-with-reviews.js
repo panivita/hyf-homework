@@ -1,4 +1,4 @@
-const appendReviewsToAllMeals = () => {
+const appendReviewsToMeals = () => {
   const dataMeals = require("../data/meals.json");
   const dataReviews = require("../data/reviews.json");
   return dataMeals.map((meal) => {
@@ -7,4 +7,4 @@ const appendReviewsToAllMeals = () => {
   });
 };
 
-module.exports = appendReviewsToAllMeals();
+module.exports = appendReviewsToMeals();
