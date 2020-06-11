@@ -130,12 +130,12 @@ SELECT * FROM meal
 WHERE price < 90;
 
 -- Get meals that still has available reservations
-SELECT m.id, m.title, m.description, m.location, m.price, SUM(r.number_of_guests) AS total, m.max_reservation
+SELECT m.id, m.title, m.description, m.location, m.price, SUM(r.number_of_guests) AS total, m.max_reservations
 FROM meal m
 JOIN reservation r ON m.id = r.meal_id
 WHERE m.meal_time >= CURRENT_TIMESTAMP 
 GROUP BY m.id
-HAVING total < m.max_reservation;
+HAVING total < m.max_reservations;
 
 -- Get meals that partially match a title. Rød grød med will match the meal with the title Rød grød med fløde
 SELECT * FROM meal
@@ -150,7 +150,7 @@ SELECT * FROM meal
 LIMIT 5;
 
 -- Get the meals that have good reviews
-SELECT m.id, m.title, m.description, m.price, r.meal_id, r.description, AVG(r.stars) AS average_rating 
+SELECT m.id, m.title, m.description, m.price, AVG(r.stars) AS average_rating 
 FROM meal m
 INNER JOIN review r ON m.id = r.meal_id
 GROUP  BY r.meal_id
@@ -165,4 +165,4 @@ ORDER BY created_date DESC;
 SELECT m.id, m.title, m.description, m.price, AVG(r.stars) AS average_rating FROM meal m
 INNER JOIN review r ON m.id = r.meal_id
 GROUP BY m.id
-ORDER BY r.stars DESC;
+ORDER BY average_rating DESC;
