@@ -7,22 +7,21 @@ const reservationsRouter = require("./routes/reservations");
 const reviewsRouter = require("./routes/reviews");
 
 app.use((request, response, next) => {
-    const time = new Date().toLocaleString("en-US", { hour12: false });
-    console.log(`${time} request received for path: ${request.originalUrl}`);
-    next();
-  });
+  const time = new Date().toLocaleString("en-US", { hour12: false });
+  console.log(`${time} request received for path: ${request.originalUrl}`);
+  next();
+});
 
-app.get("/meals", mealsRouter);
-app.get("/reservations", reservationsRouter);
-app.get("/reviews", reviewsRouter);
-
+app.use("/api/meals", mealsRouter);
+app.use("/api/reservations", reservationsRouter);
+app.use("/api/reviews", reviewsRouter);
 
 app.get("/", (req, res) => {
   res.send(`
   <ul>
-    <li><a href='/meals'>All meals</a></li>
-    <li><a href='/reservations'>All reservations</a></li>
-    <li><a href='/reviews'>All reviews</a></li>
+    <li><a href='/api/meals'>All meals</a></li>
+    <li><a href='/api/reservations'>All reservations</a></li>
+    <li><a href='/api/reviews'>All reviews</a></li>
   </ul>
   `);
 });
