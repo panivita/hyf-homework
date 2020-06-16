@@ -1,24 +1,41 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 const dataMeals = require("../data/meals.json");
 
 // Respond with the json for all the meals
-router.get("/", (req, res) => {
-  res.json(dataMeals);
-});
+//Get meals that has a price smaller than maxPrice.
+// Get meals that partially match a title.
+// Get meals that has been created after the date.
+// Only specific number of meals.
 
-//Get meals that has a price smaller than maxPrice
-router.get("/add", (req, res) => {
-  const { maxPrice } = req.query;
-  const numMaxPrice = parseInt(maxPrice);
-  if (isNaN(numMaxPrice)) {
-    res.status(400).send(`Bad request. ${maxPrice} should be a number`);
-  } else {
-    const mealsWithSmallerPrice = dataMeals.filter(
-      ({ price }) => price < numMaxPrice
-    );
-    res.json(mealsWithSmallerPrice);
+router.get("/", (req, res) => {
+  const { maxPrice, title: queryTitle, createdAfter } = req.query;
+  let meals = dataMeals;
+
+  if (maxPrice) {
+    const numMaxPrice = parseInt(maxPrice);
+    if (isNaN(numMaxPrice)) {
+      res.status(400).send(`Bad request.`);
+    } else {
+      meals = meals.filter(({ price }) => price < numMaxPrice);
+    }
   }
+
+  if (queryTitle) {
+    const escapedQuery = queryTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // All of these should be escaped. Means the whole matched string
+    const tester = new RegExp("(?:^|\\W)" + escapedQuery + "(?:$|\\W)", "i"); //only whole world from start of the string and whole world from end
+    //(?title=alien will not return meal with title Italien)
+
+    meals = meals.filter(({ title }) => tester.test(title));
+  }
+
+  if (createdAfter) {
+    const parseCreatedAfter = Date.parse(createdAfter);
+    meals = meals.filter(
+      ({ createdAt }) => Date.parse(createdAt) > parseCreatedAfter
+    );
+  }
+  res.json(meals);
 });
 
 // Respond with the json for the meal with the corresponding id

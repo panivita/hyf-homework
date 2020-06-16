@@ -1,6 +1,6 @@
 // Respond with the json for the meal with the corresponding id
 const express = require("express");
-const router = express.Router()
+const router = express.Router();
 const dataReviews = require("../data/reviews.json");
 
 router.get("/:id", (req, res) => {
@@ -9,19 +9,19 @@ router.get("/:id", (req, res) => {
     (review) => review.id === parseInt(id)
   );
   if (isNaN(id)) {
-    return res.status(400).send(`Bad request. ${id} should be a number`);
+    res.status(400).send(`Bad request. ${id} should be a number`);
   }
   if (!queriedIdReviews) {
-    return res.status(404).send(`Review with the id ${id} is not found`);
+    res.status(404).send(`Review with the id ${id} is not found`);
   } else {
-    return res.json(queriedIdReviews);
+    res.json(queriedIdReviews);
   }
 });
 
 // Respond with the json for all the reviews
 
 router.get("/", (req, res) => {
-  return res.json(dataReviews);
+  res.json(dataReviews);
 });
 
 module.exports = router;

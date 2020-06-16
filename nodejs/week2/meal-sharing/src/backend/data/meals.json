@@ -4,7 +4,7 @@
     "title": "Indian food in the summer",
     "maxNumberOfGuests": 5,
     "description": "A nice night out eating delicious indian food",
-    "createdAt": "2020/06/7 14:34",
+    "createdAt": "2020-06-07 14:34",
     "price": 67
   },
   {
@@ -12,7 +12,7 @@
     "title": "Italien food in the summer",
     "maxNumberOfGuests": 3,
     "description": "A nice night out eating delicious italien food",
-    "createdAt": "2020/06/9 15:34",
+    "createdAt": "2020-06-09 15:34",
     "price": 80
   },
   {
@@ -20,7 +20,7 @@
     "title": "Best food in the summer",
     "maxNumberOfGuests": 2,
     "description": "A nice night out eating delicious food",
-    "createdAt": "2020/06/9 18:34",
+    "createdAt": "2020-06-09 18:34",
     "price": 97
   }
 ]
