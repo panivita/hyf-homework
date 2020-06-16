@@ -8,21 +8,29 @@ const dataMeals = require("../data/meals.json");
 // Get meals that has been created after the date.
 // Only specific number of meals.
 const isParametersValid = (reqQuery, res) => {
-  const { maxPrice, title: queryTitle, createdAfter, limit } = reqQuery;
+  const { maxPrice, createdAfter, limit } = reqQuery;
   if (maxPrice || limit || createdAfter) {
     const date = Date.parse(createdAfter);
     if ((isNaN(maxPrice) && isNaN(date) && isNaN(limit)) || limit < 0) {
       res.status(400).send(`Bad request. Parameter should be a number`);
-      return false;
+      return true;
     }
   }
-  return true;
+  return false;
+};
+
+const isMealFound = (meal, res) => {
+  if (meal.length === 0) {
+    res.status(404).send(`404 Error. Meal is not found`);
+    return true;
+  }
+  return false;
 };
 
 router.get("/", (req, res) => {
   const { maxPrice, title: queryTitle, createdAfter, limit } = req.query;
 
-  if (!isParametersValid(req.query, res)) {
+  if (isParametersValid(req.query, res)) {
     return;
   }
 
@@ -47,9 +55,14 @@ router.get("/", (req, res) => {
       ({ createdAt }) => Date.parse(createdAt) > parseCreatedAfter
     );
   }
+
   if (limit) {
     const numlimit = parseInt(limit);
     meals = meals.slice(0, numlimit);
+  }
+  
+  if (isMealFound(meals, res)) {
+    return;
   }
   res.json(meals);
 });
