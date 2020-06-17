@@ -13,9 +13,8 @@ router.get("/:id", (req, res) => {
   }
   if (!queriedIdReviews) {
     res.status(404).send(`Review with the id ${id} is not found`);
-  } else {
-    res.json(queriedIdReviews);
   }
+  res.json(queriedIdReviews);
 });
 
 // Respond with the json for all the reviews

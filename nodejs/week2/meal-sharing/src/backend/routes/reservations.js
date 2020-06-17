@@ -13,9 +13,8 @@ router.get("/:id", (req, res) => {
   }
   if (!queriedIdReservations) {
     res.status(404).send(`Reservation with the id ${id} is not found`);
-  } else {
-    res.json(queriedIdReservations);
   }
+  res.json(queriedIdReservations);
 });
 
 // Respond with the json for all the reservations
@@ -25,4 +24,3 @@ router.get("/", (req, res) => {
 });
 
 module.exports = router;
-  

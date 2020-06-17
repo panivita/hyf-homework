@@ -7,22 +7,28 @@ const dataMeals = require("../data/meals.json");
 // Get meals that partially match a title.
 // Get meals that has been created after the date.
 // Only specific number of meals.
-const isParametersValid = (reqQuery, res) => {
+const isParametersInvalid = (reqQuery, res) => {
   const { maxPrice, createdAfter, limit } = reqQuery;
-  if (maxPrice || limit || createdAfter) {
-    const date = Date.parse(createdAfter);
-    if ((isNaN(maxPrice) && isNaN(date) && isNaN(limit)) || limit < 0) {
-      res.status(400).send(`Bad request. Parameter should be a number`);
+  if (maxPrice) {
+    if (isNaN(maxPrice)) {
+      res.status(400).send(`Bad request. MaxPrice should be a number`);
       return true;
     }
   }
-  return false;
-};
-
-const isMealFound = (meal, res) => {
-  if (meal.length === 0) {
-    res.status(404).send(`404 Error. Meal is not found`);
-    return true;
+  if (createdAfter) {
+    const date = Date.parse(createdAfter);
+    if (isNaN(date) && !(date instanceof Date)) {
+      res
+        .status(400)
+        .send(`Bad request. createdAfter should be a number and date`);
+      return true;
+    }
+  }
+  if (limit) {
+    if (isNaN(limit) || limit < 0) {
+      res.status(400).send(`Bad request. Limit should be a number`);
+      return true;
+    }
   }
   return false;
 };
@@ -30,7 +36,7 @@ const isMealFound = (meal, res) => {
 router.get("/", (req, res) => {
   const { maxPrice, title: queryTitle, createdAfter, limit } = req.query;
 
-  if (isParametersValid(req.query, res)) {
+  if (isParametersInvalid(req.query, res)) {
     return;
   }
 
@@ -60,9 +66,9 @@ router.get("/", (req, res) => {
     const numlimit = parseInt(limit);
     meals = meals.slice(0, numlimit);
   }
-  
-  if (isMealFound(meals, res)) {
-    return;
+
+  if (meals.length === 0) {
+    res.status(404).send(`404 Error. Meal is not found`);
   }
   res.json(meals);
 });
@@ -71,14 +77,18 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   const queriedIdMeals = dataMeals.find((meal) => meal.id === parseInt(id));
+
   if (isNaN(id)) {
     res.status(400).send(`Bad request. ${id} should be a number`);
+    return;
   }
+
   if (!queriedIdMeals) {
     res.status(404).send(`Meal with the id ${id} is not found`);
-  } else {
-    res.json(queriedIdMeals);
+    return;
   }
+
+  res.json(queriedIdMeals);
 });
 
 module.exports = router;
