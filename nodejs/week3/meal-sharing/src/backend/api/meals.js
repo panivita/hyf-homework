@@ -62,7 +62,8 @@ router.delete("/:id", async (req, res) => {
 //Get meals that partially match a title.
 //Get meals that has been created after the date
 //Only specific number of meals
-
+// Works as a multi-step search, you can combine all parameters for the search, 
+//you can find food that matches all search criteria
 router.get("/", async (req, res) => {
   const {
     maxPrice,
@@ -71,45 +72,39 @@ router.get("/", async (req, res) => {
     createdAfter,
     limit,
   } = req.query;
-  let meals = await knex("meal").select("*");
+  let meals = knex("meal");
 
   if (maxPrice) {
     const numMaxPrice = parseInt(maxPrice);
-    meals = await knex("meal").select("*").where("price", "<", numMaxPrice);
+    meals = meals.where("price", "<", numMaxPrice);
   }
 
   if (availableReservations === "true") {
-    meals = await knex("meal")
-      .select("*")
-      .sum({ total: "reservation.number_of_guests" })
+    meals = meals
       .join("reservation", { "meal.id": "reservation.meal_id" })
       .where("meal.meal_time", ">=", knex.fn.now())
-      .groupBy("meal.id")
-      .orderBy("meal.title", "asc")
-      .having("total", ">", "meal.max_reservations");
+      .andWhere("reservation.number_of_guests", ">", "meal.max_reservations");
   }
 
   if (title) {
-    meals = await knex("meal").select("*").where("title", "like", `%${title}%`);
+    meals = meals.where("title", "like", `%${title}%`);
   }
 
   if (createdAfter) {
     const dateCreatedAfter = new Date(createdAfter);
-    meals = await knex("meal")
-      .select("*")
-      .where("created_date", ">", dateCreatedAfter);
+    meals = meals.where("meal.created_date", ">", dateCreatedAfter);
   }
 
   if (limit) {
     const numMealLimit = parseInt(limit);
-    meals = await knex("meal").select("*").limit(numMealLimit);
+    meals = meals.limit(numMealLimit);
   }
+  const resultSearch = await meals.select("*");
 
-  if (meals.length === 0 || availableReservations === "false") {
+  if (resultSearch.length === 0 || availableReservations === "false") {
     res.status(404).send(`404 Error. Meal is not found`);
   }
-
-  res.json(meals);
+  res.json(resultSearch);
 });
 
 router.use((err, req, res, next) => {
