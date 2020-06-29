@@ -15,70 +15,61 @@ class SpamDetector {
   checkUpperCaseRatio(email) {
     const regex = /[A-Z]/g;
     const found = email.body.match(regex);
-    const percentFound = (found.lenght * 100) / email.body.lenght;
-    return percentFound > 60;
+    return found.length / email.body.length > 0.6;
   }
   // Contain words like: Viagra, Offer, Free, Business Proposal
   checkSpamWords(email) {
     return /(Viagra|Offer|Free|Business Proposal)(?:$|\W)/i.test(
-      email.subject + " " + email.body
+      `${email.subject} ${email.body}`
     );
   }
   // Subject only contains the string "Hello"
   checkSubjectContainsHello(email) {
     return /hello[\W\d]*$/i.test(email.subject);
   }
-  /*
-  async checkGramma(email) {
-    const response = await fetch("https://grammarbot.p.rapidapi.com/check", {
-      method: "POST",
-      headers: {
-        "x-rapidapi-host": "grammarbot.p.rapidapi.com",
-        "x-rapidapi-key": "6490c2a93fmsh09090ff369b463dp1ce112jsn32f9cc986921",
-        "content-type": "application/x-www-form-urlencoded",
-      },
-      body: {
-        language: "en-US",
-        text: email.subject + " " + email.body,
-      },
-    });
-    console.log(response);
-    return !response.isValid;
+  // Email has exclamation points(?!?!?!)
+  checkExclamationPoints(email) {
+    return /[\W\d]{3}/g.test(`${email.subject} ${email.body}`);
   }
-  async*/ isSpam(
-    email
-  ) {
+  isSpam(email) {
     return (
       this.checkUpperCaseRatio(email) ||
       this.checkSpamWords(email) ||
-      this.checkSubjectContainsHello(email)
-      //||(await this.checkGramma(email))
+      this.checkSubjectContainsHello(email) ||
+      this.checkExclamationPoints(email)
     );
   }
 }
 
 const emailFromOldFriend = new Email(
   "Hello old friend",
-  "Long time no see, when should we hang out again??"
+  "Long time no see, when should we hang out again?"
 );
 const emailSubjectHello = new Email(
   "hello!!!123",
-  "Long time no see, when should we hang out again??"
+  "Long time no see, when should we hang out again?"
 );
 const emailSpamWords = new Email(
   "viagra",
-  "Long time no see, when should we hang out again?? free"
+  "Long time no see, when should we hang out again? free"
 );
 const emailUpperCaseRatio = new Email(
-  "HELLO DEAR CUSTOMER",
-  "LONG TIME NO SEE, WHEN SHOULD WE HANG OUT AGAIN??"
+  "Hello Dear Customer!",
+  "LONG TIME No See, WHEN SHOULD We HANG Out AGAIN?"
+);
+const emailExclamationPoints = new Email(
+  "Hello Dear Customer!!!",
+  "Long time no see, when should we hang out again??!"
 );
 const spamDetector = new SpamDetector();
+
 const writeToConsole = (email) => {
   const isSpam = spamDetector.isSpam(email);
   console.log(`Is spam: ${isSpam}`);
 };
+
 writeToConsole(emailFromOldFriend); // false
 writeToConsole(emailSubjectHello); // true
 writeToConsole(emailSpamWords); // true
-writeToConsole(emailUpperCaseRatio);
+writeToConsole(emailUpperCaseRatio); // true
+writeToConsole(emailExclamationPoints); // true
