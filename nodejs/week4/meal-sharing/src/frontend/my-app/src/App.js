@@ -6,7 +6,12 @@ import "./App.css";
 import "./main.css";
 import "./reset.css";
 
-const Meal = ({ title }) => <h1>{title}</h1>;
+const Meal = ({ url, title, description }) => (
+  <div>
+    <img src={url}></img>
+    <h1>{title}</h1>
+  </div>
+);
 
 const Meals = () => {
   const [meals, setMeals] = useState();
@@ -28,27 +33,38 @@ function App() {
       <header className="header-container">
         <nav className="main-menu">
           <div className="left-menu">
-            <p><a href="#home">Home</a></p>
-            <p><a href="#about">About</a></p>
+            <p>
+              <a href="#home">Home</a>
+            </p>
+            <p>
+              <a href="#about">About</a>
+            </p>
           </div>
           <div className="center-menu">
-            <a href="#home"><img src={Logo} /></a>
+            <a href="#home">
+              <img src={Logo} />
+            </a>
           </div>
           <div className="right-menu">
-            <p><a href="#meals"></a>Cakes</p>
-            <p><a href="#meals"></a>Recipes</p>
+            <p>
+              <a href="#meals"></a>Cakes
+            </p>
+            <p>
+              <a href="#meals"></a>Recipes
+            </p>
           </div>
         </nav>
         <img src={Background} alt="capcake pattern" />
         <div className="header-center">
-          <input className="search-input" placeholder="Find your favorite cake"></input>
+          <input
+            className="search-input"
+            placeholder="Find your favorite cake"
+          ></input>
         </div>
       </header>
       <Meals />
       <footer>
-        <section className="copyright">
-          © 2020 Victoria Kush
-        </section>
+        <section className="copyright">© 2020 Victoria Kush</section>
       </footer>
     </div>
   );
