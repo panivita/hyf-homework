@@ -1,0 +1,44 @@
+.cake-container, .cakes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-cake {
+    padding: 20px;
+    background: #fff;
+    box-shadow: 1px 1px 10px #ccc;
+    border-radius: 5px;
+}
+
+.cake-container {
+    flex-direction: column;
+    border: 2px solid #79518f;
+    box-shadow: 0 0 5px 0 #333333;
+    border-radius: 5px;
+    margin: 2% 0;
+    align-items: center;
+    text-align: center;
+    width: 30%;
+    background-color: #fffccf;
+}
+
+.cakes {
+    margin: 2% 5%;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.cake-container p, .cake-container h1 {
+    padding: 10px;
+}
+
+.booking {
+    margin-bottom: 3%;
+    min-height: 35px;
+    border-radius: 5px;
+    background-color: #8764ab;
+    font-weight: bold;
+    color: #fcd382;
+    width: 110px;
+    font-size: 16px;
+}

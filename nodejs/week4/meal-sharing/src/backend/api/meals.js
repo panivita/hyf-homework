@@ -34,9 +34,19 @@ router.post("/", async (req, res) => {
 //Returns meal by id
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-
-  const mealById = await knex("meal").select().where({ id });
-  res.json(mealById);
+  const mealWithReviews = await knex("meal")
+    .select(
+      "meal.id",
+      "meal.title",
+      "meal.description",
+      "meal.max_reservations",
+      "meal.price",
+      "review.description as review_description",
+      "review.stars"
+    )
+    .leftJoin("review", "meal.id", "review.meal_id")
+    .where({ "meal.id": id });
+  res.json(mealWithReviews);
 });
 
 // Updates the meal by id
@@ -62,7 +72,7 @@ router.delete("/:id", async (req, res) => {
 //Get meals that partially match a title.
 //Get meals that has been created after the date
 //Only specific number of meals
-// Works as a multi-step search, you can combine all parameters for the search, 
+// Works as a multi-step search, you can combine all parameters for the search,
 //you can find food that matches all search criteria
 router.get("/", async (req, res) => {
   const {

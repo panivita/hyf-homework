@@ -2,37 +2,78 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #8764ab;
+  background-image: linear-gradient(45deg, #6e318b 25%, transparent 25%), linear-gradient(-45deg, #6e318b 25%, transparent 25%), linear-gradient(135deg, #6e318b 25%, transparent 25%), linear-gradient(-135deg, #6e318b 25%, transparent 25%);
+  background-position: 10px 0, 10px 0, 0 0, 0 0;
+  background-size: 20px 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.main-menu {
+  display: flex;
+  margin: 2% 10%;
+  font-size: 18px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.right-menu, .left-menu {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.right-menu p, .left-menu p {
+  width: 25%;
+}
+
+.right-menu a, .left-menu a {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fcd382;
+  text-decoration: none;
+}
+
+.right-menu {
+  justify-items: right;
+}
+
+.left-menu {
+  justify-items: left;
+}
+
+.center-menu img {
+  position: absolute;
+  left: 45%;
+}
+
+.search-input {
+  position: absolute;
+  top: 50%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 50px;
+  border-color: #8767ab;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 #333333;
+  padding: 5px;
+  outline: none;
+  text-align: center;
+}
+
+.copyright {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px;
+  color: #fcd382;
+}
+
+footer {
+  background-color: #8764ab;
+  margin-top: 30px;
+  background-image: linear-gradient(45deg, #6e318b 25%, transparent 25%), linear-gradient(-45deg, #6e318b 25%, transparent 25%), linear-gradient(135deg, #6e318b 25%, transparent 25%), linear-gradient(-135deg, #6e318b 25%, transparent 25%);
+  background-position: 10px 0, 10px 0, 0 0, 0 0;
+  background-size: 20px 20px;
 }
