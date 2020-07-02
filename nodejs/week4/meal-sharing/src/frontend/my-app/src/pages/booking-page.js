@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Rating } from "react-rating";
-
-import Cupcake from "./img/cupcake.png";
+import Rater from "react-rater";
+import "react-rater/lib/react-rater.css";
+import Cupcake from "./cupcake.png";
 import "./booking-page.css";
 
 const CakeWithReviews = ({
@@ -26,9 +26,16 @@ const CakeWithReviews = ({
         <p>
           <b>Price:</b> {price} dkk
         </p>
+        <div className="cake-line">
+            <div className="line-left"></div>
+            <img src={Cupcake} alt="cupcake image" className="cupcake-img"/>
+            <div className="line-right"></div>
+        </div>
         <h2>Review</h2>
+        <p>
+          <Rater rating={stars} total={5} interactive={false} />
+        </p>
         <p>{review_description}</p>
-        <p>{stars}</p>
       </section>
     </div>
     <section className="form-container">

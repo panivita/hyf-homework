@@ -1,13 +1,14 @@
-.container, .booking-container, .fields {
+.container, .booking-container, .fields, .cake-line {
     display: flex;
-    
 }
+
 .container img {
     margin: 2%;
 }
+
 .container img, .cake-container {
-    width: 45%; 
-    margin-bottom: 5%; 
+    width: 45%;
+    margin-bottom: 3%;
 }
 
 .container, .fields {
@@ -17,18 +18,39 @@
     box-shadow: 0 0 5px 0 #333333;
     border-radius: 5px;
     background-color: #fffccf;
-    
 }
+
 .booking-container {
     flex-wrap: wrap;
 }
+
 .cake-container, .fields {
     flex-direction: column;
-    
 }
+
 .cake-container h2, .cake-container p {
-    margin-top: 5%;
     padding: 2%;
 }
 
- 
+.cake-container h2 {
+    margin-top: 3%;
+    font-size: 20px;
+}
+
+.react-rater-star.is-active {
+    color: #6e318b;
+}
+.line-left, .line-right{
+    border-top: 1px dashed #6e318b;
+    width: 260px;
+    margin-top: 5%;
+}
+.cake-line {
+    margin-top: 5%;
+    margin-bottom: -3%;
+    flex-direction: row;
+    justify-content: center;
+}
+.cake-line .cupcake-img {
+    width: 6%;
+}
