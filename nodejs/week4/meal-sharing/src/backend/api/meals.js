@@ -37,6 +37,7 @@ router.get("/:id", async (req, res) => {
   const mealWithReviews = await knex("meal")
     .select(
       "meal.id",
+      "meal.url",
       "meal.title",
       "meal.description",
       "meal.max_reservations",

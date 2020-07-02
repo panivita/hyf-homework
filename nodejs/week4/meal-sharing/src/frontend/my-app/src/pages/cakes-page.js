@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./cakes-page.css";
 
-const Meal = ({
+const Cake = ({
+  id,
   url,
   title,
   description,
@@ -9,7 +11,7 @@ const Meal = ({
   meal_time,
   price,
 }) => (
-  <div className="cake-container">
+  <div className="cakes">
     <img src={url} className="img-cake"></img>
     <h1>{title}</h1>
     <p>{description}</p>
@@ -19,9 +21,9 @@ const Meal = ({
     <p>
       <b>Price:</b> {price} dkk
     </p>
-    <button id="get-cake" className="booking">
+    <Link to={"/cake/" + id} className="booking">
       Book now
-    </button>
+    </Link>
   </div>
 );
 
@@ -36,8 +38,8 @@ export const CakesPage = () => {
     })();
   }, []);
   return (
-    <div className="cakes">
-      {meals && meals.map((m) => <Meal key={m.id} {...m} />)}
+    <div className="cakes-container">
+      {meals && meals.map((m) => <Cake key={m.id} {...m} />)}
     </div>
   );
 };
