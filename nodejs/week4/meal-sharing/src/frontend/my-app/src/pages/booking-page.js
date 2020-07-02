@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Rater from "react-rater";
 import "react-rater/lib/react-rater.css";
 import Cupcake from "./cupcake.png";
+import Cakes from "./cakes.png";
 import "./booking-page.css";
 
 const CakeWithReviews = ({
@@ -26,10 +27,10 @@ const CakeWithReviews = ({
         <p>
           <b>Price:</b> {price} dkk
         </p>
-        <div className="cake-line">
-            <div className="line-left"></div>
-            <img src={Cupcake} alt="cupcake image" className="cupcake-img"/>
-            <div className="line-right"></div>
+        <div className="cupcake-line">
+          <div className="line-left"></div>
+          <img src={Cupcake} alt="cupcake image" className="cupcake-img" />
+          <div className="line-right"></div>
         </div>
         <h2>Review</h2>
         <p>
@@ -38,12 +39,35 @@ const CakeWithReviews = ({
         <p>{review_description}</p>
       </section>
     </div>
+    <div className="cakes-line">
+      <div className="line-left"></div>
+      <img src={Cakes} alt="thre cakes" className="cakes-img" />
+      <div className="line-right"></div>
+    </div>
     <section className="form-container">
+      <div className="description">
+        <p>
+          Please contact me if you would like to order or discuss a celebration
+          cake design. Let me help you make your own happy memories by me
+          creating the perfect cake for you. Every cake I create with a little
+          bit of love given by me.
+        </p>
+      </div>
       <form class="fields">
-        <input type="text" id="firstName" placeholder="First Name"></input>
-        <input type="text" id="lastName" placeholder="Last Name"></input>
-        <input type="text" id="email" placeholder="Email"></input>
-        <input type="text" id="phone" placeholder="Phone"></input>
+        <input
+          type="text"
+          id="firstName"
+          placeholder="First Name"
+          required
+        ></input>
+        <input
+          type="text"
+          id="lastName"
+          placeholder="Last Name"
+          required
+        ></input>
+        <input type="text" id="email" placeholder="Email" required></input>
+        <input type="text" id="phone" placeholder="Phone" required></input>
         <input
           type="number"
           id="number-guests"
