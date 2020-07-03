@@ -1,0 +1,36 @@
+h1 {
+    text-transform: uppercase;
+    font-size: 26px;
+    margin: 2% 0 2% 2%;
+}
+
+.about-container {
+    margin: 10% 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cupcake-with-line .cupcake-img {
+    width: 6%;
+    padding-left: 2%;
+    padding-right: 1%;
+}
+
+.cupcake-with-line {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+
+.line-1, .line-2 {
+    border-top: 1px dashed #6e318b;
+    width: 260px;
+    margin-top: 2%;
+}
+
+.description-about p {
+    padding: 1% 2%;
+    font-size: 20px;
+    line-height: 2;
+    text-align: start;
+}

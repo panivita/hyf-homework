@@ -8,6 +8,7 @@ import Logo from "./img/homemade-logo.png";
 
 import "./reset.css";
 import "./App.css";
+import { AboutPage } from "./pages/about-page";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
             </div>
             <div className="center-menu">
               <a href="/">
-                <img src={Logo} alt="homemade with love"/>
+                <img src={Logo} alt="homemade with love" />
               </a>
             </div>
             <div className="right-menu">
@@ -53,7 +54,7 @@ function App() {
             <CakesPage />
           </Route>
           <Route path="/about">
-            <h1>About my self</h1>
+            <AboutPage />
           </Route>
           <Route path="/cake/:id">
             <BookingPage />
