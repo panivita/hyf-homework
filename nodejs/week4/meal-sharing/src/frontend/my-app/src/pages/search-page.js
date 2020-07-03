@@ -1,20 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./search-page.css";
 
-const Auto = () => {
+export const Auto = () => {
+  const history = useHistory();
+  const [search, setSearch] = useState("");
   const [display, setDisplay] = useState(false);
   const [options, setOptions] = useState([]);
-  const [search, setSearch] = useState("");
   const wrapperRef = useRef(null);
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:3000/api/meals");
+      const response = await fetch(
+        "http://localhost:3000/api/meals?title=" + search
+      );
       const result = await response.json();
-      setMeals(result);
+      setOptions(result);
     })();
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickerOutside);
@@ -29,9 +32,8 @@ const Auto = () => {
       setDisplay(false);
     }
   };
-  const setCake = (cake) => {
-    setSearch(cake);
-    setDisplay(false);
+  const gotoCake = (id) => {
+    history.push("/cake/" + id);
   };
   return (
     <div ref={wrapperRef} className="search-container">
@@ -44,18 +46,16 @@ const Auto = () => {
       />
       {display && (
         <div className="auto-container">
-          {options.map((v, i) => {
-            return (
-              <div
-                onClick={() => setCake(v.title)}
-                className="options"
-                key={i}
-                tabIndex="0"
-              >
-                <span>{v.title}</span>
-              </div>
-            );
-          })}
+          {options.map(({ id, title }) => (
+            <div
+              onClick={() => gotoCake(id)}
+              className="options"
+              key={id}
+              tabIndex="0"
+            >
+              <span>{title}</span>
+            </div>
+          ))}
         </div>
       )}
     </div>

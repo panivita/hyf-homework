@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { CakesPage } from "./pages/cakes-page";
 import { BookingPage } from "./pages/booking-page";
-
+import { Auto } from "./pages/search-page";
 import Background from "./img/background.jpg";
 import Logo from "./img/homemade-logo.png";
 
@@ -44,10 +44,7 @@ function App() {
           <Route exact path="/">
             <img src={Background} alt="capcake pattern" />
             <div className="center-input">
-              <input
-                className="search-input"
-                placeholder="Find your favorite cake"
-              ></input>
+              <Auto />
             </div>
           </Route>
           <Route path="/cakes">
@@ -57,7 +54,7 @@ function App() {
             <AboutPage />
           </Route>
           <Route path="/cake/:id">
-            <BookingPage /> 
+            <BookingPage />
           </Route>
           <Route path="/Recipes">
             <h1>My favorite recipes</h1>
