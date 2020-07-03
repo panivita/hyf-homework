@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { CakesPage } from "./pages/cakes-page";
 import { BookingPage } from "./pages/booking-page";
 import { Auto } from "./pages/search-page";
+import { RecipesPage } from "./pages/recipes-page";
 import Background from "./img/background.jpg";
 import Logo from "./img/homemade-logo.png";
 
@@ -43,9 +44,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <img src={Background} alt="capcake pattern" />
-            <div className="center-input">
-              <Auto />
-            </div>
+            <Auto />
           </Route>
           <Route path="/cakes">
             <CakesPage />
@@ -57,7 +56,7 @@ function App() {
             <BookingPage />
           </Route>
           <Route path="/Recipes">
-            <h1>My favorite recipes</h1>
+            <RecipesPage />
           </Route>
         </Switch>
 

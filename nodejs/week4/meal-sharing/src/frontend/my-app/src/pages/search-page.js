@@ -32,14 +32,18 @@ export const Auto = () => {
       setDisplay(false);
     }
   };
-  const gotoCake = (id) => {
+  const goToCake = (id) => {
     history.push("/cake/" + id);
   };
   return (
     <div ref={wrapperRef} className="search-container">
       <input
         className="search-input"
-        onClick={() => setDisplay(!display)}
+        onClick={() => {
+          if (search) {
+            setDisplay(!display);
+          }
+        }}
         placeholder="Find your favorite cake"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
@@ -48,7 +52,7 @@ export const Auto = () => {
         <div className="auto-container">
           {options.map(({ id, title }) => (
             <div
-              onClick={() => gotoCake(id)}
+              onClick={() => goToCake(id)}
               className="options"
               key={id}
               tabIndex="0"

@@ -22,7 +22,7 @@ const CakeWithReviews = ({
         <h2>{title}</h2>
         <p>{description}</p>
         <p>
-          <b>Guests:</b> {max_reservations}
+          <b>Servings:</b> {max_reservations}
         </p>
         <p>
           <b>Price:</b> {price} dkk
