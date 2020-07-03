@@ -34,7 +34,7 @@ function App() {
                 <Link to="/cakes">Cakes</Link>
               </p>
               <p>
-                <a href="#recipes">Recipes</a>
+                <Link to="/Recipes">Recipes</Link>
               </p>
             </div>
           </nav>
@@ -57,7 +57,10 @@ function App() {
             <AboutPage />
           </Route>
           <Route path="/cake/:id">
-            <BookingPage />
+            <BookingPage /> 
+          </Route>
+          <Route path="/Recipes">
+            <h1>My favorite recipes</h1>
           </Route>
         </Switch>
 
