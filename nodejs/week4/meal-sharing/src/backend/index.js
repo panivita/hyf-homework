@@ -25,7 +25,7 @@ router.use("/reviews", reviewsRouter);
 app.use("/api", router);
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./../frontend/index.html"));
+  res.send('karrrramba');
 });
 
 app.listen(port, () => console.log(`Server listening on port ${port}!`));
