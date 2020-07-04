@@ -1,0 +1,7 @@
+{
+  "name": "heroku-root",
+  "version": "0.1.0",
+  "scripts": {
+    "postinstall": "npm install --prefix nodejs/week4/meal-sharing/src/backend && npm install --prefix nodejs/week4/meal-sharing/src/frontend"
+  }
+}
