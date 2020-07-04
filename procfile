@@ -1,1 +1,0 @@
-web: npm start --prefix nodejs/week4/meal-sharing/src/backend

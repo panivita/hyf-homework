@@ -3,6 +3,6 @@
   "version": "0.1.0",
   "scripts": {
     "start": "cd nodejs/week4/meal-sharing/src/backend && npm start",
-    "postinstall": "npm install --prefix nodejs/week4/meal-sharing/src/backend && npm install --prefix nodejs/week4/meal-sharing/src/frontend"
+    "postinstall": "npm install --prefix nodejs/week4/meal-sharing/src/backend && cd nodejs/week4/meal-sharing/src/frontend && npm i && npm run build"
   }
 }
