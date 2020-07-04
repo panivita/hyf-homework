@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const app = express();
 const router = express.Router();
 const path = require("path");
@@ -9,7 +8,6 @@ const mealsRouter = require("./api/meals");
 const reservationsRouter = require("./api/reservations");
 const reviewsRouter = require("./api/reviews");
 
-app.use(cors());
 // For week4 no need to look into this!
 // Serve the built client html
 const buildPath = path.join(__dirname, "./../frontend");
