@@ -12,7 +12,7 @@ export const Auto = () => {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        "http://localhost:3000/api/meals?title=" + search
+        "/api/meals?title=" + search
       );
       const result = await response.json();
       setOptions(result);

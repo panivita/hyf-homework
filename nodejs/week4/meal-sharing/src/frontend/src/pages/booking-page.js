@@ -87,7 +87,7 @@ export const BookingPage = () => {
   const [meals, setMeals] = useState();
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:3000/api/meals/" + id);
+      const response = await fetch("/api/meals/" + id);
       const result = await response.json();
       setMeals(result);
     })();

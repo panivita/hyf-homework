@@ -32,7 +32,7 @@ export const CakesPage = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:3000/api/meals");
+      const response = await fetch("/api/meals");
       const result = await response.json();
       setMeals(result);
     })();
