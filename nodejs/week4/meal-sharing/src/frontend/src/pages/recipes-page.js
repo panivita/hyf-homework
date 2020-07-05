@@ -11,12 +11,6 @@ export const RecipesPage = () => {
         <img src={Cupcake} alt="cupcake image" className="cupcake-img" />
         <div className="line-2"></div>
       </section>
-      <h2>Strawberry Pavlova Recipe</h2>
-      <p>
-        Strawberry Pavlova is the perfect summer dessert. This light meringue
-        cake is topped with Chantilly Cream, delicious Strawberry Sauce and
-        fresh Strawberries.
-      </p>
     </div>
   );
 };
