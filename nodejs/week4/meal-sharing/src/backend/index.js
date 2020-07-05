@@ -10,8 +10,8 @@ const reviewsRouter = require("./api/reviews");
 
 // For week4 no need to look into this!
 // Serve the built client html
-//const buildPath = path.join(__dirname, "./../frontend");
-//app.use(express.static(buildPath));
+const buildPath = path.join(__dirname, "./../frontend/build");
+app.use(express.static(buildPath));
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
@@ -24,8 +24,8 @@ router.use("/reviews", reviewsRouter);
 
 app.use("/api", router);
 
-app.get("/", (req, res) => {
-  res.send("karrrramba");
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./../frontend/build/index.html"));
 });
 
 app.listen(port, () => console.log(`Server listening on port ${port}!`));
