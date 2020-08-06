@@ -5,13 +5,17 @@ body {
   color: orange;
 }
 
-.todoList, h1 {
+.todoList, h1, p {
   text-align: center;
   width: 900px;
   background-color: gray;
-  margin: 3% auto 3% auto;
+  margin: 3% auto;
   padding: 30px;
   border-radius: 5px;
+}
+
+.add-todo {
+  margin: 1% 20%;
 
 }
 

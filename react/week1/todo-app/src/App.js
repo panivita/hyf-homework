@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const TodoList = (props) => {
-  const todoItems = props.data.map((todo) => (
+const TodoList = ({ data = [] }) => {
+  const todoItems = data.map((todo) => (
     <li key={todo.id}>{todo.description}</li>
   ));
   return <ul>{todoItems}</ul>;
 };
 
-const TodoListSection = (props) => {
+const TodoListSection = ({ list = [] }) => {
+  const [todos, setTodos] = useState(list);
+  const addTodo = () => {
+    setTodos((t) => {
+      const item = { id: 4, description: "Random text" };
+      return [...t, item];
+    });
+  };
   return (
     <section className="todoList">
-      <TodoList data={props.data} />
+      <TodoList data={todos} />
+      <button className="add-todo" onClick={addTodo}>
+        Add todo
+      </button>
     </section>
   );
 };
@@ -46,7 +56,7 @@ const App = () => {
     <>
       <h1>My ToDo list</h1>
       <Timer />
-      <TodoListSection data={todoData} />
+      <TodoListSection list={todoData} />
     </>
   );
 };
