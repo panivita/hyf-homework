@@ -21,5 +21,19 @@ body {
 
 .todoList li {
   list-style-type: none;
+  
 }
 
+.todoList li .line-through {
+  text-decoration: line-through;
+  padding: 0 2%;
+}
+
+.todoList li .no-decoration {
+  text-decoration: none;
+  padding: 0 2%;
+}
+
+.info-no-items {
+  width: 850px;
+}
