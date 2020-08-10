@@ -21,7 +21,10 @@ body {
 
 .todoList li {
   list-style-type: none;
-  
+  border: 2px solid black;
+  margin-bottom: 2%;
+  padding: 1% 0;
+  border-radius: 5px;
 }
 
 .todoList li .line-through {
@@ -36,4 +39,8 @@ body {
 
 .info-no-items {
   width: 850px;
+}
+
+button, label input {
+  margin-left: 2%;
 }
