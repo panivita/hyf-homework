@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from "react";
-import AddTodoForm from "./add-todo";
+import React, { useState} from "react";
 import moment from "moment";
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import { faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
 dom.watch();
 library.add(faTrashAlt, faEdit);
 
-const TodoList = ({ data = [], onCheck, onDelete, onEdit }) => {
+const TodoItem = ({ todo, onCheck, onDelete, onEdit }) => {
   const [edit, setEdit] = useState(false);
-  const [description, setDescription] = useState(data.description);
+  const [description, setDescription] = useState(todo.description);
 
   const editItem = (id) => {
     if (edit) onEdit(id, description);
     setEdit(!edit);
   };
-  const todoItems = data.map((todo) => (
-    <li key={todo.id}>
+  return <li key={todo.id}>
       <input
         type="checkbox"
         name={todo.description}
@@ -44,7 +42,6 @@ const TodoList = ({ data = [], onCheck, onDelete, onEdit }) => {
         <i class="fas fa-edit"></i>Edit
       </button>
     </li>
-  ));
-  return <ul>{todoItems}</ul>;
+  
 };
-export default AddTodoForm;
+export default TodoItem;
