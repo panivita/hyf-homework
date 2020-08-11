@@ -32,11 +32,18 @@ export const TodoListSection = ({ list = [] }) => {
       .then((data) => setTodos(data))
       .catch((err) => console.log(err));
   }, []);
-  const itemId = todos[todos.length - 1]?.id + 1 || 1;
 
-  const addTodo = (randomItem) => {
-    const newItem = [...todos, randomItem];
-    setTodos(newItem);
+  const addTodo = (val) => {
+    debugger
+    setTodos((t) => {
+      const item = {
+        id: t[t.length - 1]?.id + 1 || 1,
+        description: t.description,
+        deadline: t.deadline,
+        done: false,
+      };
+      return [...t, item];
+    });
   };
 
   const handleCheck = (id) => {
@@ -58,18 +65,17 @@ export const TodoListSection = ({ list = [] }) => {
   };
   const editItems = (id, value) => {
     setTodos((stateEdit) => {
-      const editedItem = stateEdit.map((t) => {
+      return stateEdit.map((t) => {
         if (t.id === id) {
           return { ...t, description: value };
         }
         return t;
       });
-      return editedItem;
     });
   };
   return (
     <section className="todoList">
-      {UseAddTodoForm(addTodo, itemId)}
+      <UseAddTodoForm onSubmit={addTodo} />
       {todos.length ? (
         <TodoList
           data={todos}
