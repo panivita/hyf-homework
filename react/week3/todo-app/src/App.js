@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
+import { Header } from "./components/header";
 import { Timer } from "./components/timer";
 import { TodoListSection } from "./components/todo-section";
 
 const App = () => {
-  
   return (
     <>
-      <h1>My ToDo list</h1>
+      <Header />
       <Timer />
       <TodoListSection />
     </>

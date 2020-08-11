@@ -16,7 +16,6 @@ body {
 
 .add-todo {
   margin: 1% 20%;
-
 }
 
 .todoList li {
@@ -43,4 +42,8 @@ body {
 
 button, label input {
   margin-left: 2%;
+}
+
+.svg-inline--fa {
+  margin-right: 10px;
 }

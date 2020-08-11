@@ -1,12 +1,11 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
-import { formatDate, parseDate } from "react-day-picker/moment";
+import { formatDate } from "react-day-picker/moment";
 
-const UseAddTodoForm = ({ onSubmit }) => {
-  const { register, handleSubmit, errors } = useForm();
-  console.log("ERR", errors);
+const AddTodoForm = ({ onSubmit }) => {
+  const { register, handleSubmit, errors, control } = useForm();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -24,26 +23,29 @@ const UseAddTodoForm = ({ onSubmit }) => {
           })}
         />
       </label>
-      <br></br>
+      <br />
       <label>
         <span>Deadline</span>
-        <DayPickerInput
+
+        <Controller
+          defaultValue=""
+          control={control}
           name="deadline"
-          formatDate={formatDate}
-          parseDate={parseDate}
-          placeholder={`${formatDate(new Date())}`}
-          ref={register({
-            required: {
-              value: true,
-              message: "Todo deadline is required",
-            },
-          })}
+          render={({ onChange, onBlur, value }) => (
+            <DayPickerInput
+              onDayChange={onChange}
+              onBlur={onBlur}
+              selected={value}
+              formatDate={formatDate}
+              placeholder="DD/MM/YYYY"
+            />
+          )}
         />
       </label>
-      <br></br>
+      <br />
       <button>Add todo</button>
     </form>
   );
 };
 
-export default UseAddTodoForm;
+export default AddTodoForm;
