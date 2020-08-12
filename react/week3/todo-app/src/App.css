@@ -6,8 +6,11 @@ body {
   background-color: #cccccc;
 }
 
-.todoList, h1, p {
+h1, p {
   text-align: center;
+}
+
+.todoList, h1, p {
   width: 900px;
   background-color: #333333;
   margin: 3% auto;
@@ -53,4 +56,31 @@ label input {
 
 .svg-inline--fa {
   margin-right: 10px;
+}
+
+button {
+  background-color: orange;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 10%;
+}
+
+.todoForm {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3%;
+}
+
+.todoForm button, .todoForm input, .DayPickerInput input {
+  padding: 1%;
+  border-radius: 5px;
+}
+
+.DayPickerInput input {
+  padding: 8.718px;
+  margin-left: 44%
+}
+
+.line-through, .no-decoration {
+  width: 40%;
 }

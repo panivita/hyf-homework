@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import moment from "moment";
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
-import { faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt, faEdit, faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 dom.watch();
-library.add(faTrashAlt, faEdit);
+library.add(faTrashAlt, faEdit, faCheckSquare);
 
 const ItemStyle = (props) => <li className="item">{props.children}</li>;
 
@@ -24,7 +24,7 @@ const TodoItem = ({ todo, onCheck, onDelete, onEdit }) => {
         {edit ? (
           <input
             type="text"
-            required
+            required="required"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -45,7 +45,7 @@ const TodoItem = ({ todo, onCheck, onDelete, onEdit }) => {
             setEdit(false);
           }}
         >
-          <i className="fas fa-edit"></i>Update
+          <i className="fas fa-check-square"></i>Update
         </button>
       ) : (
         <button onClick={() => setEdit(true)}>
