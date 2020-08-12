@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import moment from "moment";
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
-import { faTrashAlt, faEdit, faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrashAlt,
+  faEdit,
+  faCheckSquare,
+} from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 dom.watch();
 library.add(faTrashAlt, faEdit, faCheckSquare);
@@ -25,6 +29,7 @@ const TodoItem = ({ todo, onCheck, onDelete, onEdit }) => {
           <input
             type="text"
             required="required"
+            minLength="3"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
