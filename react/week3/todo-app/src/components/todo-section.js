@@ -1,19 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AddTodoForm from "./add-todo";
-import TodoItem from "./todo-item";
-
-const TodoList = ({ data = [], onCheck, onDelete, onEdit }) => {
-  const todoItems = data.map((item) => (
-    <TodoItem
-      key={item.id}
-      todo={item}
-      onCheck={onCheck}
-      onDelete={onDelete}
-      onEdit={onEdit}
-    />
-  ));
-  return <ul>{todoItems}</ul>;
-};
+import TodoList from "./todo-list";
 
 export const TodoListSection = ({ list = [] }) => {
   const [todos, setTodos] = useState(list);
@@ -28,7 +15,6 @@ export const TodoListSection = ({ list = [] }) => {
   }, []);
 
   const addTodo = (val) => {
-    debugger;
     setTodos((t) => {
       const item = {
         id: t[t.length - 1]?.id + 1 || 1,

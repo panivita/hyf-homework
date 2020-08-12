@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <header className="App-header">
       <h1>
-        <i class="fas fa-clipboard-list"></i>Todo List
+        <i className="fas fa-clipboard-list"></i>Todo List
       </h1>
     </header>
   );

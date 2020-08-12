@@ -5,7 +5,7 @@ import "react-day-picker/lib/style.css";
 import { formatDate } from "react-day-picker/moment";
 
 const AddTodoForm = ({ onSubmit }) => {
-  const { register, handleSubmit, errors, control } = useForm();
+  const { register, handleSubmit, control } = useForm();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
