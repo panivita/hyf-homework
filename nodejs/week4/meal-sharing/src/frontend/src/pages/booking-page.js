@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Rater from "react-rater";
 import "react-rater/lib/react-rater.css";
 import AddReservationForm from "./form-booking-page";
@@ -62,6 +62,7 @@ const CakeWithReviews = ({
 
 export const BookingPage = () => {
   const { id } = useParams();
+  const history = useHistory();
 
   const [meals, setMeals] = useState();
   useEffect(() => {
@@ -93,11 +94,9 @@ export const BookingPage = () => {
         meal_id: id,
       }),
     })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
+      .then(() => {
+        history.push("/thank");
       });
-    debugger;
   };
   return (
     <div className="booking-container">

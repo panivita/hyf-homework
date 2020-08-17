@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { CakesPage } from "./pages/cakes-page";
 import { BookingPage } from "./pages/booking-page";
+import { Thanks } from "./pages/thank-page";
 import { Auto } from "./pages/search-page";
 import { RecipesPage } from "./pages/recipes-page";
 import Background from "./img/background.jpg";
@@ -35,7 +36,7 @@ function App() {
                 <Link to="/cakes">Cakes</Link>
               </p>
               <p>
-                <Link to="/Recipes">Recipes</Link>
+                <Link to="/Recipes">Blog</Link>
               </p>
             </div>
           </nav>
@@ -54,6 +55,9 @@ function App() {
           </Route>
           <Route path="/cake/:id">
             <BookingPage />
+          </Route>
+          <Route path="/thank">
+            <Thanks />
           </Route>
           <Route path="/Recipes">
             <RecipesPage />
