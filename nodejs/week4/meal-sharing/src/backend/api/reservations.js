@@ -11,9 +11,22 @@ router.get("/", async (req, res) => {
 
 //Adds a new reservation
 router.post("/", async (req, res) => {
-  const { id, number_of_guests, meal_id, created_date } = req.body;
+  const {
+    id,
+    first_name,
+    last_name,
+    email,
+    phone,
+    number_of_guests,
+    meal_id,
+    created_date,
+  } = req.body;
   const newReservation = {
     id,
+    first_name,
+    last_name,
+    email,
+    phone,
     number_of_guests,
     meal_id,
     created_date,

@@ -71,7 +71,32 @@ export const BookingPage = () => {
       setMeals(result);
     })();
   }, [id]);
-  const onSubmit = (val) => {
+  const onSubmit = ({
+    first_name,
+    last_name,
+    email,
+    phone,
+    number_of_guests,
+  }) => {
+    fetch("/api/reservations/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        phone: phone,
+        number_of_guests: number_of_guests,
+        meal_id: id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      });
     debugger;
   };
   return (
