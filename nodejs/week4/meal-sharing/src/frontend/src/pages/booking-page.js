@@ -15,6 +15,7 @@ const CakeWithReviews = ({
   price,
   review_description,
   stars,
+  onSubmit,
 }) => (
   <>
     <div className="container">
@@ -54,7 +55,7 @@ const CakeWithReviews = ({
           bit of love given by me.
         </p>
       </div>
-      <AddReservationForm />
+      <AddReservationForm onSubmit={onSubmit} />
     </section>
   </>
 );
@@ -70,9 +71,15 @@ export const BookingPage = () => {
       setMeals(result);
     })();
   }, [id]);
+  const onSubmit = (val) => {
+    debugger;
+  };
   return (
     <div className="booking-container">
-      {meals && meals.map((m) => <CakeWithReviews key={m.id} {...m} />)}
+      {meals &&
+        meals.map((m) => (
+          <CakeWithReviews key={m.id} {...m} onSubmit={onSubmit} />
+        ))}
     </div>
   );
 };

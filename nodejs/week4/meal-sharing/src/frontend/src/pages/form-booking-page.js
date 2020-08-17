@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import isEmail from "validator/lib/isEmail";
 import "./booking-page.css";
 
 const AddReservationForm = ({ onSubmit }) => {
@@ -11,19 +12,19 @@ const AddReservationForm = ({ onSubmit }) => {
         type="text"
         id="firstName"
         placeholder="First Name"
-        ref={register({ required: true, maxLength: 10 })}
+        ref={register({ minLength: 2, maxLength: 10, pattern: /^[A-Za-z]+$/i })}
       ></input>
       <input
         type="text"
         id="lastName"
         placeholder="Last Name"
-        ref={register({ required: true, maxLength: 10 })}
+        ref={register({ minLength: 2, maxLength: 20, pattern: /^[A-Za-z]+$/i })}
       ></input>
       <input
         type="text"
         id="email"
         placeholder="Email"
-        ref={register({ required: true })}
+        ref={register({ required: true, validate: (input) => isEmail(input) })}
       ></input>
       <input
         type="text"
