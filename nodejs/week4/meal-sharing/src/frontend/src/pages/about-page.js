@@ -10,12 +10,12 @@ export const AboutPage = () => {
       <h1>About me</h1>
       <section className="cupcake-with-line">
         <div className="line-1"></div>
-        <img src={Cupcake} alt="cupcake image" className="cupcake-img" />
+        <img src={Cupcake} alt="cupcake" className="cupcake-img" />
         <div className="line-2"></div>
       </section>
       <section className="main-info">
         <div className="logo">
-          <img src={Logo} alt="birthday cake image" className="logo-img" />
+          <img src={Logo} alt="birthday cake" className="logo-img" />
         </div>
         <div className="description-about">
           <p>
@@ -52,7 +52,7 @@ export const AboutPage = () => {
         <div className="profil-foto">
           <img
             src="https://secure.gravatar.com/avatar/3da283f44646867ed9c7e7e022340300?size=150"
-            alt="foto Victoria Kush"
+            alt="Victoria Kush"
           />
         </div>
       </section>

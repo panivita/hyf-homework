@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Rater from "react-rater";
 import "react-rater/lib/react-rater.css";
+import AddReservationForm from "./form-booking-page";
 import Cupcake from "./cupcake.png";
 import Cakes from "./cakes.png";
 import "./booking-page.css";
@@ -17,7 +18,7 @@ const CakeWithReviews = ({
 }) => (
   <>
     <div className="container">
-      <img src={url} className="img-cake"></img>
+      <img src={url} className="img-cake" alt="cupcake"></img>
       <section className="cake-container">
         <h2>{title}</h2>
         <p>{description}</p>
@@ -29,7 +30,7 @@ const CakeWithReviews = ({
         </p>
         <div className="cupcake-line">
           <div className="line-left"></div>
-          <img src={Cupcake} alt="cupcake image" className="cupcake-img" />
+          <img src={Cupcake} alt="cupcake" className="cupcake-img" />
           <div className="line-right"></div>
         </div>
         <h2>Review</h2>
@@ -53,30 +54,7 @@ const CakeWithReviews = ({
           bit of love given by me.
         </p>
       </div>
-      <form class="fields">
-        <input
-          type="text"
-          id="firstName"
-          placeholder="First Name"
-          required
-        ></input>
-        <input
-          type="text"
-          id="lastName"
-          placeholder="Last Name"
-          required
-        ></input>
-        <input type="text" id="email" placeholder="Email" required></input>
-        <input type="text" id="phone" placeholder="Phone" required></input>
-        <input
-          type="number"
-          id="number-guests"
-          placeholder="Number of guests"
-        ></input>
-        <button id="submit" className="submit">
-          Submit
-        </button>
-      </form>
+      <AddReservationForm />
     </section>
   </>
 );
