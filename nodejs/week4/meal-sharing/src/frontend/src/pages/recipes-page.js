@@ -8,7 +8,7 @@ export const RecipesPage = () => {
       <h1 className="recipes-h1">Blog and Recipes</h1>
       <section className="cupcake-with-line">
         <div className="line-1"></div>
-        <img src={Cupcake} alt="cupcake image" className="cupcake-img" />
+        <img src={Cupcake} alt="cupcake" className="cupcake-img" />
         <div className="line-2"></div>
       </section>
       <h2 className="recipes-h2">History of the Famous Kyiv Cake</h2>
