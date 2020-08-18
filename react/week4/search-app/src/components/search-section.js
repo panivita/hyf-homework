@@ -7,16 +7,30 @@ export const Search = () => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    fetch(`https://api.github.com/search/users?q=${search}`)
-      .then((res) => res.json())
-      .then((data) => setOptions(data))
-      .catch((err) => console.log(err));
+    (async () => {
+      if (!search || search.length < 2) {
+        setOptions([]);
+        setDisplay(false);
+        return;
+      }
+      const response = await fetch(
+        "https://api.github.com/search/users?q=" + search
+      );
+      const { items } = await response.json();
+      if (items.length > 0) {
+        setOptions(items);
+        setDisplay(true);
+      } else {
+        setOptions([]);
+        setDisplay(false);
+      }
+    })();
   }, [search]);
 
   useEffect(() => {
-    document.addEventListener("keyup", handleClickerOutside);
+    document.addEventListener("click", handleClickerOutside);
     return () => {
-      document.removeEventListener("keyup", handleClickerOutside);
+      document.removeEventListener("click", handleClickerOutside);
     };
   }, []);
 
@@ -27,33 +41,18 @@ export const Search = () => {
     }
   };
 
-  const setSearchUser = (user) => {
-    setSearch(user);
-    setDisplay(false);
-  };
-
   return (
     <div ref={wrapperRef} className="search-container">
       <input
         className="search-input"
-        onClick={() => {
-          if (search) {
-            setDisplay(!display);
-          }
-        }}
         placeholder="Search for user"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
       {display && (
         <ul className="result-container">
-          {options.items.map(({ id, login }) => (
-            <li
-              className="options"
-              key={id}
-              tabIndex="0"
-              onClick={() => setSearchUser({ login })}
-            >
+          {options.map(({ id, login }) => (
+            <li className="options" key={id} tabIndex="0">
               {login}
             </li>
           ))}

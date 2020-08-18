@@ -47,3 +47,12 @@ body {
   font-size: 18px;
   list-style: none;
 }
+
+.fa-github {
+  padding-right: 10px;
+}
+
+.fa-search {
+  padding-left: 15px;
+}
+
