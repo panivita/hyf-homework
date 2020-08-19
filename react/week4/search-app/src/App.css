@@ -27,19 +27,21 @@ body {
 }
 
 .result-container {
-  width: 31%;
+  width: 17.5%;
   margin-left: auto;
   margin-right: auto;
   border: 2px solid orange;
-  margin-block-start: 0;
+  margin-block-start: -80px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   box-shadow: 0 0 5px 0 #333333;
   padding-inline-start: 0px;
-  background-color: #333333;
+  background-color: white;
+  text-align: center;
+  
 }
 
-.options {
+.users {
   border-bottom: 2px solid orange;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;

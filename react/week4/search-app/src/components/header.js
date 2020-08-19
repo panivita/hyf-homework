@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <header className="app-header">
       <h1>
-      <i className="fab fa-github"></i>Github users searcher<i className="fas fa-search"></i>
+      <i className="fab fa-github"></i>Github user searcher<i className="fas fa-search"></i>
       </h1>
     </header>
   );
