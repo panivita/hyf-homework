@@ -14,7 +14,9 @@ body {
   padding: 30px;
   border-radius: 5px;
 }
-
+.search-container {
+min-height: 350px;
+}
 .search-container input {
   width: 30%;
   height: 30px;
@@ -26,12 +28,12 @@ body {
   text-align: center;
 }
 
-.result-container {
+.result-container, .loading, .no-results {
   width: 17.5%;
   margin-left: auto;
   margin-right: auto;
   border: 2px solid orange;
-  margin-block-start: -80px;
+  margin-block-start: -384px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   box-shadow: 0 0 5px 0 #333333;
@@ -41,7 +43,7 @@ body {
   
 }
 
-.users {
+.users, .no-results {
   border-bottom: 2px solid orange;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -58,3 +60,6 @@ body {
   padding-left: 15px;
 }
 
+.no-results {
+padding: 1% 0;
+}

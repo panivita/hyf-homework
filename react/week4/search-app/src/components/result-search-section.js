@@ -2,7 +2,9 @@ import React, { useContext, useEffect, useRef } from "react";
 import { SearchUserContext } from "../SearchUserContext";
 
 export const ResultSearch = () => {
-  const [display, setDisplay, users] = useContext(SearchUserContext);
+  const { users, search, err, display, setDisplay } = useContext(
+    SearchUserContext
+  );
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -15,13 +17,15 @@ export const ResultSearch = () => {
   const handleClickerOutside = (event) => {
     const { current: wrap } = wrapperRef;
     if (wrap && !wrap.contains(event.target)) {
-      setDisplay();
+      setDisplay(false);
     }
   };
+  if (!search) return <li className="no-results">No results</li>;
 
   return (
     <div ref={wrapperRef} className="user-container">
-      {display && (
+      {err && <p>{err}</p>}
+      {display && !err ? (
         <ul className="result-container">
           {users && users.length > 0 ? (
             users.map(({ id, login }) => (
@@ -33,6 +37,8 @@ export const ResultSearch = () => {
             <li className="users">No results found</li>
           )}
         </ul>
+      ) : (
+        <p className="loading">Loading...</p>
       )}
     </div>
   );
