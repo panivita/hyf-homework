@@ -1,3 +1,10 @@
+.background {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
 .header-container {
   position: relative;
   display: flex;
@@ -82,15 +89,26 @@ footer {
     width: 15%;
   }
   .search-input {
-    top: 25%;
+    width: 40%;
+  }
+  .auto-container {
+    width: 40%;
+    top: 54%;
   }
 }
 
 @media screen and (max-width: 850px) {
+  .center-menu img {
+    left: 40%;
+    width: 20%;
+  }
   .left-menu li, .right-menu li {
     font-size: 16px;
   }
   .center-menu img {
     top: 60%;
+  }
+  .background {
+    background-position: center center;
   }
 }

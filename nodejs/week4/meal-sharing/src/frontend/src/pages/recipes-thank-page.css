@@ -17,7 +17,7 @@
 
 .line-left, .line-right {
     border-top: 1px dashed #6e318b;
-    width: 450px;
+    width: 25%;
     margin-top: 4%;
 }
 
@@ -33,4 +33,11 @@ footer .copyright {
 }
 .description-blog {
     margin: 2% 0;
+}
+
+@media screen and (max-width: 950px) {
+    .recipes-h1 {
+        font-size: 20px;
+        margin-top: 17%;
+    }
 }

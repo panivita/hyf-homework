@@ -44,8 +44,12 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-            <img src={Background} alt="capcake pattern" />
-            <Auto />
+            <div
+              className="background"
+              style={{ backgroundImage: `url(${Background})` }}
+            >
+              <Auto />
+            </div>
           </Route>
           <Route path="/cakes">
             <CakesPage />
