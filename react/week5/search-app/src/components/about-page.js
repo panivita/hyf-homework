@@ -5,7 +5,7 @@ import React from "react";
 export const AboutPage = () => {
   return (
     <div className="about-container">
-      <h1>About me</h1>
+      <h1>About the project</h1>
       <section className="main-info">
         <div className="description-about">
           <p>

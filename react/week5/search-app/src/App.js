@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AboutPage } from "./components/about-page";
+import { UserDetailsPage } from "./components/user-details-page";
 import { Header } from "./components/header";
 import { Search } from "./components/search-section";
 import { ResultSearch } from "./components/result-search-section";
@@ -10,7 +11,7 @@ import { SearchUserProvider } from "./Search-user-context";
 const App = () => {
   return (
     <Router>
-      <nav>
+      <nav className="navbar-container">
         <ul>
           <li>
             <a href="/">Home</a>
@@ -29,6 +30,9 @@ const App = () => {
         <Route path="/about">
           <AboutPage />
         </Route>
+        <Route path="/user/:id">
+            <UserDetailsPage />
+          </Route>
       </Switch>
     </Router>
   );

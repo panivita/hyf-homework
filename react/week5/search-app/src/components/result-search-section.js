@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { SearchUserContext } from "../Search-user-context";
+import { useHistory } from "react-router-dom";
 
 export const ResultSearch = () => {
   const { users, search, err, display, setDisplay } = useContext(
     SearchUserContext
   );
   const wrapperRef = useRef(null);
+  const history = useHistory();
 
   useEffect(() => {
     document.addEventListener("click", handleClickerOutside);
@@ -22,6 +24,10 @@ export const ResultSearch = () => {
   };
   if (!search) return <li className="no-results">No results</li>;
 
+  const goToUserDetailsPage = (login) => {
+    history.push("/user/" + login);
+  };
+
   return (
     <div ref={wrapperRef} className="user-container">
       {err && <p>{err}</p>}
@@ -29,7 +35,12 @@ export const ResultSearch = () => {
         <ul className="result-container">
           {users && users.length > 0 ? (
             users.map(({ id, login }) => (
-              <li className="users" key={id} tabIndex="0">
+              <li
+                className="users"
+                key={id}
+                tabIndex="0"
+                onClick={() => goToUserDetailsPage(login)}
+              >
                 {login}
               </li>
             ))
