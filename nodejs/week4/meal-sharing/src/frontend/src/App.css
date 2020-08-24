@@ -28,7 +28,6 @@
   text-transform: uppercase;
   font-weight: bold;
   color: #fcd382;
- 
 }
 
 .right-menu {
@@ -75,4 +74,23 @@ footer {
 
 .App {
   text-align: center;
+}
+
+@media screen and (max-width: 1100px) {
+  .center-menu img {
+    left: 43%;
+    width: 15%;
+  }
+  .search-input {
+    top: 25%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .left-menu li, .right-menu li {
+    font-size: 16px;
+  }
+  .center-menu img {
+    top: 60%;
+  }
 }

@@ -63,12 +63,14 @@
 .form-container {
     width: 100%;
 }
+
 .description {
     margin: 3%;
     line-height: 2.1;
     font-size: 20px;
     width: 45%;
 }
+
 .field {
     flex-direction: row;
     justify-content: center;
@@ -86,9 +88,10 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.fields input[type="number"]  {
+.fields input[type="number"] {
     margin-bottom: 3%;
 }
+
 .submit {
     margin: 4% 0 0 17%;
     height: 48px;
@@ -101,7 +104,6 @@
     width: 110px;
     font-size: 16px;
     padding: 1%;
-
 }
 
 .cakes-line {
@@ -113,4 +115,36 @@
 
 .cakes-line .cakes-img {
     width: 15%;
+}
+
+@media screen and (max-width: 1100px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+    }
+    .cake-container, .container img, .form-container {
+        flex-direction: column;
+        width: 96%;
+    }
+    .description {
+        width: 95%;
+    }
+    .fields {
+        padding-left: 4%;
+    }
+    .submit {
+        margin: 3% 0 0 0;
+        height: 23%;
+        width: 45%;
+    }
+    .cakes-line .line-left, .cakes-line .line-right, .cupcake-line .line-left, .cupcake-line .line-right {
+        width: 30%;
+    }
+    .cake-container h2, .cake-container p, .description {
+        font-size: 16px;
+        line-height: 1.2;
+    }
+    .App {
+        height: 100%;
+    }
 }

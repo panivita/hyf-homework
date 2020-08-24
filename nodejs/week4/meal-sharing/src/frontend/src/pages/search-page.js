@@ -10,13 +10,18 @@ export const Auto = () => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    (async () => {
-      const response = await fetch(
-        "/api/meals?title=" + search
-      );
-      const result = await response.json();
-      setOptions(result);
-    })();
+    if (!search || search.length < 2) {
+      setOptions([]);
+      setDisplay(false);
+      return;
+    }
+    fetch("/api/meals?title=" + search)
+      .then((res) => res.json())
+      .then((cakes) => {
+        setOptions(cakes);
+        setDisplay(true);
+      })
+      .catch((err) => console.log(err));
   }, [search]);
 
   useEffect(() => {
@@ -39,11 +44,6 @@ export const Auto = () => {
     <div ref={wrapperRef} className="search-container">
       <input
         className="search-input"
-        onClick={() => {
-          if (search) {
-            setDisplay(!display);
-          }
-        }}
         placeholder="Find your favorite cake"
         value={search}
         onChange={(event) => setSearch(event.target.value)}

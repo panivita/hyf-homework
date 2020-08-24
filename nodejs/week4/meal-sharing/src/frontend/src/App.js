@@ -18,27 +18,27 @@ function App() {
       <div className="App">
         <header className="header-container">
           <nav className="main-menu">
-            <div className="left-menu">
-              <p>
+            <ul className="left-menu">
+              <li>
                 <a href="/">Home</a>
-              </p>
-              <p>
+              </li>
+              <li>
                 <Link to="/About">About</Link>
-              </p>
-            </div>
+              </li>
+            </ul>
             <div className="center-menu">
               <a href="/">
                 <img src={Logo} alt="homemade with love" />
               </a>
             </div>
-            <div className="right-menu">
-              <p>
+            <ul className="right-menu">
+              <li>
                 <Link to="/cakes">Cakes</Link>
-              </p>
-              <p>
+              </li>
+              <li>
                 <Link to="/Recipes">Blog</Link>
-              </p>
-            </div>
+              </li>
+            </ul>
           </nav>
         </header>
 

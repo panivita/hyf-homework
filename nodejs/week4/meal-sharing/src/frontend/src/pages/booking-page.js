@@ -3,8 +3,8 @@ import { useParams, useHistory } from "react-router-dom";
 import Rater from "react-rater";
 import "react-rater/lib/react-rater.css";
 import AddReservationForm from "./form-booking-page";
-import Cupcake from "./cupcake.png";
-import Cakes from "./cakes.png";
+import cupcakeImagePath from "./cupcake.png";
+import cakesImagePath from "./cakes.png";
 import "./booking-page.css";
 
 const CakeWithReviews = ({
@@ -31,7 +31,7 @@ const CakeWithReviews = ({
         </p>
         <div className="cupcake-line">
           <div className="line-left"></div>
-          <img src={Cupcake} alt="cupcake" className="cupcake-img" />
+          <img src={cupcakeImagePath} alt="cupcake" className="cupcake-img" />
           <div className="line-right"></div>
         </div>
         <h2>Review</h2>
@@ -43,7 +43,7 @@ const CakeWithReviews = ({
     </div>
     <div className="cakes-line">
       <div className="line-left"></div>
-      <img src={Cakes} alt="thre cakes" className="cakes-img" />
+      <img src={cakesImagePath} alt="thre cakes" className="cakes-img" />
       <div className="line-right"></div>
     </div>
     <section className="form-container">

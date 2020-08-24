@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./cakes-page.css";
 
-const Cake = ({ id, url, title, description, max_reservations, price }) => (
+const Cake = ({ id, url, title, max_reservations, price }) => (
   <div className="cakes">
     <img src={url} className="img-cake" alt="cake"></img>
     <h1>{title}</h1>
-    <p>{description}</p>
     <p>
       <b>Servings:</b> {max_reservations}
     </p>

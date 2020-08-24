@@ -1,6 +1,6 @@
 import React from "react";
 
-import Cupcake from "./cupcake.png";
+import cupcakeImagePath from "./cupcake.png";
 import Logo from "./logo.png";
 import "./about-page.css";
 
@@ -10,7 +10,7 @@ export const AboutPage = () => {
       <h1>About me</h1>
       <section className="cupcake-with-line">
         <div className="line-1"></div>
-        <img src={Cupcake} alt="cupcake" className="cupcake-img" />
+        <img src={cupcakeImagePath} alt="cupcake" className="cupcake-img" />
         <div className="line-2"></div>
       </section>
       <section className="main-info">
@@ -19,9 +19,9 @@ export const AboutPage = () => {
         </div>
         <div className="description-about">
           <p>
-            {"    "}Hi there and welcome to <b>Homemade cakes</b>, a page where you’ll
-            find beautiful European Cakes and Desserts as well as other savory
-            dishes my Ukrainian family enjoys.
+            {"    "}Hi there and welcome to <b>Homemade cakes</b>, a page where
+            you’ll find beautiful European Cakes and Desserts as well as other
+            savory dishes my Ukrainian family enjoys.
           </p>
           <p>
             I’ve been cooking since 10 and consistently for the past 12 years.
