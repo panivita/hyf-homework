@@ -24,8 +24,8 @@ export const ResultSearch = () => {
   };
   if (!search) return <li className="no-results">No results</li>;
 
-  const goToUserDetailsPage = (login) => {
-    history.push("/user/" + login);
+  const goToUserDetailsPage = (username) => {
+    history.push("/users/" + username);
   };
 
   return (
