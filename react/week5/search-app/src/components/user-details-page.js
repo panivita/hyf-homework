@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Moment from "react-moment";
-import "./user-details-page.css";
 import { useParams } from "react-router-dom";
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import {

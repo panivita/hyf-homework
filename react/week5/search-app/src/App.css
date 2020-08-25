@@ -38,7 +38,7 @@ nav.navbar-container {
   font-weight: bold;
 }
 
-.app-header, .search-container, .navbar-container, .container, footer {
+.app-header, .search-container, .navbar-container, .container, footer, .about-container {
   text-align: center;
   width: 60%;
   background-color: #1f1f1f;
@@ -65,27 +65,24 @@ nav.navbar-container {
 }
 
 .result-container, .loading, .no-results {
-  width: 18.5%;
+  width: 17.7%;
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid #9dd9f0;
-  margin-block-start: -255px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  margin-block-start: -252px;
+  border-radius: 5px;
   box-shadow: 0 0 5px 0 #333333;
   padding-inline-start: 0px;
-  background-color: white;
   text-align: center;
   color: black
 }
 
-.users, .no-results {
-  border-bottom: 2px solid #9dd9f0;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+.no-results, .result-search, .loading {
+  border: 2px solid #9dd9f0;
+  border-radius: 5px;
   padding: 2% 0;
   font-size: 18px;
   list-style: none;
+  background-color: white;
 }
 
 .fa-github {
@@ -97,11 +94,11 @@ h1 .fa-search {
   padding-right: 0;
 }
 
-.no-results {
-  padding: 1% 0;
+.no-results, .loading {
+  padding: 0.5%;
 }
 
-.container, .user-repos, .user-details {
+.container, .user-repos, .user-details, .result-search, .tools-container {
   display: flex;
 }
 
@@ -126,6 +123,20 @@ h1 .fa-search {
   background-color: #7cbbe2;
 }
 
+.tools-container {
+  justify-content: space-between;
+}
+
+.about-container {
+  padding-top: 0;
+}
+
+.about-img {
+  width: 20%;
+  border-radius: 50%;
+  margin-right: 3%;
+}
+
 .user-details {
   flex-direction: column;
   width: 44%;
@@ -144,7 +155,7 @@ h1 .fa-search {
   justify-content: space-between;
 }
 
-.user-details-container {
+.user-details-container, .description-about li {
   text-align: left;
 }
 
@@ -154,4 +165,36 @@ h1 .fa-search {
 
 .user-details-container h2 {
   margin-left: 14%;
+}
+
+.description-about h2 {
+  margin-right: 72%;
+}
+
+h2.tools {
+  margin-right: 60%;
+}
+
+.description-about li {
+  padding-inline-start: 30px;
+}
+
+.result-search li {
+  margin-left: 15%;
+}
+
+.result-search {
+  margin: 1% -3%;
+}
+
+.mini-logo {
+  width: 15%;
+  border-radius: 50%;
+  margin-left: 15%;
+}
+
+footer {
+  margin-top: 1%;
+  font-weight: bold;
+  font-size: 19px;
 }

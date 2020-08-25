@@ -34,15 +34,23 @@ export const ResultSearch = () => {
       {display && !err ? (
         <ul className="result-container">
           {users && users.length > 0 ? (
-            users.map(({ id, login }) => (
-              <li
-                className="users"
-                key={id}
-                tabIndex="0"
-                onClick={() => goToUserDetailsPage(login)}
-              >
-                {login}
-              </li>
+            users.map(({ id, login, avatar_url }) => (
+              <section className="result-search">
+                <img
+                  src={avatar_url}
+                  className="mini-logo"
+                  alt="user logo"
+                ></img>
+                <li
+                  className="users"
+                  key={id}
+                  tabIndex="0"
+                  style={{ outline: "none" }}
+                  onClick={() => goToUserDetailsPage(login)}
+                >
+                  {login}
+                </li>
+              </section>
             ))
           ) : (
             <li className="users">No results found</li>
