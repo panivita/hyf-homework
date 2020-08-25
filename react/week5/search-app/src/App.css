@@ -2,25 +2,61 @@ body {
   margin: 0;
   font-size: 17px;
   font-family: "Segoe Print", cursive;
-  color: orange;
+  color: #9dd9f0;
   background-color: #cccccc;
 }
 
-.app-header, .search-container {
-  text-align: center;
-  width: 900px;
-  background-color: #333333;
-  margin: 3% auto;
-  padding: 30px;
+.logo-img {
+  border-radius: 50%;
+  width: 25%;
+}
+
+.user-logo {
+  width: 70%;
+  padding: 5%;
+  background: #cfd0ca;
+  box-shadow: 1px 1px 2px #ccc;
   border-radius: 5px;
 }
-.search-container {
-min-height: 350px;
+
+nav.navbar-container {
+  margin: 5px auto;
 }
+
+.navbar-container ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+}
+
+.navbar-container a {
+  text-decoration: none;
+  color: #9dd9f0;
+  margin-left: 10%;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.app-header, .search-container, .navbar-container, .container, footer {
+  text-align: center;
+  width: 60%;
+  background-color: #1f1f1f;
+  margin: 1% auto;
+  padding: 2%;
+  border-radius: 5px;
+  border: 2px solid #1f1f1f;
+  box-shadow: 0 0 10px 0 #333333;
+}
+
+.search-container {
+  min-height: 250px;
+}
+
 .search-container input {
   width: 30%;
   height: 30px;
-  border-color: orange;
+  border-color: #9dd9f0;
   border-radius: 5px;
   box-shadow: 0 0 5px 0 #333333;
   padding: 5px;
@@ -29,22 +65,22 @@ min-height: 350px;
 }
 
 .result-container, .loading, .no-results {
-  width: 17.5%;
+  width: 18.5%;
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid orange;
-  margin-block-start: -384px;
+  border: 2px solid #9dd9f0;
+  margin-block-start: -255px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   box-shadow: 0 0 5px 0 #333333;
   padding-inline-start: 0px;
   background-color: white;
   text-align: center;
-  
+  color: black
 }
 
 .users, .no-results {
-  border-bottom: 2px solid orange;
+  border-bottom: 2px solid #9dd9f0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 2% 0;
@@ -56,10 +92,66 @@ min-height: 350px;
   padding-right: 10px;
 }
 
-.fa-search {
+h1 .fa-search {
   padding-left: 15px;
+  padding-right: 0;
 }
 
 .no-results {
-padding: 1% 0;
+  padding: 1% 0;
+}
+
+.container, .user-repos, .user-details {
+  display: flex;
+}
+
+.user-repos {
+  justify-content: space-between;
+  color: #1c1c1c;
+  width: 81%;
+  margin-left: 2%;
+}
+
+.user-repos p {
+  background-color: #767573;
+  padding: 1%;
+  border-radius: 5px;
+}
+
+.user-repos p:last-child {
+  background-color: #ac5b53;
+}
+
+.user-repos p:nth-child(1) {
+  background-color: #7cbbe2;
+}
+
+.user-details {
+  flex-direction: column;
+  width: 44%;
+}
+
+.container img {
+  margin: 2%;
+}
+
+.user-details-container {
+  width: 55%;
+  margin-bottom: 3%;
+}
+
+.container {
+  justify-content: space-between;
+}
+
+.user-details-container {
+  text-align: left;
+}
+
+.svg-inline--fa {
+  padding-right: 10%;
+}
+
+.user-details-container h2 {
+  margin-left: 14%;
 }

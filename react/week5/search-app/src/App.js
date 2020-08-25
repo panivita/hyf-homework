@@ -31,9 +31,10 @@ const App = () => {
           <AboutPage />
         </Route>
         <Route path="/users/:username">
-            <UserDetailsPage />
-          </Route>
+          <UserDetailsPage />
+        </Route>
       </Switch>
+      
     </Router>
   );
 };
