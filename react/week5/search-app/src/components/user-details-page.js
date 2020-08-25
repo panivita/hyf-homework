@@ -7,16 +7,20 @@ import {
   faPortrait,
   faUserClock,
   faSyncAlt,
+  faBuilding,
+  faLink
 } from "@fortawesome/free-solid-svg-icons";
-//import { faGithub } from "@fortawesome/free-brands-svg-icons";<i className="fab fa-github"></i>
 dom.watch();
-library.add(faMapMarkerAlt, faPortrait, faUserClock, faSyncAlt);
+library.add(faMapMarkerAlt, faPortrait, faUserClock, faSyncAlt, faBuilding, faLink);
 
 const UserDetails = ({
   avatar_url,
   name,
+  login,
   location,
   bio,
+  blog,
+  company,
   created_at,
   updated_at,
   public_repos,
@@ -34,13 +38,35 @@ const UserDetails = ({
         </div>
       </section>
       <section className="user-details-container">
-        <h2>{name}</h2>
-        <p>
-          <i className="fas fa-map-marker-alt"></i> {location}
-        </p>
-        <p>
-          <i className="fas fa-portrait"></i> {bio}
-        </p>
+        {name !== null ? <h2>{name}</h2> : <h2>{login}</h2>}
+        {location !== null ? (
+          <p>
+            <i className="fas fa-map-marker-alt"></i> {location}
+          </p>
+        ) : (
+          <></>
+        )}
+        {bio !== null ? (
+          <p>
+            <i className="fas fa-portrait"></i> {bio}
+          </p>
+        ) : (
+          <></>
+        )}
+        {company !== null ? (
+          <p>
+            <i className="fas fa-building"></i> {company}
+          </p>
+        ) : (
+          <></>
+        )}
+        {blog !== "" ? (
+          <a href={blog} target = "_blank" >
+            <i className="fas fa-link"></i> {blog}
+          </a>
+        ) : (
+          <></>
+        )}
         <p>
           <i className="fas fa-user-clock"></i>Member since:{" "}
           <Moment format="D MMM YYYY" withTitle>
