@@ -8,10 +8,17 @@ import {
   faUserClock,
   faSyncAlt,
   faBuilding,
-  faLink
+  faLink,
 } from "@fortawesome/free-solid-svg-icons";
 dom.watch();
-library.add(faMapMarkerAlt, faPortrait, faUserClock, faSyncAlt, faBuilding, faLink);
+library.add(
+  faMapMarkerAlt,
+  faPortrait,
+  faUserClock,
+  faSyncAlt,
+  faBuilding,
+  faLink
+);
 
 const UserDetails = ({
   avatar_url,
@@ -61,7 +68,7 @@ const UserDetails = ({
           <></>
         )}
         {blog !== "" ? (
-          <a href={blog} target = "_blank" >
+          <a href={blog} target="_blank" rel="noopener noreferrer">
             <i className="fas fa-link"></i> {blog}
           </a>
         ) : (

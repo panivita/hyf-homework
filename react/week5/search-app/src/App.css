@@ -119,7 +119,7 @@ h1 .fa-search {
   background-color: #ac5b53;
 }
 
-.user-repos p:nth-child(1) {
+.user-repos p:first-child {
   background-color: #7cbbe2;
 }
 

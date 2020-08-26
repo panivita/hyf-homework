@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "./media.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AboutPage } from "./components/about-page";
 import { UserDetailsPage } from "./components/user-details-page";
@@ -34,7 +35,6 @@ const App = () => {
           <UserDetailsPage />
         </Route>
       </Switch>
-      
     </Router>
   );
 };
