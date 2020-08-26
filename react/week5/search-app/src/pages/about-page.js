@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "./Octocat.jpg";
+import Logo from "../Octocat.jpg";
 
 export const AboutPage = () => {
   return (
