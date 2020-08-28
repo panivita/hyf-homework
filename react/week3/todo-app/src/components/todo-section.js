@@ -15,41 +15,41 @@ export const TodoListSection = ({ list = [] }) => {
   }, []);
 
   const addTodo = (val) => {
-    setTodos((t) => {
+    setTodos((todo) => {
       const item = {
-        id: t[t.length - 1]?.id + 1 || 1,
+        id: todo[t.length - 1]?.id + 1 || 1,
         description: val.description,
         deadline: val.deadline,
         done: false,
       };
-      return [...t, item];
+      return [...todo, item];
     });
   };
 
   const handleCheck = (id) => {
     setTodos((stateCheck) => {
-      const check = stateCheck.map((t) => {
-        if (t.id === id) {
-          return { ...t, done: !t.done };
+      const check = stateCheck.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, done: !todo.done };
         }
-        return t;
+        return todo;
       });
       return check;
     });
   };
   const deleteItems = (id) => {
     setTodos((stateDelete) => {
-      const deletedItem = stateDelete.filter((t) => t.id !== id);
+      const deletedItem = stateDelete.filter((todo) => todo.id !== id);
       return deletedItem;
     });
   };
   const editItems = (id, value) => {
     setTodos((stateEdit) => {
-      return stateEdit.map((t) => {
-        if (t.id === id) {
-          return { ...t, description: value };
+      return stateEdit.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, description: value };
         }
-        return t;
+        return todo;
       });
     });
   };

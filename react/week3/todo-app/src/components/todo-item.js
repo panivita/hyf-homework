@@ -21,7 +21,7 @@ const TodoItem = ({ todo, onCheck, onDelete, onEdit }) => {
       <input
         type="checkbox"
         name={todo.description}
-        checked={todo.done && "checked"}
+        defaultChecked={todo.done}
         onChange={() => onCheck(todo.id)}
       />
       <span className={todo.done ? "line-through" : "no-decoration"}>
