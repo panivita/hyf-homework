@@ -8,7 +8,7 @@ body {
 
 .app-header, .search-container {
   text-align: center;
-  width: 900px;
+  width: 55%;
   background-color: #333333;
   margin: 3% auto;
   padding: 30px;
@@ -29,7 +29,7 @@ min-height: 350px;
 }
 
 .result-container, .loading, .no-results {
-  width: 17.5%;
+  width: 17%;
   margin-left: auto;
   margin-right: auto;
   border: 2px solid orange;

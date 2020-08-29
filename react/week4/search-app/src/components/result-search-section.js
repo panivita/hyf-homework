@@ -8,9 +8,9 @@ export const ResultSearch = () => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    document.addEventListener("click", handleClickerOutside);
+    document.addEventListener("mousedown", handleClickerOutside);
     return () => {
-      document.removeEventListener("click", handleClickerOutside);
+      document.removeEventListener("mousedown", handleClickerOutside);
     };
   });
 
@@ -20,7 +20,7 @@ export const ResultSearch = () => {
       setDisplay(false);
     }
   };
-  if (!search) return <li className="no-results">No results</li>;
+  if (!search) return <p className="no-results">No results</p>;
 
   return (
     <div ref={wrapperRef} className="user-container">
