@@ -1,0 +1,69 @@
+@media screen and (max-width: 1050px) {
+    .app-header, .search-container, .navbar-container, .container, footer, .about-container {
+        width: 90%;
+    }
+    .result-container, .loading, .no-results {
+        margin-block-start: -225px;
+        width: 26.7%;
+    }
+}
+
+@media screen and (max-width: 455px) {
+    .app-header h1, .about-container h1 {
+        font-size: 22px;
+    }
+    .description-about h2 {
+        font-size: 20px;
+        margin-right: 0;
+    }
+    .description-about li {
+        padding-inline-start: 2%;
+    }
+    .tools-container, .container {
+        flex-direction: column;
+    }
+    .user-logo {
+        width: 215%;
+    }
+    .user-details-container {
+        width: 100%;
+        padding: 3%;
+        margin-bottom: -2%;
+    }
+    .user-repos p {
+        font-size: 16px;
+    }
+    .about-img {
+        margin-left: 40%;
+        margin-top: -5%;
+    }
+    .navbar-container ul {
+        font-size: 15px;
+    }
+    .search-container input {
+        width: 50%;
+    }
+    .result-container, .loading, .no-results {
+        width: 46.7%;
+    }
+    .user-details-container h2 {
+        margin-top: -2%;
+    }
+    .mini-logo, .result-search span {
+        margin-left: 10%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .result-container, .loading, .no-results {
+        margin-block-start: -218px;
+    }
+    .result-search span {
+        font-size: 13px;
+    }
+    
+    .user-repos {
+        margin-left: 3%;
+        width: 225%;
+    }
+}

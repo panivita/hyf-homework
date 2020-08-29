@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  font-size: 17px;
+  font-family: "Segoe Print", cursive;
+  color: #9dd9f0;
+  background-color: #cccccc;
+}
+
+.logo-img {
+  border-radius: 50%;
+  width: 25%;
+}
+
+.user-logo {
+  width: 70%;
+  padding: 5%;
+  background: #cfd0ca;
+  box-shadow: 1px 1px 2px #ccc;
+  border-radius: 5px;
+}
+
+nav.navbar-container {
+  margin: 5px auto;
+}
+
+.navbar-container ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+}
+
+.navbar-container a {
+  text-decoration: none;
+  color: #9dd9f0;
+  margin-left: 10%;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.app-header, .search-container, .navbar-container, .container, footer, .about-container {
+  text-align: center;
+  width: 60%;
+  background-color: #1f1f1f;
+  margin: 1% auto;
+  padding: 2%;
+  border-radius: 5px;
+  border: 2px solid #1f1f1f;
+  box-shadow: 0 0 10px 0 #333333;
+}
+
+.search-container {
+  min-height: 250px;
+}
+
+.search-container input {
+  width: 30%;
+  height: 30px;
+  border-color: #9dd9f0;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 #333333;
+  padding: 5px;
+  outline: none;
+  text-align: center;
+}
+
+.result-container, .loading, .no-results {
+  width: 17.7%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-block-start: -252px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 #333333;
+  padding-inline-start: 0px;
+  text-align: center;
+  color: black;
+  list-style: none;
+}
+
+.no-results, .result-search, .loading, .users {
+  border: 2px solid #9dd9f0;
+  border-radius: 5px;
+  padding: 2% 0;
+  font-size: 18px;
+  background-color: white;
+}
+
+.fa-github {
+  padding-right: 10px;
+}
+
+h1 .fa-search {
+  padding-left: 15px;
+  padding-right: 0;
+}
+
+.no-results, .loading {
+  padding: 0.5%;
+}
+
+.container, .user-repos, .user-details, .result-search, .tools-container {
+  display: flex;
+}
+
+.user-repos {
+  justify-content: space-between;
+  color: #1c1c1c;
+  width: 81%;
+  margin-left: 2%;
+}
+
+.user-repos p {
+  background-color: #767573;
+  padding: 1%;
+  border-radius: 5px;
+}
+
+.user-repos p:last-child {
+  background-color: #ac5b53;
+}
+
+.user-repos p:first-child {
+  background-color: #7cbbe2;
+}
+
+.tools-container {
+  justify-content: space-between;
+}
+
+.about-container {
+  padding-top: 0;
+}
+
+.about-img {
+  width: 20%;
+  border-radius: 50%;
+  margin-right: 3%;
+  margin-top: -10%;
+}
+
+.user-details {
+  flex-direction: column;
+  width: 44%;
+}
+
+.container img {
+  margin: 2%;
+}
+
+.user-details-container {
+  width: 55%;
+  margin-bottom: 3%;
+}
+
+.container {
+  justify-content: space-between;
+}
+
+.user-details-container, .description-about li {
+  text-align: left;
+}
+
+.svg-inline--fa {
+  padding-right: 10%;
+}
+
+.user-details-container h2 {
+  margin-left: 14%;
+}
+
+.description-about h2 {
+  margin-right: 72%;
+}
+
+h2.tools {
+  margin-right: 60%;
+}
+
+.description-about li {
+  padding-inline-start: 30px;
+}
+
+.result-search span {
+  margin: 0 0 0 15%;
+  margin-block-start: 2%;
+}
+
+.result-search, .users {
+  margin: 2% -3%;
+}
+
+.mini-logo {
+  width: 15%;
+  border-radius: 50%;
+  margin-left: 15%;
+  
+}
+
+footer {
+  margin-top: 1%;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.tools-container ul {
+  columns: 2;
+}
+
+.user-details-container a {
+  color: #9dd9f0;
+}
