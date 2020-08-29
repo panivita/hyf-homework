@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-size: 17px;
+  font-family: "Segoe Print", cursive;
+  color: orange;
+  background-color: #cccccc;
+}
+
+.app-header, .search-container {
+  text-align: center;
+  width: 55%;
+  background-color: #333333;
+  margin: 3% auto;
+  padding: 30px;
+  border-radius: 5px;
+}
+.search-container {
+min-height: 350px;
+}
+.search-container input {
+  width: 30%;
+  height: 30px;
+  border-color: orange;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 #333333;
+  padding: 5px;
+  outline: none;
+  text-align: center;
+}
+
+.result-container, .loading, .no-results {
+  width: 17%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid orange;
+  margin-block-start: -384px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 0 5px 0 #333333;
+  padding-inline-start: 0px;
+  background-color: white;
+  text-align: center;
+  
+}
+
+.users, .no-results {
+  border-bottom: 2px solid orange;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 2% 0;
+  font-size: 18px;
+  list-style: none;
+}
+
+.fa-github {
+  padding-right: 10px;
+}
+
+.fa-search {
+  padding-left: 15px;
+}
+
+.no-results {
+padding: 1% 0;
+}
