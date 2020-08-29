@@ -15,7 +15,7 @@ const App = () => {
       <nav className="navbar-container">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <Link to="/About">About</Link>
         </ul>

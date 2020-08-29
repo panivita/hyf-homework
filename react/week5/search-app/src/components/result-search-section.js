@@ -10,9 +10,9 @@ export const ResultSearch = () => {
   const history = useHistory();
 
   useEffect(() => {
-    document.addEventListener("click", handleClickerOutside);
+    document.addEventListener("mousedown", handleClickerOutside);
     return () => {
-      document.removeEventListener("click", handleClickerOutside);
+      document.removeEventListener("mousedown", handleClickerOutside);
     };
   });
 
@@ -22,7 +22,7 @@ export const ResultSearch = () => {
       setDisplay(false);
     }
   };
-  if (!search) return <li className="no-results">No results</li>;
+  if (!search) return <p className="no-results">No results</p>;
 
   const goToUserDetailsPage = (username) => {
     history.push("/users/" + username);
@@ -42,11 +42,7 @@ export const ResultSearch = () => {
                 style={{ outline: "none", cursor: "pointer" }}
                 onClick={() => goToUserDetailsPage(login)}
               >
-                <img
-                  src={avatar_url}
-                  className="mini-logo"
-                  alt="user logo"
-                ></img>
+                <img src={avatar_url} className="mini-logo" alt="user logo" />
                 <span>{login}</span>
               </li>
             ))

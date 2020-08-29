@@ -1,9 +1,10 @@
 import React, { useState, useEffect, createContext } from "react";
-
+import { useDebounce } from "use-debounce";
 const SearchUserContext = createContext();
 
 const SearchUserProvider = (props) => {
   const [search, setSearch] = useState("");
+  const [debounceValue] = useDebounce(search, 500);
   const [display, setDisplay] = useState(false);
   const [users, setUsers] = useState([]);
   const [err, setErr] = useState("");
@@ -21,7 +22,7 @@ const SearchUserProvider = (props) => {
         setDisplay(true);
       })
       .catch(err => setErr(err.message));
-  }, [search]);
+  }, [search, debounceValue]);
 
   
   return (
